@@ -64,9 +64,7 @@ const ChapterCard = ({ chapter, onPress }) => {
     >
       <View style={tw`flex-row justify-between items-start`}>
         <View style={tw`flex-1`}>
-          <Text
-            style={[tw`text-lg`, textStyles.heading2, { color: colors.text }]}
-          >
+          <Text style={[textStyles.heading2, { color: colors.text }]}>
             {translations.title.split(":")[0]}:{" "}
             {translations.title.split(":")[1].split("-").join(" ")}
           </Text>
