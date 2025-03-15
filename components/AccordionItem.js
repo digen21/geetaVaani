@@ -12,6 +12,10 @@ const AccordionItem = ({
   colors,
   fontStyle,
 }) => {
+  if (!content && !content?.length) {
+    return;
+  }
+
   return (
     <View style={[tw`mb-4`, { backgroundColor: colors.cardBg }]}>
       <TouchableOpacity
@@ -23,9 +27,10 @@ const AccordionItem = ({
       >
         <Text
           style={[
-            tw`text-lg font-bold`,
+            tw`text-lg font-bold flex-1`,
             { color: colors.text, lineHeight: 32 },
           ]}
+          numberOfLines={2}
         >
           {title}
         </Text>
@@ -33,6 +38,7 @@ const AccordionItem = ({
           name={isOpen ? "keyboard-arrow-up" : "keyboard-arrow-down"}
           size={24}
           color={colors.text}
+          style={tw`ml-2`}
         />
       </TouchableOpacity>
       {isOpen && (
@@ -44,13 +50,17 @@ const AccordionItem = ({
                   name="arrow-right"
                   size={20}
                   color={colors.primary}
-                  style={tw`mr-2`}
+                  style={tw`mr-2 mt-1.5`}
                 />
                 <Text
                   style={[
-                    tw`text-base`,
+                    tw`text-base flex-1`,
                     fontStyle,
-                    { color: colors.text, lineHeight: 34 },
+                    {
+                      color: colors.text,
+                      lineHeight: 34,
+                      flexWrap: "wrap",
+                    },
                   ]}
                 >
                   {item}

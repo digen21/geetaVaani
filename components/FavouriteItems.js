@@ -1,12 +1,14 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { format } from "date-fns";
-import { useTheme } from "../contexts";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import { useLanguage, useTheme } from "../contexts";
+import { getLocalizedChapter } from "../utils";
 
 const FavoriteItems = ({ item, onPress }) => {
   const { colors } = useTheme();
-
+  const { currentLanguage } = useLanguage();
   const HEART_COLOR = "#FF3B30";
 
   return (
@@ -23,9 +25,7 @@ const FavoriteItems = ({ item, onPress }) => {
             style={styles.icon}
           />
           <Text style={[styles.title, { color: colors.text }]}>
-            {item.type === "chapter"
-              ? `Chapter ${item.number}`
-              : `Verse ${item.chapter}.${item.number}`}
+            {getLocalizedChapter(item, currentLanguage)}
           </Text>
         </View>
         <Text

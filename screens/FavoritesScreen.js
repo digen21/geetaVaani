@@ -1,18 +1,47 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { format } from "date-fns";
 
 import { FavoriteItems } from "../components";
-import { useFavorites, useTheme } from "../contexts";
+import { useFavorites, useLanguage, useTheme } from "../contexts";
+import chaptersData from "../data/sample-chapters.json";
 
 const FavoritesScreen = ({ navigation }) => {
   const { colors } = useTheme();
   const { favorites } = useFavorites();
+  const { currentLanguage } = useLanguage();
 
   const handleItemPress = (item) => {
     if (item.type === "chapter") {
-      navigation.navigate("ChapterDetail", { chapter: item });
+      const chapterData = chaptersData.find(
+        (chapter) => chapter.chapter === item.number
+      );
+
+      const formattedChapter = {
+        ...item,
+        ...chapterData,
+        chapter: item.number,
+        verses_count: chapterData?.verses_count || item.verses_count,
+        en: {
+          title: chapterData?.en?.title || item.title,
+          summary: chapterData?.en?.summary,
+          main_teachings: chapterData?.en?.main_teachings || [],
+          practical_tips: chapterData?.en?.practical_tips || [],
+          what_we_can_learn: chapterData?.en?.what_we_can_learn || [],
+        },
+        [currentLanguage]: {
+          title: chapterData?.[currentLanguage]?.title || item.title,
+          summary: chapterData?.[currentLanguage]?.summary,
+          main_teachings: chapterData?.[currentLanguage]?.main_teachings || [],
+          practical_tips: chapterData?.[currentLanguage]?.practical_tips || [],
+          what_we_can_learn:
+            chapterData?.[currentLanguage]?.what_we_can_learn || [],
+        },
+      };
+
+      navigation.navigate("ChapterDetail", {
+        chapter: formattedChapter,
+      });
     } else {
       navigation.navigate("VerseDetail", { verse: item });
     }

@@ -1,7 +1,11 @@
 import { View } from "react-native";
 import tw from "twrnc";
 
-const Separator = () => (
+import { useTheme } from "../contexts";
+
+const Separator = () => {
+  const { colors } = useTheme();
+
   <View
     style={[
       tw`my-4 mx-2`,
@@ -16,7 +20,7 @@ const Separator = () => (
         elevation: 1,
       },
     ]}
-  />
-);
+  />;
+};
 
 export default Separator;
