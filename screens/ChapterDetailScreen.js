@@ -1,19 +1,42 @@
 // screens/ChapterDetailScreen.js
-import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
-import { Header } from "../components";
+import { AccordionItem, Header } from "../components";
 import { useLanguage, useTheme } from "../contexts";
+import { useLanguageFont } from "../hooks";
+import { createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { chapter } = route.params;
+  const { width } = useWindowDimensions();
+  const textStyles = createTextStyles(currentLanguage);
+
+  const [openSections, setOpenSections] = useState({
+    teachings: false,
+    tips: false,
+    learnings: false,
+  });
 
   // Get translations for current language
   const translations = chapter[currentLanguage] || chapter.en;
+
+  const toggleSection = (section) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
 
   return (
     <ScrollView
@@ -37,6 +60,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         <Text
           style={[
             tw`text-2xl font-bold mb-2 text-center`,
+            textStyles.heading1,
             { color: colors.text },
           ]}
         >
@@ -46,7 +70,8 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         {/* Chapter Title */}
         <Text
           style={[
-            tw`text-3xl font-semibold mt-1 mb-4 text-center`,
+            tw`text-3xl mt-1 mb-4 text-center`,
+            textStyles.heading1,
             {
               color: colors.primary,
               flexShrink: 1, // Prevent parent from shrinking
@@ -61,7 +86,13 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         </Text>
 
         {/* Chapter Summary */}
-        <Text style={[tw`text-lg leading-6 pt-4`, { color: colors.text }]}>
+        <Text
+          style={[
+            tw`leading-6 pt-4`,
+            { color: colors.text, lineHeight: 28 },
+            textStyles.heading3,
+          ]}
+        >
           {translations.summary}
         </Text>
 
@@ -70,6 +101,34 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           Contains {chapter.verses_count} Sacred Verses
         </Text>
       </View>
+
+      {/* Accordions */}
+      <AccordionItem
+        title="Main Teachings"
+        content={translations.main_teachings}
+        isOpen={openSections.teachings}
+        onPress={() => toggleSection("teachings")}
+        colors={colors}
+        fontStyle={textStyles.heading3}
+      />
+
+      <AccordionItem
+        title="Practical Tips"
+        content={translations.practical_tips}
+        isOpen={openSections.tips}
+        onPress={() => toggleSection("tips")}
+        colors={colors}
+        fontStyle={textStyles.heading3}
+      />
+
+      <AccordionItem
+        title="What We Can Learn"
+        content={translations.what_we_can_learn}
+        isOpen={openSections.learnings}
+        onPress={() => toggleSection("learnings")}
+        colors={colors}
+        fontStyle={textStyles.heading3}
+      />
 
       <TouchableOpacity
         style={[

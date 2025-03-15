@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 
 const BurgerMenu = ({ navigation, style }) => {
   const { colors } = useTheme();
-  const { currentLanguage, changeLanguage } = useLanguage();
+  const { changeLanguage } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [showLangModal, setShowLangModal] = useState(false);
 

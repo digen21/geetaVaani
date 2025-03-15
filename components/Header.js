@@ -1,11 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
-import { Modal, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
-import { useLanguage, useTheme } from "../contexts";
+import { useTheme } from "../contexts";
 import BurgerMenu from "./BurgerMenu";
+import BackButton from "./BackButton";
 
 const Header = ({
   title = "GitaVaani",
@@ -36,18 +37,7 @@ const Header = ({
       ]}
     >
       {/* Back Button */}
-      {showBackButton && (
-        <TouchableOpacity
-          style={[
-            tw`absolute top-11 left-5 z-10 p-2 rounded-full`,
-            { backgroundColor: colors.primary + "20" },
-          ]}
-          onPress={onBackPress}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <Icon name="arrow-back" size={24} color={colors.primary} />
-        </TouchableOpacity>
-      )}
+      {showBackButton && <BackButton />}
 
       <View style={tw`flex-row items-center absolute right-4 top-16`}>
         {showMenu && (

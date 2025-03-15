@@ -1,0 +1,145 @@
+import { MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { format } from "date-fns";
+
+import { FavoriteItems } from "../components";
+import { useFavorites, useTheme } from "../contexts";
+
+const FavoritesScreen = ({ navigation }) => {
+  const { colors } = useTheme();
+  const { favorites } = useFavorites();
+
+  const handleItemPress = (item) => {
+    if (item.type === "chapter") {
+      navigation.navigate("ChapterDetail", { chapter: item });
+    } else {
+      navigation.navigate("VerseDetail", { verse: item });
+    }
+  };
+
+  const renderHeader = () => (
+    <View style={styles.headerContainer}>
+      <Text style={[styles.headerTitle, { color: colors.text }]}>
+        Favorites
+      </Text>
+      <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>
+        Your favorite chapters and verses from Bhagavad Gita
+      </Text>
+      <View style={[styles.divider, { backgroundColor: colors.border }]} />
+    </View>
+  );
+
+  const renderEmptyState = () => (
+    <View style={styles.emptyContainer}>
+      <MaterialIcons name="favorite" size={64} color="#FF3B30" />
+      <Text style={[styles.emptyText, { color: colors.text }]}>
+        No favorites yet
+      </Text>
+      <Text style={[styles.emptySubtext, { color: colors.secondaryText }]}>
+        Add chapters or verses to your favorites{"\n"}by tapping the heart icon
+      </Text>
+    </View>
+  );
+
+  // Group favorites by type
+  const groupedFavorites = favorites.reduce((acc, item) => {
+    acc[item.type] = acc[item.type] || [];
+    acc[item.type].push(item);
+    return acc;
+  }, {});
+
+  const sections = [
+    { title: "Chapters", data: groupedFavorites.chapter || [] },
+    { title: "Verses", data: groupedFavorites.verse || [] },
+  ];
+
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <FlatList
+        ListHeaderComponent={renderHeader}
+        data={sections}
+        renderItem={({ item: section }) => (
+          <>
+            {section.data.length > 0 && (
+              <View style={styles.sectionContainer}>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                  {section.title}
+                </Text>
+                {section.data.map((item) => (
+                  <FavoriteItems
+                    key={item.id}
+                    item={item}
+                    onPress={() => handleItemPress(item)}
+                  />
+                ))}
+              </View>
+            )}
+          </>
+        )}
+        ListEmptyComponent={renderEmptyState}
+        contentContainerStyle={[
+          styles.listContent,
+          favorites.length === 0 && styles.emptyList,
+        ]}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  headerContainer: {
+    padding: 16,
+    paddingTop: 24,
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    marginBottom: 16,
+  },
+  divider: {
+    height: 1,
+    opacity: 0.2,
+  },
+  sectionContainer: {
+    paddingHorizontal: 16,
+    paddingTop: 24,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    marginBottom: 16,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 32,
+  },
+  emptyList: {
+    flex: 1,
+  },
+  emptyText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 16,
+  },
+  emptySubtext: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 8,
+    lineHeight: 24,
+  },
+  listContent: {
+    paddingBottom: 24,
+  },
+});
+
+export default FavoritesScreen;

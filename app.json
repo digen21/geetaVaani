@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "MyReactNativeApp",
-    "slug": "MyReactNativeApp",
+    "name": "GitaVaani",
+    "slug": "gitavaani",
+    "owner": "dmx214",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,8 +28,58 @@
     },
     "extra": {
       "eas": {
-        "projectId": "2011ce73-8c66-4a43-853e-f7ea223de01f"
+        "projectId": "93c0f36e-ad03-48dd-890c-e90c9ab3d0ea"
       }
-    }
+    },
+    "fonts": [
+      {
+        "asset": "./assets/fonts/gu/BalooBhai2-Regular.ttf",
+        "fontFamily": "BalooBhai2-Regular"
+      },
+      {
+        "asset": "./assets/fonts/gu/BalooBhai2-Medium.ttf",
+        "fontFamily": "BalooBhai2-Medium"
+      },
+      {
+        "asset": "./assets/fonts/gu/BalooBhai2-SemiBold.ttf",
+        "fontFamily": "BalooBhai2-SemiBold"
+      },
+      {
+        "asset": "./assets/fonts/gu/BalooBhai2-Bold.ttf",
+        "fontFamily": "BalooBhai2-Bold"
+      },
+      {
+        "asset": "./assets/fonts/hi/Mukta-Bold.ttf",
+        "fontFamily": "Mukta-Bold"
+      },
+      {
+        "asset": "./assets/fonts/hi/Mukta-Medium.ttf",
+        "fontFamily": "Mukta-Medium"
+      },
+      {
+        "asset": "./assets/fonts/hi/Mukta-Regular.ttf",
+        "fontFamily": "Mukta-Regular"
+      },
+      {
+        "asset": "./assets/fonts/hi/Mukta-SemiBold.ttf",
+        "fontFamily": "Mukta-SemiBold"
+      },
+      {
+        "asset": "./assets/fonts/en/Poppins-SemiBold.ttf",
+        "fontFamily": "Poppins-SemiBold"
+      },
+      {
+        "asset": "./assets/fonts/en/Poppins-Bold.ttf",
+        "fontFamily": "Poppins-Bold"
+      },
+      {
+        "asset": "./assets/fonts/en/Poppins-Regular.ttf",
+        "fontFamily": "Poppins-Regular"
+      },
+      {
+        "asset": "./assets/fonts/en/Poppins-Medium.ttf",
+        "fontFamily": "Poppins-Medium"
+      }
+    ]
   }
 }

@@ -1,1 +1,5 @@
-export { default as languages } from "./languages";
+export {
+  getLanguageFont,
+  LANGUAGE_FONTS,
+  default as languages,
+} from "./languages";
