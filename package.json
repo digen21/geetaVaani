@@ -17,7 +17,7 @@
     "@reduxjs/toolkit": "^2.6.0",
     "axios": "^1.8.1",
     "date-fns": "^4.1.0",
-    "expo": "~52.0.37",
+    "expo": "~52.0.38",
     "expo-font": "^13.0.4",
     "expo-localization": "^16.0.1",
     "expo-status-bar": "~2.0.1",
