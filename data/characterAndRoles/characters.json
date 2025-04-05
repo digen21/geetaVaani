@@ -9,6 +9,7 @@
       "gu": "અર્જુન"
     },
     "type": "primary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/arjuna.png",
     "role": {
       "en": "Warrior prince of the Pandavas; represents the conflicted human soul.",
       "hi": "पांडवों के योद्धा राजकुमार; मानव आत्मा की द्वंद्व को दर्शाते हैं।",
@@ -27,6 +28,7 @@
       "gu": "શ્રી કૃષ્ણ"
     },
     "type": "primary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890619/GitaVaani-Verses/Characters/krishna.png",
     "role": {
       "en": "Divine charioteer and teacher; incarnation of Vishnu.",
       "hi": "दिव्य सारथी और गुरु; विष्णु के अवतार।",
@@ -45,6 +47,7 @@
       "gu": "સંજય"
     },
     "type": "primary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890626/GitaVaani-Verses/Characters/sanjaya.png",
     "role": {
       "en": "Narrator of the Gita to Dhritarashtra; granted divine vision.",
       "hi": "धृतराष्ट्र को गीता का वक्ता; दिव्य दृष्टि प्राप्त।",
@@ -63,6 +66,7 @@
       "gu": "ધૃતરાષ્ટ્ર"
     },
     "type": "primary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743889143/GitaVaani-Verses/Characters/dhritarashtra.png",
     "role": {
       "en": "Blind king; father of the Kauravas.",
       "hi": "अंध राजा; कौरवों के पिता।",
@@ -81,6 +85,7 @@
       "gu": "ભીષ્મ"
     },
     "type": "secondary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890622/GitaVaani-Verses/Characters/bhisma.png",
     "role": {
       "en": "Grandsire and commander of the Kaurava army.",
       "hi": "कौरव सेना के कमांडर और पितामह।",
@@ -99,6 +104,7 @@
       "gu": "દ્રોણ"
     },
     "type": "secondary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/drona.png",
     "role": {
       "en": "Teacher of the Pandavas and Kauravas.",
       "hi": "पांडवों और कौरवों के गुरु।",
@@ -117,6 +123,7 @@
       "gu": "કર્ણ"
     },
     "type": "secondary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/karna.png",
     "role": {
       "en": "Arjuna's half-brother; fights for the Kauravas.",
       "hi": "अर्जुन के सौतेले भाई; कौरवों के लिए लड़े।",
@@ -135,6 +142,7 @@
       "gu": "યુધિષ્ઠિર"
     },
     "type": "secondary_character",
+    "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890619/GitaVaani-Verses/Characters/yudhisthira.png",
     "role": {
       "en": "Eldest Pandava; symbol of righteousness.",
       "hi": "सबसे बड़े पांडव; धर्म के प्रतीक।",
@@ -163,6 +171,7 @@
   },
   {
     "id": "nakula_sahadeva",
+
     "name": {
       "en": "Nakula & Sahadeva",
       "hi": "नकुल और सहदेव",
