@@ -1,430 +1,218 @@
 [
   {
-    "bhagavad_gita_graph": {
-      "nodes": [
-        {
-          "id": "arjuna",
-          "name": {
-            "english": "Arjuna",
-            "hindi": "अर्जुन",
-            "marathi": "अर्जुन",
-            "sanskrit": "अर्जुनः"
-          },
-          "type": "primary_character",
-          "role": {
-            "english": "Warrior prince of the Pandavas; represents the conflicted human soul.",
-            "hindi": "पांडवों के योद्धा राजकुमार; मानव आत्मा की द्वंद्व को दर्शाते हैं।",
-            "marathi": "पांडवांचे योद्धा राजपुत्र; मानवी आत्म्याच्या संघर्षाचे प्रतीक।",
-            "sanskrit": "पाण्डवानां योद्धा राजपुत्रः; मानवात्मनः संघर्षं प्रतिबिम्बयति।"
-          }
-        },
-        {
-          "id": "krishna",
-          "name": {
-            "english": "Lord Krishna",
-            "hindi": "भगवान कृष्ण",
-            "marathi": "भगवान कृष्ण",
-            "sanskrit": "भगवान् श्रीकृष्णः"
-          },
-          "type": "primary_character",
-          "role": {
-            "english": "Divine charioteer and teacher; incarnation of Vishnu.",
-            "hindi": "दिव्य सारथी और गुरु; विष्णु के अवतार।",
-            "marathi": "दिव्य सारथी आणि गुरु; विष्णूचे अवतार।",
-            "sanskrit": "दिव्यसारथिः तथा गुरुः; विष्णोः अवतारः।"
-          }
-        },
-        {
-          "id": "sanjaya",
-          "name": {
-            "english": "Sanjaya",
-            "hindi": "संजय",
-            "marathi": "संजय",
-            "sanskrit": "संजयः"
-          },
-          "type": "primary_character",
-          "role": {
-            "english": "Narrator of the Gita to Dhritarashtra; granted divine vision.",
-            "hindi": "धृतराष्ट्र को गीता का वक्ता; दिव्य दृष्टि प्राप्त।",
-            "marathi": "धृतराष्ट्राला गीता सांगणारा; दिव्य दृष्टी प्राप्त।",
-            "sanskrit": "धृतराष्ट्राय गीतावक्ता; दिव्यदृष्टिं प्राप्तवान्।"
-          }
-        },
-        {
-          "id": "dhritarashtra",
-          "name": {
-            "english": "Dhritarashtra",
-            "hindi": "धृतराष्ट्र",
-            "marathi": "धृतराष्ट्र",
-            "sanskrit": "धृतराष्ट्रः"
-          },
-          "type": "primary_character",
-          "role": {
-            "english": "Blind king; father of the Kauravas.",
-            "hindi": "अंध राजा; कौरवों के पिता।",
-            "marathi": "अंध राजा; कौरवांचे पिता।",
-            "sanskrit": "अन्धः राजा; कौरवाणां पिता।"
-          }
-        },
-        {
-          "id": "bhishma",
-          "name": {
-            "english": "Bhishma",
-            "hindi": "भीष्म",
-            "marathi": "भीष्म",
-            "sanskrit": "भीष्मः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Grandsire and commander of the Kaurava army.",
-            "hindi": "कौरव सेना के कमांडर और पितामह।",
-            "marathi": "कौरव सेनेचे सेनापती आणि पितामह।",
-            "sanskrit": "कौरवसेनायाः सेनापतिः पितामहश्च।"
-          }
-        },
-        {
-          "id": "drona",
-          "name": {
-            "english": "Drona",
-            "hindi": "द्रोण",
-            "marathi": "द्रोण",
-            "sanskrit": "द्रोणः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Teacher of the Pandavas and Kauravas.",
-            "hindi": "पांडवों और कौरवों के गुरु।",
-            "marathi": "पांडव आणि कौरव यांचे गुरु।",
-            "sanskrit": "पाण्डवकौरवानां गुरुः।"
-          }
-        },
-        {
-          "id": "karna",
-          "name": {
-            "english": "Karna",
-            "hindi": "कर्ण",
-            "marathi": "कर्ण",
-            "sanskrit": "कर्णः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Arjuna's half-brother; fights for the Kauravas.",
-            "hindi": "अर्जुन के सौतेले भाई; कौरवों के लिए लड़े।",
-            "marathi": "अर्जुनाचे सावत्र भाऊ; कौरवांसाठी लढले।",
-            "sanskrit": "अर्जुनस्य सोदरः; कौरवाणां पक्षे युद्धम् अकरोत्।"
-          }
-        },
-        {
-          "id": "yudhishthira",
-          "name": {
-            "english": "Yudhishthira",
-            "hindi": "युधिष्ठिर",
-            "marathi": "युधिष्ठिर",
-            "sanskrit": "युधिष्ठिरः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Eldest Pandava; symbol of righteousness.",
-            "hindi": "सबसे बड़े पांडव; धर्म के प्रतीक।",
-            "marathi": "सर्वात मोठे पांडव; धर्माचे प्रतीक।",
-            "sanskrit": "ज्येष्ठः पाण्डवः; धर्मस्य प्रतीकः।"
-          }
-        },
-        {
-          "id": "bhima",
-          "name": {
-            "english": "Bhima",
-            "hindi": "भीम",
-            "marathi": "भीम",
-            "sanskrit": "भीमः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Second Pandava; symbol of strength.",
-            "hindi": "दूसरे पांडव; शक्ति के प्रतीक।",
-            "marathi": "दुसरे पांडव; शक्तीचे प्रतीक।",
-            "sanskrit": "द्वितीयः पाण्डवः; बलस्य प्रतीकः।"
-          }
-        },
-        {
-          "id": "nakula_sahadeva",
-          "name": {
-            "english": "Nakula & Sahadeva",
-            "hindi": "नकुल और सहदेव",
-            "marathi": "नकुल आणि सहदेव",
-            "sanskrit": "नकुलः सहदेवश्च"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Youngest Pandavas; symbol of loyalty.",
-            "hindi": "सबसे छोटे पांडव; निष्ठा के प्रतीक।",
-            "marathi": "सर्वात धाकटे पांडव; निष्ठेचे प्रतीक।",
-            "sanskrit": "कनिष्ठौ पाण्डवौ; निष्ठायाः प्रतीकौ।"
-          }
-        },
-        {
-          "id": "duryodhana",
-          "name": {
-            "english": "Duryodhana",
-            "hindi": "दुर्योधन",
-            "marathi": "दुर्योधन",
-            "sanskrit": "दुर्योधनः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Eldest Kaurava; Arjuna's adversary.",
-            "hindi": "सबसे बड़ा कौरव; अर्जुन का विरोधी।",
-            "marathi": "सर्वात मोठा कौरव; अर्जुनाचा प्रतिस्पर्धी।",
-            "sanskrit": "ज्येष्ठः कौरवः; अर्जुनस्य प्रतिद्वन्द्वी।"
-          }
-        },
-        {
-          "id": "kripa",
-          "name": {
-            "english": "Kripa",
-            "hindi": "कृप",
-            "marathi": "कृप",
-            "sanskrit": "कृपः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Royal teacher of the Kauravas.",
-            "hindi": "कौरवों के राजगुरु।",
-            "marathi": "कौरवांचे राजगुरु।",
-            "sanskrit": "कौरवाणां राजगुरुः।"
-          }
-        },
-        {
-          "id": "ashwatthama",
-          "name": {
-            "english": "Ashwatthama",
-            "hindi": "अश्वत्थामा",
-            "marathi": "अश्वत्थामा",
-            "sanskrit": "अश्वत्थामा"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Son of Drona; key Kaurava warrior.",
-            "hindi": "द्रोण के पुत्र; प्रमुख कौरव योद्धा।",
-            "marathi": "द्रोणाचे पुत्र; प्रमुख कौरव योद्धा।",
-            "sanskrit": "द्रोणस्य पुत्रः; प्रमुखः कौरवयोद्धा।"
-          }
-        },
-        {
-          "id": "shalya",
-          "name": {
-            "english": "Shalya",
-            "hindi": "शल्य",
-            "marathi": "शल्य",
-            "sanskrit": "शल्यः"
-          },
-          "type": "secondary_character",
-          "role": {
-            "english": "Uncle of Nakula/Sahadeva; fought for Kauravas.",
-            "hindi": "नकुल/सहदेव के चाचा; कौरवों के लिए लड़े।",
-            "marathi": "नकुल/सहदेव चे काका; कौरवांसाठी लढले।",
-            "sanskrit": "नकुलसहदेवयोः मातुलः; कौरवाणां पक्षे युद्धम् अकरोत्।"
-          }
-        },
-        {
-          "id": "draupadi",
-          "name": {
-            "english": "Draupadi",
-            "hindi": "द्रौपदी",
-            "marathi": "द्रौपदी",
-            "sanskrit": "द्रौपदी"
-          },
-          "type": "contextual_figure",
-          "role": {
-            "english": "Wife of the Pandavas; symbol of righteousness.",
-            "hindi": "पांडवों की पत्नी; धर्म का प्रतीक।",
-            "marathi": "पांडवांची पत्नी; धर्माचे प्रतीक।",
-            "sanskrit": "पाण्डवानां पत्नी; धर्मस्य प्रतीकः।"
-          }
-        },
-        {
-          "id": "vyasa",
-          "name": {
-            "english": "Vyasa",
-            "hindi": "व्यास",
-            "marathi": "व्यास",
-            "sanskrit": "व्यासः"
-          },
-          "type": "contextual_figure",
-          "role": {
-            "english": "Sage and composer of the Mahabharata.",
-            "hindi": "महाभारत के ऋषि और रचयिता।",
-            "marathi": "महाभारताचे ऋषी आणि रचनाकार।",
-            "sanskrit": "महाभारतस्य ऋषिः रचयिता च।"
-          }
-        },
-        {
-          "id": "vidura",
-          "name": {
-            "english": "Vidura",
-            "hindi": "विदुर",
-            "marathi": "विदुर",
-            "sanskrit": "विदुरः"
-          },
-          "type": "contextual_figure",
-          "role": {
-            "english": "Wise counselor to Dhritarashtra.",
-            "hindi": "धृतराष्ट्र के बुद्धिमान सलाहकार।",
-            "marathi": "धृतराष्ट्राचे बुद्धिमान सल्लागार।",
-            "sanskrit": "धृतराष्ट्रस्य बुद्धिमान् सलाहकारः।"
-          }
-        },
-        {
-          "id": "gandhari",
-          "name": {
-            "english": "Gandhari",
-            "hindi": "गांधारी",
-            "marathi": "गांधारी",
-            "sanskrit": "गान्धारी"
-          },
-          "type": "contextual_figure",
-          "role": {
-            "english": "Dhritarashtra's wife; mother of the Kauravas.",
-            "hindi": "धृतराष्ट्र की पत्नी; कौरवों की माता।",
-            "marathi": "धृतराष्ट्राची पत्नी; कौरवांची आई।",
-            "sanskrit": "धृतराष्ट्रस्य पत्नी; कौरवाणां माता।"
-          }
-        },
-        {
-          "id": "krishna_bhagavan",
-          "name": {
-            "english": "Krishna as Bhagavan",
-            "hindi": "कृष्ण भगवान",
-            "marathi": "कृष्ण भगवान",
-            "sanskrit": "भगवान् कृष्णः"
-          },
-          "type": "symbolic_role",
-          "role": {
-            "english": "Embodiment of the Supreme Consciousness.",
-            "hindi": "परम चेतना का अवतार।",
-            "marathi": "परम चैतन्याचे अवतार।",
-            "sanskrit": "परमचैतन्यस्य अवतारः।"
-          }
-        },
-        {
-          "id": "arjuna_jiva",
-          "name": {
-            "english": "Arjuna as Jiva",
-            "hindi": "अर्जुन जीव",
-            "marathi": "अर्जुन जीव",
-            "sanskrit": "अर्जुनः जीवः"
-          },
-          "type": "symbolic_role",
-          "role": {
-            "english": "Represents the individual soul on the path to realization.",
-            "hindi": "साक्षात्कार के मार्ग पर व्यक्तिगत आत्मा का प्रतिनिधित्व करता है।",
-            "marathi": "साक्षात्काराच्या मार्गावर वैयक्तिक आत्म्याचे प्रतिनिधित्व करतो।",
-            "sanskrit": "साक्षात्कारमार्गे व्यक्तिः आत्मनं प्रतिनिधित्वयति।"
-          }
-        }
-      ],
-      "edges": [
-        {
-          "source": "arjuna",
-          "target": "krishna",
-          "relationship": {
-            "english": "Charioteer and guide.",
-            "hindi": "सारथी और मार्गदर्शक।",
-            "marathi": "सारथी आणि मार्गदर्शक।",
-            "sanskrit": "सारथिः तथा मार्गदर्शकः।"
-          }
-        },
-        {
-          "source": "sanjaya",
-          "target": "dhritarashtra",
-          "relationship": {
-            "english": "Narrator of the Gita.",
-            "hindi": "गीता का वक्ता।",
-            "marathi": "गीता सांगणारा।",
-            "sanskrit": "गीतावक्ता।"
-          }
-        },
-        {
-          "source": "bhishma",
-          "target": "duryodhana",
-          "relationship": {
-            "english": "Grandsire of the Kauravas.",
-            "hindi": "कौरवों के पितामह।",
-            "marathi": "कौरवांचे पितामह।",
-            "sanskrit": "कौरवाणां पितामहः।"
-          }
-        },
-        {
-          "source": "drona",
-          "target": "bhishma",
-          "relationship": {
-            "english": "Teacher and mentor.",
-            "hindi": "गुरु और मार्गदर्शक।",
-            "marathi": "गुरु आणि मार्गदर्शक।",
-            "sanskrit": "गुरुः तथा मार्गदर्शकः।"
-          }
-        },
-        {
-          "source": "karna",
-          "target": "arjuna",
-          "relationship": {
-            "english": "Half-brothers and rivals.",
-            "hindi": "सौतेले भाई और प्रतिद्वंद्वी।",
-            "marathi": "सावत्र भाऊ आणि प्रतिस्पर्धी।",
-            "sanskrit": "सोदरौ च प्रतिद्वन्द्विनौ।"
-          }
-        },
-        {
-          "source": "yudhishthira",
-          "target": "bhima",
-          "relationship": {
-            "english": "Brothers of Arjuna.",
-            "hindi": "अर्जुन के भाई।",
-            "marathi": "अर्जुनाचे भाऊ।",
-            "sanskrit": "अर्जुनस्य भ्रातरः।"
-          }
-        },
-        {
-          "source": "nakula_sahadeva",
-          "target": "yudhishthira",
-          "relationship": {
-            "english": "Brothers of Arjuna.",
-            "hindi": "अर्जुन के भाई।",
-            "marathi": "अर्जुनाचे भाऊ।",
-            "sanskrit": "अर्जुनस्य भ्रातरः।"
-          }
-        },
-        {
-          "source": "vidura",
-          "target": "dhritarashtra",
-          "relationship": {
-            "english": "Wise counselor.",
-            "hindi": "बुद्धिमान सलाहकार।",
-            "marathi": "बुद्धिमान सल्लागार।",
-            "sanskrit": "बुद्धिमान् सलाहकारः।"
-          }
-        },
-        {
-          "source": "gandhari",
-          "target": "dhritarashtra",
-          "relationship": {
-            "english": "Wife of Dhritarashtra.",
-            "hindi": "धृतराष्ट्र की पत्नी।",
-            "marathi": "धृतराष्ट्राची पत्नी।",
-            "sanskrit": "धृतराष्ट्रस्य पत्नी।"
-          }
-        },
-        {
-          "source": "krishna_bhagavan",
-          "target": "arjuna_jiva",
-          "relationship": {
-            "english": "Embodiment of Supreme Consciousness and individual soul.",
-            "hindi": "परम चेतना और व्यक्तिगत आत्मा का अवतार।",
-            "marathi": "परम चैतन्य आणि वैयक्तिक आत्म्याचे अवतार।",
-            "sanskrit": "परमचैतन्यं च व्यक्तिः आत्मनं अवतारः।"
-          }
-        }
-      ]
+    "id": "arjuna",
+    "name": {
+      "en": "Arjuna",
+      "hi": "अर्जुन",
+      "mr": "अर्जुन",
+      "sk": "अर्जुनः",
+      "gu": "અર્જુન"
+    },
+    "type": "primary_character",
+    "role": {
+      "en": "Warrior prince of the Pandavas; represents the conflicted human soul.",
+      "hi": "पांडवों के योद्धा राजकुमार; मानव आत्मा की द्वंद्व को दर्शाते हैं।",
+      "mr": "पांडवांचे योद्धा राजपुत्र; मानवी आत्म्याच्या संघर्षाचे प्रतीक।",
+      "sk": "पाण्डवानां योद्धा राजपुत्रः; मानवात्मनः संघर्षं प्रतिबिम्बयति।",
+      "gu": "પાંડવોના યોદ્ધા રાજકુમાર; માનવી આત્માની વિસંગતિને દર્શાવે છે."
+    }
+  },
+  {
+    "id": "krishna",
+    "name": {
+      "en": "Lord Krishna",
+      "hi": "भगवान कृष्ण",
+      "mr": "भगवान कृष्ण",
+      "sk": "भगवान् श्रीकृष्णः",
+      "gu": "શ્રી કૃષ્ણ"
+    },
+    "type": "primary_character",
+    "role": {
+      "en": "Divine charioteer and teacher; incarnation of Vishnu.",
+      "hi": "दिव्य सारथी और गुरु; विष्णु के अवतार।",
+      "mr": "दिव्य सारथी आणि गुरु; विष्णूचे अवतार।",
+      "sk": "दिव्यसारथिः तथा गुरुः; विष्णोः अवतारः।",
+      "gu": "દિવ્ય સારથિ અને ગુરુ; વિશ્વનુ અવતાર."
+    }
+  },
+  {
+    "id": "sanjaya",
+    "name": {
+      "en": "Sanjaya",
+      "hi": "संजय",
+      "mr": "संजय",
+      "sk": "संजयः",
+      "gu": "સંજય"
+    },
+    "type": "primary_character",
+    "role": {
+      "en": "Narrator of the Gita to Dhritarashtra; granted divine vision.",
+      "hi": "धृतराष्ट्र को गीता का वक्ता; दिव्य दृष्टि प्राप्त।",
+      "mr": "धृतराष्ट्राला गीता सांगणारा; दिव्य दृष्टी प्राप्त।",
+      "sk": "धृतराष्ट्राय गीतावक्ता; दिव्यदृष्टिं प्राप्तवान्।",
+      "gu": "ધૃતરાષ્ટ્રને ગીતા જણાવનાર; દિવ્ય દ્રષ્ટિ પ્રાપ્ત."
+    }
+  },
+  {
+    "id": "dhritarashtra",
+    "name": {
+      "en": "Dhritarashtra",
+      "hi": "धृतराष्ट्र",
+      "mr": "धृतराष्ट्र",
+      "sk": "धृतराष्ट्रः",
+      "gu": "ધૃતરાષ્ટ્ર"
+    },
+    "type": "primary_character",
+    "role": {
+      "en": "Blind king; father of the Kauravas.",
+      "hi": "अंध राजा; कौरवों के पिता।",
+      "mr": "अंध राजा; कौरवांचे पिता।",
+      "sk": "अन्धः राजा; कौरवाणां पिता।",
+      "gu": "આંધળો રાજા; કૌરવનો પિતા."
+    }
+  },
+  {
+    "id": "bhishma",
+    "name": {
+      "en": "Bhishma",
+      "hi": "भीष्म",
+      "mr": "भीष्म",
+      "sk": "भीष्मः",
+      "gu": "ભીષ્મ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Grandsire and commander of the Kaurava army.",
+      "hi": "कौरव सेना के कमांडर और पितामह।",
+      "mr": "कौरव सेनेचे सेनापती आणि पितामह।",
+      "sk": "कौरवसेनायाः सेनापतिः पितामहश्च।",
+      "gu": "કૌરવ સેના ના પિતામહ અને સેના પ્રમુખ."
+    }
+  },
+  {
+    "id": "drona",
+    "name": {
+      "en": "Drona",
+      "hi": "द्रोण",
+      "mr": "द्रोण",
+      "sk": "द्रोणः",
+      "gu": "દ્રોણ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Teacher of the Pandavas and Kauravas.",
+      "hi": "पांडवों और कौरवों के गुरु।",
+      "mr": "पांडव आणि कौरव यांचे गुरु।",
+      "sk": "पाण्डवकौरवानां गुरुः।",
+      "gu": "પાંડવ અને કૌરવ ના ગુરુ."
+    }
+  },
+  {
+    "id": "karna",
+    "name": {
+      "en": "Karna",
+      "hi": "कर्ण",
+      "mr": "कर्ण",
+      "sk": "कर्णः",
+      "gu": "કર્ણ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Arjuna's half-brother; fights for the Kauravas.",
+      "hi": "अर्जुन के सौतेले भाई; कौरवों के लिए लड़े।",
+      "mr": "अर्जुनाचे सावत्र भाऊ; कौरवांसाठी लढले।",
+      "sk": "अर्जुनस्य सोदरः; कौरवाणां पक्षे युद्धम् अकरोत्।",
+      "gu": "અર્જુનનો અડધો ભાઇ; કૌરવ માટે લડતો."
+    }
+  },
+  {
+    "id": "yudhishthira",
+    "name": {
+      "en": "Yudhishthira",
+      "hi": "युधिष्ठिर",
+      "mr": "युधिष्ठिर",
+      "sk": "युधिष्ठिरः",
+      "gu": "યુધિષ્ઠિર"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Eldest Pandava; symbol of righteousness.",
+      "hi": "सबसे बड़े पांडव; धर्म के प्रतीक।",
+      "mr": "सर्वात मोठे पांडव; धर्माचे प्रतीक।",
+      "sk": "ज्येष्ठः पाण्डवः; धर्मस्य प्रतीकः।",
+      "gu": "સૌથી મોટો પાંડવ; ધર્મના પ્રતિક."
+    }
+  },
+  {
+    "id": "bhima",
+    "name": {
+      "en": "Bhima",
+      "hi": "भीम",
+      "mr": "भीम",
+      "sk": "भीमः",
+      "gu": "ભીમ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Second Pandava; symbol of strength.",
+      "hi": "दूसरे पांडव; शक्ति के प्रतीक।",
+      "mr": "दुसरे पांडव; शक्तीचे प्रतीक।",
+      "sk": "द्वितीयः पाण्डवः; बलस्य प्रतीकः।",
+      "gu": "બીજો પાંડવ; શક્તિનો પ્રતિક."
+    }
+  },
+  {
+    "id": "nakula_sahadeva",
+    "name": {
+      "en": "Nakula & Sahadeva",
+      "hi": "नकुल और सहदेव",
+      "mr": "नकुल आणि सहदेव",
+      "sk": "नकुलः सहदेवश्च",
+      "gu": "નકુલ અને સહદેવ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Youngest Pandavas; symbol of loyalty.",
+      "hi": "सबसे छोटे पांडव; निष्ठा के प्रतीक।",
+      "mr": "सर्वात धाकटे पांडव; निष्ठेचे प्रतीक।",
+      "sk": "कनिष्ठौ पाण्डवौ; निष्ठायाः प्रतीकौ।",
+      "gu": "સૌથી નાનું પાંડવ; વિશ્વસનિયતા નું પ્રતિક."
+    }
+  },
+  {
+    "id": "duryodhana",
+    "name": {
+      "en": "Duryodhana",
+      "hi": "दुर्योधन",
+      "mr": "दुर्योधन",
+      "sk": "दुर्योधनः",
+      "gu": "દુર્યોધન"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Eldest Kaurava; Arjuna's adversary.",
+      "hi": "सबसे बड़ा कौरव; अर्जुन का विरोधी।",
+      "mr": "सर्वात मोठा कौरव; अर्जुनाचा प्रतिस्पर्धी।",
+      "sk": "ज्येष्ठः कौरवः; अर्जुनस्य प्रतिद्वन्द्वी।",
+      "gu": "સૌથી મોટો કૌરવ; અર્જુનનો વિરોધી."
+    }
+  },
+  {
+    "id": "kripa",
+    "name": {
+      "en": "Kripa",
+      "hi": "कृप",
+      "mr": "कृप",
+      "sk": "कृपः",
+      "gu": "કૃપ"
+    },
+    "type": "secondary_character",
+    "role": {
+      "en": "Royal teacher of the Kauravas; a warrior and scholar.",
+      "hi": "कौरवों के राजगुरु; एक योद्धा और विद्वान।",
+      "mr": "कौरवांचे राजगुरु; एक योद्धा आणि पंडित।",
+      "sk": "कौरवाणां राजगुरुः; योद्धा च विद्वांश्च।",
+      "gu": "કૌરવોના રાજગુરુ; યોદ્ધા અને વિદ્વાન."
     }
   }
 ]

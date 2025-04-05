@@ -4,6 +4,8 @@ import {
   AboutScreen,
   ChapterDetailScreen,
   ChaptersScreen,
+  CharacterDetailScreen,
+  CharactersScreen,
   FavoritesScreen,
   RatingScreen,
   SettingsScreen,
@@ -45,6 +47,16 @@ const AppNavigator = () => {
           // },
           headerTintColor: "#fff",
         }}
+      />
+      <Stack.Screen
+        name="Characters"
+        component={CharactersScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CharacterDetail"
+        component={CharacterDetailScreen}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

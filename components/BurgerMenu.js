@@ -1,6 +1,13 @@
 // components/BurgerMenu.js
 import React, { useState } from "react";
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
@@ -94,6 +101,11 @@ const BurgerMenu = ({ navigation, style }) => {
         setShowLangModal(true);
       },
     },
+    {
+      name: "Characters",
+      icon: "people",
+      action: () => navigation.navigate("Characters"),
+    },
   ];
 
   return (
@@ -106,40 +118,48 @@ const BurgerMenu = ({ navigation, style }) => {
         <Icon name="menu" size={24} color={colors.primary} />
       </TouchableOpacity>
 
+      {/* Burger Menu Modal */}
       <Modal
         visible={visible}
         transparent
         animationType="fade"
         onRequestClose={() => setVisible(false)}
       >
-        <View
-          style={[
-            styles.modalBackground,
-            { backgroundColor: colors.modalOverlay },
-          ]}
-        >
+        <TouchableWithoutFeedback onPress={() => setVisible(false)}>
           <View
-            style={[styles.modalContainer, { backgroundColor: colors.cardBg }]}
+            style={[
+              styles.modalBackground,
+              { backgroundColor: "rgba(0,0,0,0.5)" },
+            ]}
           >
-            {menuItems.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.menuItem}
-                onPress={() => {
-                  if (item.action) {
-                    item.action();
-                    setVisible(false);
-                  }
-                }}
+            <TouchableWithoutFeedback onPress={(e) => e.stopPropagation()}>
+              <View
+                style={[
+                  styles.modalContainer,
+                  { backgroundColor: colors.cardBg },
+                ]}
               >
-                <Icon name={item.icon} size={24} color={colors.primary} />
-                <Text style={[tw`ml-4 text-lg`, { color: colors.text }]}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                {menuItems.map((item, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={styles.menuItem}
+                    onPress={() => {
+                      if (item.action) {
+                        item.action();
+                        setVisible(false);
+                      }
+                    }}
+                  >
+                    <Icon name={item.icon} size={24} color={colors.primary} />
+                    <Text style={[tw`ml-4 text-lg`, { color: colors.text }]}>
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </TouchableWithoutFeedback>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       {/* Language Selection Modal */}
@@ -149,49 +169,55 @@ const BurgerMenu = ({ navigation, style }) => {
         animationType="fade"
         onRequestClose={() => setShowLangModal(false)}
       >
-        <View
-          style={[
-            tw`flex-1 justify-center items-center`,
-            { backgroundColor: "rgba(0,0,0,0.5)" },
-          ]}
-        >
+        <TouchableWithoutFeedback onPress={() => setShowLangModal(false)}>
           <View
             style={[
-              tw`w-80 p-6 rounded-xl`,
-              { backgroundColor: colors.cardBg },
+              tw`flex-1 justify-center items-center`,
+              { backgroundColor: "rgba(0,0,0,0.5)" },
             ]}
           >
-            <Text style={[tw`text-2xl font-bold mb-4`, { color: colors.text }]}>
-              Select Language
-            </Text>
-
-            {languages.map((lang) => (
-              <TouchableOpacity
-                key={lang.code}
+            <TouchableWithoutFeedback onPress={(e) => e.stopPropagation()}>
+              <View
                 style={[
-                  tw`p-3 my-1 rounded-lg flex-row justify-between items-center`,
-                  { backgroundColor: colors.background },
+                  tw`w-80 p-6 rounded-xl`,
+                  { backgroundColor: colors.cardBg },
                 ]}
-                onPress={() => handleLanguageSelect(lang.code)}
               >
-                <Text style={[tw`text-lg`, { color: colors.text }]}>
-                  {lang.native}
+                <Text
+                  style={[tw`text-2xl font-bold mb-4`, { color: colors.text }]}
+                >
+                  Select Language
                 </Text>
 
-                <Text style={[tw`text-sm`, { color: colors.primary }]}>
-                  {lang.name}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                {languages.map((lang) => (
+                  <TouchableOpacity
+                    key={lang.code}
+                    style={[
+                      tw`p-3 my-1 rounded-lg flex-row justify-between items-center`,
+                      { backgroundColor: colors.background },
+                    ]}
+                    onPress={() => handleLanguageSelect(lang.code)}
+                  >
+                    <Text style={[tw`text-lg`, { color: colors.text }]}>
+                      {lang.native}
+                    </Text>
 
-            <TouchableOpacity
-              style={tw`mt-4 p-2 items-center`}
-              onPress={() => setShowLangModal(false)}
-            >
-              <Text style={{ color: colors.primary }}>Close</Text>
-            </TouchableOpacity>
+                    <Text style={[tw`text-sm`, { color: colors.primary }]}>
+                      {lang.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+
+                <TouchableOpacity
+                  style={tw`mt-4 p-2 items-center`}
+                  onPress={() => setShowLangModal(false)}
+                >
+                  <Text style={{ color: colors.primary }}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </>
   );
