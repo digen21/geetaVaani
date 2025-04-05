@@ -5,6 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { ErrorBoundary } from "./components";
 import {
   FavoritesProvider,
   GlobalStyleProvider,
@@ -42,22 +43,23 @@ const App = () => {
   }, []);
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <LanguageProvider>
-        <ThemeProvider>
-          <FavoritesProvider>
-            <GlobalStyleProvider>
-              <SafeAreaProvider>
-                <NavigationContainer>
-                  {/* <Header /> */}
-                  <AppNavigator />
-                </NavigationContainer>
-              </SafeAreaProvider>
-            </GlobalStyleProvider>
-          </FavoritesProvider>
-        </ThemeProvider>
-      </LanguageProvider>
-    </I18nextProvider>
+    <ErrorBoundary>
+      <I18nextProvider i18n={i18n}>
+        <LanguageProvider>
+          <ThemeProvider>
+            <FavoritesProvider>
+              <GlobalStyleProvider>
+                <SafeAreaProvider>
+                  <NavigationContainer>
+                    <AppNavigator />
+                  </NavigationContainer>
+                </SafeAreaProvider>
+              </GlobalStyleProvider>
+            </FavoritesProvider>
+          </ThemeProvider>
+        </LanguageProvider>
+      </I18nextProvider>
+    </ErrorBoundary>
   );
 };
 

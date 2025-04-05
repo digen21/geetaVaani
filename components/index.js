@@ -2,6 +2,7 @@ export { default as AccordionItem } from "./AccordionItem";
 export { default as BackButton } from "./BackButton";
 export { default as BurgerMenu } from "./BurgerMenu";
 export { default as ChapterCard } from "./ChapterCard";
+export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FavoriteItems } from "./FavouriteItems";
 export { default as Header } from "./Header";
 export { default as LanguageSelectModal } from "./LanguageSelectModal";
