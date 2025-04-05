@@ -31,6 +31,21 @@
         "projectId": "93c0f36e-ad03-48dd-890c-e90c9ab3d0ea"
       }
     },
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [],
+    "hooks": {},
+    "updates": {},
+    "packagerOpts": {},
+    "features": {},
+    "githubUrl": "",
+    "androidNavigationBar": {},
+    "androidStatusBar": {},
+    "notification": {},
+    "platforms": ["ios", "android"],
+    "primaryColor": "#1E88E5",
+    "backgroundColor": "#FFFFFF",
+    "description": "",
+    "privacy": "public",
     "fonts": [
       {
         "asset": "./assets/fonts/gu/BalooBhai2-Regular.ttf",

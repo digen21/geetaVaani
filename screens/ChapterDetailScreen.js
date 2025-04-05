@@ -1,26 +1,20 @@
 // screens/ChapterDetailScreen.js
 import React, { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
-import { AccordionItem, Header } from "../components";
+import { Header, SectionAccordion, TabView } from "../components";
+import { tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
-import { useLanguageFont } from "../hooks";
 import { createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { chapter } = route.params;
-  const { width } = useWindowDimensions();
   const textStyles = createTextStyles(currentLanguage);
+  const [activeTab, setActiveTab] = useState(0);
 
   const [openSections, setOpenSections] = useState({
     teachings: false,
@@ -28,7 +22,6 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     learnings: false,
   });
 
-  // Get translations for current language
   const translations = chapter[currentLanguage] || chapter.en;
 
   const toggleSection = (section) => {
@@ -38,25 +31,34 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     }));
   };
 
-  return (
-    <ScrollView
-      style={[
-        {
-          flex: 1,
-          backgroundColor: colors.background,
-        },
-      ]}
-      contentContainerStyle={{
-        paddingTop: 130,
-        paddingHorizontal: 16,
-        paddingBottom: 32,
-      }}
-    >
-      <Header showBackButton onBackPress={() => navigation.goBack()} />
+  const getTabLabels = () => {
+    const translations = tabTranslations[currentLanguage] || tabTranslations.en;
+    return [{ label: translations.details }, { label: translations.verses }];
+  };
+
+  const sections = [
+    {
+      key: "teachings",
+      titleKey: "mainTeachings",
+      contentKey: "main_teachings",
+    },
+    {
+      key: "tips",
+      titleKey: "practicalTips",
+      contentKey: "practical_tips",
+    },
+    {
+      key: "learnings",
+      titleKey: "whatWeCanLearn",
+      contentKey: "what_we_can_learn",
+    },
+  ];
+
+  const renderDetailsTab = () => (
+    <View>
       <View
         style={[tw`p-6 rounded-2xl mb-4`, { backgroundColor: colors.cardBg }]}
       >
-        {/* Chapter Number */}
         <Text
           style={[
             tw`text-2xl font-bold mb-2 text-center`,
@@ -67,25 +69,23 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           {translations.title.split(":")[0]?.trim()}
         </Text>
 
-        {/* Chapter Title */}
         <Text
           style={[
             tw`text-3xl mt-1 mb-4 text-center`,
             textStyles.heading1,
             {
               color: colors.primary,
-              flexShrink: 1, // Prevent parent from shrinking
-              flexWrap: "nowrap", // Explicitly disable wrapping
-              includeFontPadding: false, // Remove extra font padding
+              flexShrink: 1,
+              flexWrap: "nowrap",
+              includeFontPadding: false,
             },
           ]}
-          numberOfLines={1} // Force single line
-          ellipsizeMode="tail" // Add ... when truncated
+          numberOfLines={1}
+          ellipsizeMode="tail"
         >
           {translations.title.split(":")[1]?.trim()}
         </Text>
 
-        {/* Chapter Summary */}
         <Text
           style={[
             tw`leading-6 pt-4`,
@@ -96,52 +96,87 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           {translations.summary}
         </Text>
 
-        {/* Verse Count */}
         <Text style={[tw`text-sm italic mt-4`, { color: colors.primary }]}>
           Contains {chapter.verses_count} Sacred Verses
         </Text>
       </View>
 
-      {/* Accordions */}
-      <AccordionItem
-        title="Main Teachings"
-        content={translations.main_teachings}
-        isOpen={openSections.teachings}
-        onPress={() => toggleSection("teachings")}
+      <SectionAccordion
+        sections={sections}
+        openSections={openSections}
+        toggleSection={toggleSection}
+        translations={translations}
         colors={colors}
-        fontStyle={textStyles.heading3}
+        textStyles={textStyles}
       />
+    </View>
+  );
 
-      <AccordionItem
-        title="Practical Tips"
-        content={translations.practical_tips}
-        isOpen={openSections.tips}
-        onPress={() => toggleSection("tips")}
-        colors={colors}
-        fontStyle={textStyles.heading3}
-      />
+  const renderVersesTab = () => (
+    <View>
+      {Array.from({ length: chapter.verses_count }, (_, index) => (
+        <TouchableOpacity
+          key={index}
+          style={[
+            tw`p-4 mb-3 rounded-xl flex-row items-center`,
+            { backgroundColor: colors.cardBg },
+          ]}
+          onPress={() =>
+            navigation.navigate("VerseDetail", {
+              verse: {
+                chapter: chapter.chapter,
+                number: index + 1,
+                // Add other verse details as needed
+              },
+            })
+          }
+        >
+          <Text
+            style={[
+              tw`text-lg flex-1`,
+              textStyles.heading3,
+              { color: colors.text },
+            ]}
+          >
+            Verse {index + 1}
+          </Text>
+          <Icon
+            name="chevron-right"
+            size={24}
+            color={colors.primary}
+            style={tw`ml-2`}
+          />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
 
-      <AccordionItem
-        title="What We Can Learn"
-        content={translations.what_we_can_learn}
-        isOpen={openSections.learnings}
-        onPress={() => toggleSection("learnings")}
-        colors={colors}
-        fontStyle={textStyles.heading3}
-      />
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
+      <Header showBackButton onBackPress={() => navigation.goBack()} />
 
-      <TouchableOpacity
-        style={[
-          tw`absolute top-4 left-4 z-10 p-2 rounded-full`,
-          { backgroundColor: colors.primary + "20" },
-        ]}
-        onPress={() => navigation.goBack()}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      <View
+        style={{
+          marginTop: 130, // Add margin to clear the header
+          flex: 1,
+        }}
       >
-        <Icon name="arrow-back" size={24} color={colors.primary} />
-      </TouchableOpacity>
-      {/* Add more details like verse list or navigation buttons here */}
-    </ScrollView>
+        <TabView
+          tabs={getTabLabels()}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingBottom: 32,
+          }}
+        >
+          {activeTab === 0 ? renderDetailsTab() : renderVersesTab()}
+        </ScrollView>
+      </View>
+    </View>
   );
 };
 

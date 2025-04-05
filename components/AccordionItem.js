@@ -27,7 +27,7 @@ const AccordionItem = ({
       >
         <Text
           style={[
-            tw`text-lg font-bold flex-1`,
+            tw`text-lg font-semibold flex-1`,
             { color: colors.text, lineHeight: 32 },
           ]}
           numberOfLines={2}

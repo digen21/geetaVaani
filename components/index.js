@@ -6,5 +6,7 @@ export { default as FavoriteItems } from "./FavouriteItems";
 export { default as Header } from "./Header";
 export { default as LanguageSelectModal } from "./LanguageSelectModal";
 export { default as Rating } from "./Rating";
+export { default as SectionAccordion } from "./SectionAccordion";
 export { default as Separator } from "./Separator";
+export { default as TabView } from "./TabView";
 export { default as VerseCard } from "./VerseCard";
