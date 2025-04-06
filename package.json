@@ -21,6 +21,7 @@
     "expo-font": "^13.0.4",
     "expo-linear-gradient": "~14.0.2",
     "expo-localization": "^16.0.1",
+    "expo-notifications": "~0.29.14",
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "^4.0.9",
     "expo-web-browser": "~14.0.2",
