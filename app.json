@@ -25,12 +25,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "githubUrl": "https://github.com/digen21/geetaVaani.git",
     "extra": {
       "eas": {
-        "projectId": "93c0f36e-ad03-48dd-890c-e90c9ab3d0ea"
+        "projectId": "ee6699ef-3947-447d-909b-529846807fbe"
       }
-    },
-    "owner": "dmx214",
-    "githubUrl": "https://github.com/digen21/geetaVaani.git"
+    }
   }
 }

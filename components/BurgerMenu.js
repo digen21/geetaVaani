@@ -106,6 +106,11 @@ const BurgerMenu = ({ navigation, style }) => {
       icon: "people",
       action: () => navigation.navigate("Characters"),
     },
+    {
+      name: "Summary",
+      icon: "people",
+      action: () => navigation.navigate("GeetaSummaryDetail"),
+    },
   ];
 
   return (

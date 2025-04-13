@@ -9,7 +9,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { BackButton, CharacterRelationHierarchy, Header } from "../components";
+import { Header } from "../components";
 import { characterScreenTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 
@@ -89,12 +89,12 @@ const CharacterDetail = ({ route }) => {
         </View>
 
         {/* Character Relations Hierarchy */}
-        <View style={styles.sectionContainer}>
+       {/* <View style={styles.sectionContainer}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>
             Relations
           </Text>
           <CharacterRelationHierarchy character={character} loading={false} />
-        </View>
+        </View> */}
       </ScrollView>
     </LinearGradient>
   );

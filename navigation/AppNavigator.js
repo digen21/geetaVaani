@@ -7,6 +7,7 @@ import {
   CharacterDetailScreen,
   CharactersScreen,
   FavoritesScreen,
+  GeetaSummaryDetail,
   RatingScreen,
   SettingsScreen,
   SplashScreen,
@@ -57,6 +58,14 @@ const AppNavigator = () => {
         name="CharacterDetail"
         component={CharacterDetailScreen}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="GeetaSummaryDetail"
+        component={GeetaSummaryDetail}
+        options={{
+          title: "Bhagavad Gita Summary",
+          headerTitleAlign: "center",
+        }}
       />
     </Stack.Navigator>
   );
