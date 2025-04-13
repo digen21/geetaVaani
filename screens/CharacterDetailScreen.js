@@ -1,16 +1,17 @@
+import { MaterialIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
+  Dimensions,
   Image,
   ScrollView,
-  Dimensions,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useTheme, useLanguage } from "../contexts";
-import { Header } from "../components";
+import { BackButton, CharacterRelationHierarchy, Header } from "../components";
+import { characterScreenTranslations } from "../configs";
+import { useLanguage, useTheme } from "../contexts";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -18,7 +19,8 @@ const CharacterDetail = ({ route }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { character } = route.params;
-  const { name, role, type, image } = character;
+  const { name, role, type, image, description } =
+    character;
 
   const defaultImage =
     "https://e7.pngegg.com/pngimages/981/645/png-clipart-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-thumbnail.png";
@@ -33,7 +35,9 @@ const CharacterDetail = ({ route }) => {
       colors={[colors.background, "#fff8e1"]}
       style={styles.container}
     >
+      
       <Header title={name[currentLanguage]} showBackButton />
+
 
       <ScrollView contentContainerStyle={styles.content}>
         {/* Character Image */}
@@ -62,11 +66,34 @@ const CharacterDetail = ({ route }) => {
         {/* Role Panel */}
         <View style={[styles.rolePanel, { backgroundColor: colors.cardBg }]}>
           <Text style={[styles.panelTitle, { color: colors.primary }]}>
-            {currentLanguage === "en" ? "Character Role" : "चरित्र भूमिका"}
+            {characterScreenTranslations[currentLanguage]?.characterRole}
           </Text>
           <Text style={[styles.roleText, { color: colors.text }]}>
             {role[currentLanguage]}
           </Text>
+        </View>
+
+        {/* Description Panel */}
+        <View
+          style={[
+            styles.rolePanel,
+            { backgroundColor: colors.cardBg, marginTop: 20 },
+          ]}
+        >
+          <Text style={[styles.panelTitle, { color: colors.primary }]}>
+            {characterScreenTranslations[currentLanguage]?.characterDescription}
+          </Text>
+          <Text style={[styles.roleText, { color: colors.text }]}>
+            {description[currentLanguage]}
+          </Text>
+        </View>
+
+        {/* Character Relations Hierarchy */}
+        <View style={styles.sectionContainer}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>
+            Relations
+          </Text>
+          <CharacterRelationHierarchy character={character} loading={false} />
         </View>
       </ScrollView>
     </LinearGradient>
@@ -141,7 +168,8 @@ const styles = StyleSheet.create({
   roleText: {
     fontSize: 16,
     lineHeight: 24,
-    textAlign: "center",
+    textAlign: "justify",
+    paddingHorizontal: 5,
   },
 });
 

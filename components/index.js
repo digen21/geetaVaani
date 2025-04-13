@@ -3,6 +3,7 @@ export { default as BackButton } from "./BackButton";
 export { default as BurgerMenu } from "./BurgerMenu";
 export { default as ChapterCard } from "./ChapterCard";
 export { default as CharacterCard } from "./CharacterCard";
+export { default as CharacterRelationHierarchy } from "./CharacterRelationHierarchy";
 export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FavoriteItems } from "./FavouriteItems";
 export { default as Header } from "./Header";
@@ -12,3 +13,4 @@ export { default as SectionAccordion } from "./SectionAccordion";
 export { default as Separator } from "./Separator";
 export { default as TabView } from "./TabView";
 export { default as VerseCard } from "./VerseCard";
+

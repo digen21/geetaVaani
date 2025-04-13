@@ -1,7 +1,8 @@
 export {
-  detailsScreenTranslations,
+  characterScreenTranslations, detailsScreenTranslations,
   getLanguageFont,
   LANGUAGE_FONTS,
   default as languages,
-  tabTranslations,
+  tabTranslations
 } from "./languages";
+

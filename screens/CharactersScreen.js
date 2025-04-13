@@ -7,9 +7,14 @@ import characters from "../data/characterAndRoles/characters.json";
 const CharactersScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
-  // Group characters by their type
-  const groupedCharacters = characters.reduce((acc, character) => {
-    const type = character.type;
+  // Add data validation
+  const validCharacters = characters.filter(character => 
+    character && character.name && character.name.en
+  );
+
+  // Group characters by their type with validation
+  const groupedCharacters = validCharacters.reduce((acc, character) => {
+    const type = character.type || 'unknown';
     if (!acc[type]) acc[type] = [];
     acc[type].push(character);
     return acc;
@@ -32,7 +37,7 @@ const CharactersScreen = ({ navigation }) => {
       title: "Symbolic Roles",
       data: groupedCharacters.symbolic_role || [],
     },
-  ];
+  ].filter(section => section.data.length > 0); // Only show sections with data
 
   const renderHeader = () => (
     <View style={styles.headerContainer}>

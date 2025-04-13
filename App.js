@@ -43,10 +43,10 @@ const App = () => {
   }, []);
 
   return (
-    <ErrorBoundary>
+    <ThemeProvider>
       <I18nextProvider i18n={i18n}>
-        <LanguageProvider>
-          <ThemeProvider>
+        <ErrorBoundary>
+          <LanguageProvider>
             <FavoritesProvider>
               <GlobalStyleProvider>
                 <SafeAreaProvider>
@@ -56,10 +56,10 @@ const App = () => {
                 </SafeAreaProvider>
               </GlobalStyleProvider>
             </FavoritesProvider>
-          </ThemeProvider>
-        </LanguageProvider>
+          </LanguageProvider>
+        </ErrorBoundary>
       </I18nextProvider>
-    </ErrorBoundary>
+    </ThemeProvider>
   );
 };
 
