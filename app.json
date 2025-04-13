@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "React-Native-Boilerplate",
-    "slug": "React-Native-Boilerplate",
+    "slug": "boilerplate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ac00f403-7540-425f-93d9-4291210291bf"
+      }
+    },
+    "owner": "dmx214"
   }
 }
