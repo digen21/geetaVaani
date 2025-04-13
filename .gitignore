@@ -34,3 +34,26 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+
+# Android
+.gradle/
+*.lock
+*.iml
+*.log
+
+# Emulator
+.android/
+*.avd/
+
+# Cache
+AppData/
+Yarn/
+
+# Node modules
+node_modules/
+
+# System
+Application Data/
+Local Settings/
+My Documents/
