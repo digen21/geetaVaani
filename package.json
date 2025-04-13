@@ -1,5 +1,5 @@
 {
-  "name": "react-native-boilerplate",
+  "name": "gitavaani",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,17 +9,82 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-navigation/native": "^7.1.6",
-    "@react-navigation/native-stack": "^7.3.10",
-    "expo": "~52.0.43",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/drawer": "^7.1.1",
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/stack": "^7.1.1",
+    "@reduxjs/toolkit": "^2.6.0",
+    "axios": "^1.8.1",
+    "date-fns": "^4.1.0",
+    "expo": "~52.0.42",
+    "expo-font": "^13.0.4",
+    "expo-linear-gradient": "~14.0.2",
+    "expo-localization": "^16.0.1",
+    "expo-notifications": "~0.29.14",
     "expo-status-bar": "~2.0.1",
+    "expo-system-ui": "^4.0.9",
+    "expo-web-browser": "~14.0.2",
+    "i18next": "^23.0.0",
     "react": "18.3.1",
+    "react-i18next": "^15.4.1",
     "react-native": "0.76.9",
-    "react-native-safe-area-context": "^5.3.0",
-    "react-native-screens": "^4.10.0"
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-localize": "^3.4.1",
+    "react-native-push-notification": "^8.1.1",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.4.0",
+    "react-native-share": "^12.0.9",
+    "react-native-skeleton-content": "^1.0.28",
+    "react-native-skeleton-placeholder": "^5.2.4",
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-webview": "13.12.5",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "twrnc": "^4.6.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@react-native-community/cli": "^18.0.0",
+    "@types/react": "~18.3.12"
   },
-  "private": true
+  "private": true,
+  "react-native": {
+    "ignoreWarnings": [
+      "i18next"
+    ],
+    "platforms": {
+      "ios": {},
+      "android": {}
+    }
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "react-native-chart-kit",
+          "react-native-push-notification",
+          "react-native-skeleton-placeholder",
+          "redux-persist",
+          "react-native-inappbrowser-reborn",
+          "i18next"
+        ]
+      }
+    }
+  },
+  "description": "I'll help you create a comprehensive README.md with all necessary steps and information:",
+  "keywords": [],
+  "author": "Digen More",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digen21/geetaVaani.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digen21/geetaVaani/issues"
+  },
+  "homepage": "https://github.com/digen21/geetaVaani#readme"
 }

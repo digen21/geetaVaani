@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React-Native-Boilerplate",
-    "slug": "boilerplate",
+    "name": "gitavaani",
+    "slug": "gitavaani",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,16 +20,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.dmx214.boilerplate"
+      "package": "com.dmx214.gitavaani"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "ac00f403-7540-425f-93d9-4291210291bf"
+        "projectId": "93c0f36e-ad03-48dd-890c-e90c9ab3d0ea"
       }
     },
-    "owner": "dmx214"
+    "owner": "dmx214",
+    "githubUrl": "https://github.com/digen21/geetaVaani.git"
   }
 }

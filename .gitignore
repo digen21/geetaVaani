@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+package-lock.json
 
 # Expo
 .expo/
@@ -28,6 +29,7 @@ yarn-error.*
 # macOS
 .DS_Store
 *.pem
+
 
 # local env files
 .env*.local
