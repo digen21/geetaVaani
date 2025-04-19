@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { I18nextProvider } from "react-i18next";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import {
+  GlobalStyleProvider,
+  LanguageProvider,
+  ThemeProvider,
+} from "./contexts";
+import { AboutScreen } from "./screens";
+import { i18n } from "./services";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+      <I18nextProvider i18n={i18n}>
+        <LanguageProvider>
+          <GlobalStyleProvider>
+            <SafeAreaProvider>
+              <AboutScreen />
+            </SafeAreaProvider>
+          </GlobalStyleProvider>
+        </LanguageProvider>
+      </I18nextProvider>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

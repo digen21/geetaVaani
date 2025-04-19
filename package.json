@@ -1,7 +1,7 @@
 {
   "name": "gitavaani-1.0",
   "version": "1.0.0",
-  "main": "App.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -9,9 +9,16 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.1.0",
+    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@react-navigation/native": "^7.1.6",
+    "@react-navigation/stack": "^7.2.10",
     "@xmldom/xmldom": "^0.9.8",
+    "date-fns": "^4.1.0",
     "expo": "~52.0.46",
+    "expo-blur": "~14.0.3",
     "expo-font": "^13.0.4",
+    "expo-linear-gradient": "~14.0.2",
     "expo-localization": "^16.0.1",
     "expo-status-bar": "~2.0.1",
     "glob": "^11.0.1",
@@ -19,7 +26,10 @@
     "react": "18.3.1",
     "react-i18next": "^15.4.1",
     "react-native": "0.76.9",
-    "rimraf": "^6.0.1"
+    "react-native-safe-area-context": "^5.4.0",
+    "react-native-vector-icons": "^10.2.0",
+    "rimraf": "^6.0.1",
+    "twrnc": "^4.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
@@ -31,7 +41,12 @@
   "expo": {
     "doctor": {
       "reactNativeDirectoryCheck": {
-        "exclude": ["i18next", "@xmldom/xmldom", "glob", "rimraf"],
+        "exclude": [
+          "i18next",
+          "@xmldom/xmldom",
+          "glob",
+          "rimraf"
+        ],
         "listUnknownPackages": false
       }
     }
