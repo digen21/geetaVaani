@@ -27,5 +27,13 @@
   "private": true,
   "engines": {
     "node": "20.11.1"
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": ["i18next", "@xmldom/xmldom", "glob", "rimraf"],
+        "listUnknownPackages": false
+      }
+    }
   }
 }
