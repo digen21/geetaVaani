@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "gitavaani-1.0",
-    "slug": "gitavaani-1.0",
+    "slug": "gitavaani10",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,10 +19,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dmx214.gitavaani10"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "23e67522-3679-4692-ba02-a80eaeaf883e"
+      }
+    },
+    "owner": "dmx214"
   }
 }
