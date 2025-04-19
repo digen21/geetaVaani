@@ -50,7 +50,7 @@ const AboutScreen = () => {
             style={styles.logo}
             resizeMode="contain"
           />
-          <GradientText text={"GeetaVaani"} />
+          <GradientText text={"GitaVaani"} />
           <Text style={[styles.version, { color: colors.textColor }]}>
             Version 1.0.0
           </Text>
@@ -61,7 +61,7 @@ const AboutScreen = () => {
             About the App
           </Text>
           <Text style={[styles.sectionText, { color: colors.textColor }]}>
-            GeetaVaani is a spiritual companion that brings the timeless wisdom
+            GitaVaani is a spiritual companion that brings the timeless wisdom
             of the Bhagavad Gita to your fingertips. With translations in
             multiple Indian languages, verse explanations, and an intuitive
             interface, we aim to make the sacred text accessible to everyone.
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   blurContainer: {
-    borderRadius: 24,
     overflow: "hidden",
+    paddingTop: 30,
     padding: 12,
   },
   headerContainer: {

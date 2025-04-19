@@ -1,5 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { AboutScreen } from "../screens";
+
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -16,7 +18,9 @@ const AppNavigator = () => {
           },
         }),
       }}
-    ></Stack.Navigator>
+    >
+      <Stack.Screen name="About" component={AboutScreen} />
+    </Stack.Navigator>
   );
 };
 

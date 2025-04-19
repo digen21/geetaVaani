@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 
 const defaultColors = ["#4facfe", "#8e44ad", "#ff6a6a"];
-const GradientText = ({ text = "GeetaVaani", colors = defaultColors }) => {
+const GradientText = ({ text = "GitaVaani", colors = defaultColors }) => {
   return (
     <MaskedView
       maskElement={
