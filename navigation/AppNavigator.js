@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { AboutScreen } from "../screens";
+import { AboutScreen, ChaptersScreen } from "../screens";
+import TabNavigator from "./TabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,8 @@ const AppNavigator = () => {
         }),
       }}
     >
+      <Stack.Screen name="MainTabs" component={TabNavigator} />
+      <Stack.Screen name="Chapters" component={ChaptersScreen} />
       <Stack.Screen name="About" component={AboutScreen} />
     </Stack.Navigator>
   );

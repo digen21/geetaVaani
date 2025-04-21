@@ -9,6 +9,7 @@ export { default as FavoriteItems } from "./FavouriteItems";
 export { default as GradientText } from "./GradientText";
 export { default as Header } from "./Header";
 export { default as LanguageSelectModal } from "./LanguageSelectModal";
+export { default as CustomTabBar } from "./Navigation";
 export { default as Rating } from "./Rating";
 export { default as SectionAccordion } from "./SectionAccordion";
 export { default as Separator } from "./Separator";

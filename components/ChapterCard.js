@@ -1,34 +1,19 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import tw from "twrnc";
-
-import { useFavorites, useLanguage, useTheme } from "../contexts";
-import { createTextStyles } from "../utils";
-
-/**
- * ChapterCard component represents a single chapter in the list.
- *
- * Displays the chapter title and the number of verses. Applies theme-based colors and styles.
- *
- * @param {{
- *   chapter: {
- *     language: string,
- *     [key: string]: { title: string },
- *     verses_count: number
- *   },
- *   onPress: () => void
- * }} props - The chapter details and the function to handle press events.
- *
- * @returns {JSX.Element} The ChapterCard component.
- */
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useFavorites, useLanguage } from "../contexts";
 const ChapterCard = ({ chapter, onPress }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
-  const textStyles = createTextStyles(currentLanguage);
 
-  // Get the translations for the current language
   const translations = chapter[currentLanguage] || chapter.en;
   const HEART_COLOR = "#FF3B30";
 
@@ -51,25 +36,17 @@ const ChapterCard = ({ chapter, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[
-        tw`p-4 mb-4 rounded-xl shadow-lg`,
-        {
-          backgroundColor: colors.cardBg,
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 5,
-        },
-      ]}
+      activeOpacity={0.9}
+      style={[styles.card, { backgroundColor: colors.cardBg }]}
     >
-      <View style={tw`flex-row justify-between items-start`}>
-        <View style={tw`flex-1`}>
-          <Text style={[textStyles.heading2, { color: colors.text }]}>
-            {translations.title.split(":")[0]}:{" "}
-            {translations.title.split(":")[1].split("-").join(" ")}
+      <View style={styles.row}>
+        <View style={styles.textContainer}>
+          <Text style={[styles.titleText, { color: colors.text }]}>
+            Chapter {chapter.chapter}:{" "}
+            {translations.title.split(":")[1]?.split("-").join(" ")}
           </Text>
-          <Text style={[tw`text-sm mt-2`, { color: colors.primary }]}>
-            {chapter.verses_count} Verses
+          <Text style={[styles.verseText, { color: colors.primary }]}>
+            Verses
           </Text>
         </View>
         <TouchableOpacity
@@ -82,7 +59,7 @@ const ChapterCard = ({ chapter, onPress }) => {
                 ? "favorite"
                 : "favorite-border"
             }
-            size={24}
+            size={22}
             color={HEART_COLOR}
           />
         </TouchableOpacity>
@@ -90,5 +67,37 @@ const ChapterCard = ({ chapter, onPress }) => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "rgba(0,0,0,0.04)",
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  textContainer: {
+    flex: 1,
+    paddingRight: 12,
+  },
+  titleText: {
+    fontSize: 17,
+    fontWeight: "600",
+    letterSpacing: -0.3,
+    marginBottom: 4,
+  },
+  verseText: {
+    fontSize: 15,
+    fontWeight: "500",
+    color: "#007AFF", // iOS blue
+    opacity: 0.9,
+  },
+});
 
 export default ChapterCard;
