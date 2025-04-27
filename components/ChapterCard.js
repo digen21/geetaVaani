@@ -1,13 +1,8 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import React from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
 const ChapterCard = ({ chapter, onPress }) => {
   const { colors } = useTheme();
@@ -42,11 +37,11 @@ const ChapterCard = ({ chapter, onPress }) => {
       <View style={styles.row}>
         <View style={styles.textContainer}>
           <Text style={[styles.titleText, { color: colors.text }]}>
-            Chapter {chapter.chapter}:{" "}
+            {translations.title.split(":")[0]}:{" "}
             {translations.title.split(":")[1]?.split("-").join(" ")}
           </Text>
           <Text style={[styles.verseText, { color: colors.primary }]}>
-            Verses
+            {verseTranslations[currentLanguage] || "Verses"}
           </Text>
         </View>
         <TouchableOpacity

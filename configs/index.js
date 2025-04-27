@@ -1,8 +1,10 @@
 export {
-  characterScreenTranslations, detailsScreenTranslations,
+  characterScreenTranslations,
+  detailsScreenTranslations,
   getLanguageFont,
   LANGUAGE_FONTS,
   default as languages,
-  tabTranslations
+  tabTranslations,
+  verseTranslations,
+  favoriteScreenTranslations
 } from "./languages";
-

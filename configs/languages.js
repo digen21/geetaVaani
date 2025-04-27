@@ -91,26 +91,25 @@ export const detailsScreenTranslations = {
 export const characterScreenTranslations = {
   en: {
     characterRole: "Character Role",
-    characterDescription: "Character Description"
+    characterDescription: "Character Description",
   },
   hi: {
     characterRole: "चरित्र भूमिका",
-    characterDescription: "चरित्र विवरण"
+    characterDescription: "चरित्र विवरण",
   },
   mr: {
     characterRole: "पात्र भूमिका",
-    characterDescription: "पात्र वर्णन"
+    characterDescription: "पात्र वर्णन",
   },
   gu: {
     characterRole: "પાત્ર ભૂમિકા",
-    characterDescription: "પાત્ર વર્ણન"
+    characterDescription: "પાત્ર વર્ણન",
   },
   sa: {
     characterRole: "पात्रभूमिका",
-    characterDescription: "पात्रवर्णनम्"
-  }
+    characterDescription: "पात्रवर्णनम्",
+  },
 };
-
 
 export const relationsTranslations = {
   en: {
@@ -264,5 +263,56 @@ export const relationsTranslations = {
     wife_of_krishna: "कृष्णस्य पत्नी",
     victim_of: "पीडितः",
     symbol_of_dignity: "मान्यतायाः प्रतीकः",
+  },
+};
+
+export const verseTranslations = {
+  en: "Verses",
+  hi: "श्लोक",
+  mr: "श्लोक",
+  gu: "શ્લોક",
+};
+
+
+export const favoriteScreenTranslations = {
+  en: {
+    favorites: "Favorites",
+    favoritesDescription: "Your favorite chapters and verses from Bhagavad Gita",
+    noFavorites: "No favorites yet",
+    addFavoritesHint: "Add chapters or verses to your favorites\nby tapping the heart icon",
+    chapters: "Chapters",
+    verses: "Verses"
+  },
+  hi: {
+    favorites: "पसंदीदा",
+    favoritesDescription: "भगवद गीता के आपके पसंदीदा अध्याय और श्लोक",
+    noFavorites: "अभी तक कोई पसंदीदा नहीं",
+    addFavoritesHint: "हार्ट आइकन पर टैप करके\nअध्याय या श्लोक को पसंदीदा में जोड़ें",
+    chapters: "अध्याय",
+    verses: "श्लोक"
+  },
+  mr: {
+    favorites: "आवडते",
+    favoritesDescription: "भगवद गीतेतील तुमचे आवडते अध्याय आणि श्लोक",
+    noFavorites: "अजून कोणतेही आवडते नाहीत",
+    addFavoritesHint: "हृदय चिन्हावर टॅप करून\nअध्याय किंवा श्लोक आवडत्यांमध्ये जोडा",
+    chapters: "अध्याय",
+    verses: "श्लोक"
+  },
+  gu: {
+    favorites: "પસંદીદા",
+    favoritesDescription: "ભગવદ ગીતા ના તમારા પસંદીદા અધ્યાયો અને શ્લોકો",
+    noFavorites: "હજુ સુધી કોઈ પસંદીદા નથી",
+    addFavoritesHint: "હૃદય ચિહ્ન પર ટૅપ કરીને\nઅધ્યાય અથવા શ્લોકને પસંદીદામાં ઉમેરો",
+    chapters: "અધ્યાય",
+    verses: "શ્લોક"
+  },
+  sk: {
+    favorites: "प्रियाः",
+    favoritesDescription: "भगवद्गीतायाः प्रियाः अध्यायाः श्लोकाः च",
+    noFavorites: "अद्यापि कोऽपि प्रियतमा नास्ति",
+    addFavoritesHint: "हृदयचिह्नं स्पृशित्वा\nअध्यायं वा श्लोकं प्रियेषु योजयतु",
+    chapters: "अध्यायः",
+    verses: "श्लोकः"
   }
 };

@@ -23,6 +23,7 @@ const ChaptersScreen = () => {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Header />
 
+      <View style={{marginTop:110}}>
       <FlatList
         data={chaptersData}
         renderItem={({ item }) => (
@@ -41,6 +42,7 @@ const ChaptersScreen = () => {
         stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={false}
       />
+      </View>
     </View>
   );
 };
@@ -48,7 +50,8 @@ const ChaptersScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F7", // iOS system background
+    backgroundColor: "#F2F2F7",
+    
   },
   listContent: {
     paddingTop: 16,
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
   },
   cardWrapper: {
     marginBottom: 10,
-    // Remove shadow and border from wrapper since it's handled in the card
+    
   },
 });
 
