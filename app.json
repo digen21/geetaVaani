@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gitavaani-1.0",
-    "slug": "gitavaani-1.0",
+    "name": "Gitavaani",
+    "slug": "gitavaani",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,10 +20,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.dmx214.gitavaani"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "03609a9d-8927-40c4-8833-6c121d623205"
+      }
+    },
+    "owner": "dmx214"
   }
 }

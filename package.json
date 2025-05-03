@@ -1,5 +1,5 @@
 {
-  "name": "gitavaani-1.0",
+  "name": "gitavaani",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,12 @@
   "engines": {
     "node": "18.20.8"
   },
-  "private": true
+  "private": true,
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
+  }
 }
