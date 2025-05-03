@@ -145,6 +145,9 @@ const styles = StyleSheet.create({
     height: 1,
     opacity: 0.2,
   },
+  cardWrapper: {
+    marginBottom: 12
+  },
   sectionContainer: {
     paddingHorizontal: 16,
     paddingTop: 24,
@@ -175,7 +178,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   listContent: {
-    paddingBottom: 24,
+    paddingBottom: 50,
   },
 });
 

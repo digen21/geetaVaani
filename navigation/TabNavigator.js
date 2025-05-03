@@ -23,7 +23,7 @@ const TabNavigator = () => {
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
           overflow: "hidden",
-          height: 80 + insets.bottom, // Dynamically adjust height based on safe area
+          height: 60 + insets.bottom, // Dynamically adjust height based on safe area
           backgroundColor: "white",
           elevation: 8,
           shadowColor: '#000',
@@ -32,8 +32,8 @@ const TabNavigator = () => {
             height: -4,
           },
           shadowOpacity: 0.1,
+          paddingTop: 5,
           shadowRadius: 8,
-          paddingTop: 10,
           paddingBottom: insets.bottom, // Dynamic bottom padding
         },
       }}

@@ -1,7 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
 const ChapterCard = ({ chapter, onPress }) => {
@@ -29,10 +29,14 @@ const ChapterCard = ({ chapter, onPress }) => {
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={onPress}
-      activeOpacity={0.9}
-      style={[styles.card, { backgroundColor: colors.cardBg }]}
+      android_ripple={{ color: "#00000005", borderless: false }} // android ripple effect
+      style={({ pressed }) => [
+        styles.card,
+        { backgroundColor: colors.cardBg, opacity: pressed ? 0.95 : 1 },
+      ]}
+      
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>
@@ -44,7 +48,7 @@ const ChapterCard = ({ chapter, onPress }) => {
             {verseTranslations[currentLanguage] || "Verses"}
           </Text>
         </View>
-        <TouchableOpacity
+        <Pressable
           onPress={handleFavoritePress}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
@@ -57,20 +61,22 @@ const ChapterCard = ({ chapter, onPress }) => {
             size={22}
             color={HEART_COLOR}
           />
-        </TouchableOpacity>
+        </Pressable>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
+    height: 100,
     borderRadius: 12,
     paddingVertical: 16,
     paddingHorizontal: 16,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "rgba(0,0,0,0.04)",
+    justifyContent: "center",
   },
   row: {
     flexDirection: "row",
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
   verseText: {
     fontSize: 15,
     fontWeight: "500",
-    color: "#007AFF", // iOS blue
+    color: "#007AFF",
     opacity: 0.9,
   },
 });

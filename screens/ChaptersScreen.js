@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   },
   cardWrapper: {
     marginBottom: 10,
-    
   },
 });
 
