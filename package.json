@@ -1,0 +1,28 @@
+{
+  "name": "gitavaani-1.0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "check-env": "node ./checkEnv.js",
+    "start": "npm run check-env && expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "check-sdk": "npx expo-doctor"
+  },
+  "dependencies": {
+    "expo": "53.0.7",
+    "expo-status-bar": "~2.2.3",
+    "glob": "^9.3.5",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "rimraf": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "engines": {
+    "node": "18.20.8"
+  },
+  "private": true
+}
