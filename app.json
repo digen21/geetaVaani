@@ -1,5 +1,6 @@
 {
   "expo": {
+    "sdkVersion": "53.0.0",
     "name": "gitavaani-1.0",
     "slug": "gitavaani10",
     "version": "1.0.0",
@@ -33,6 +34,9 @@
         "projectId": "23e67522-3679-4692-ba02-a80eaeaf883e"
       }
     },
-    "owner": "dmx214"
+    "owner": "dmx214",
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }

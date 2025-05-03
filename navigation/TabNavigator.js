@@ -1,12 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { BlurView } from "expo-blur";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FavoritesScreen, HomeScreen, ProfileScreen } from "../screens";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -21,7 +23,7 @@ const TabNavigator = () => {
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
           overflow: "hidden",
-          height: 70,
+          height: 80 + insets.bottom, // Dynamically adjust height based on safe area
           backgroundColor: "white",
           elevation: 8,
           shadowColor: '#000',
@@ -32,6 +34,7 @@ const TabNavigator = () => {
           shadowOpacity: 0.1,
           shadowRadius: 8,
           paddingTop: 10,
+          paddingBottom: insets.bottom, // Dynamic bottom padding
         },
       }}
     >
