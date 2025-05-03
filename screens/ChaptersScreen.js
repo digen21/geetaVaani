@@ -5,6 +5,8 @@ import { FlatList, Platform, StyleSheet, View } from "react-native";
 import { ChapterCard, Header } from "../components";
 import { useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
+import versesData from "../data/verses.json";
+import { calculateVerseCounts } from "../utils";
 
 /**
  * ChaptersScreen component that displays a list of chapters.
@@ -19,29 +21,33 @@ const ChaptersScreen = () => {
   const { colors } = useTheme();
   const navigation = useNavigation();
 
+  // Calculate verse counts
+  const verseCounts = calculateVerseCounts(versesData);
+
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Header />
 
-      <View style={{marginTop:110}}>
-      <FlatList
-        data={chaptersData}
-        renderItem={({ item }) => (
-          <View style={styles.cardWrapper}>
-            <ChapterCard
-              chapter={item}
-              onPress={() =>
-                navigation.navigate("ChapterDetail", { chapter: item })
-              }
-            />
-          </View>
-        )}
-        keyExtractor={(item) => item.chapter.toString()}
-        contentContainerStyle={styles.listContent}
-        ListHeaderComponent={<View style={{ height: 0 }} />}
-        stickyHeaderIndices={[0]}
-        showsVerticalScrollIndicator={false}
-      />
+      <View style={{ marginTop: 110 }}>
+        <FlatList
+          data={chaptersData}
+          renderItem={({ item }) => (
+            <View style={styles.cardWrapper}>
+              <ChapterCard
+                verseCount={verseCounts[item.chapter] || 0}
+                chapter={item}
+                onPress={() =>
+                  navigation.navigate("ChapterDetail", { chapter: item })
+                }
+              />
+            </View>
+          )}
+          keyExtractor={(item) => item.chapter?.toString()}
+          contentContainerStyle={styles.listContent}
+          ListHeaderComponent={<View style={{ height: 0 }} />}
+          stickyHeaderIndices={[0]}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </View>
   );
@@ -51,7 +57,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F2F2F7",
-    
   },
   listContent: {
     paddingTop: 16,

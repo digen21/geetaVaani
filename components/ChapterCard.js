@@ -1,10 +1,12 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
-const ChapterCard = ({ chapter, onPress }) => {
+
+const ChapterCard = ({ chapter, verseCount, onPress }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
@@ -36,7 +38,6 @@ const ChapterCard = ({ chapter, onPress }) => {
         styles.card,
         { backgroundColor: colors.cardBg, opacity: pressed ? 0.95 : 1 },
       ]}
-      
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>
@@ -45,7 +46,9 @@ const ChapterCard = ({ chapter, onPress }) => {
             {translations.title.split(":")[1]?.split("-").join(" ")}
           </Text>
           <Text style={[styles.verseText, { color: colors.primary }]}>
-            {verseTranslations[currentLanguage] || "Verses"}
+            {`${
+              verseTranslations[currentLanguage] || "Verses"
+            }: ${convertDigits(verseCount, currentLanguage)}`}
           </Text>
         </View>
         <Pressable
