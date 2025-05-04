@@ -1,17 +1,23 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { ChapterCard } from "../components";
 
+import { ChapterCard } from "../components";
 import { favoriteScreenTranslations } from "../configs";
 import { useFavorites, useLanguage, useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
+import versesData from "../data/verses.json";
+import { calculateVerseCounts } from "../utils";
 
 const FavoritesScreen = ({ navigation }) => {
   const { colors } = useTheme();
   const { favorites } = useFavorites();
   const { currentLanguage } = useLanguage();
-  const currentTranslations = favoriteScreenTranslations[currentLanguage] || favoriteScreenTranslations.en;
+  const currentTranslations =
+    favoriteScreenTranslations[currentLanguage] ||
+    favoriteScreenTranslations.en;
+
+  const verseCounts = calculateVerseCounts(versesData);
 
   const handleItemPress = (item) => {
     if (item.type === "chapter") {
@@ -51,7 +57,7 @@ const FavoritesScreen = ({ navigation }) => {
 
   const renderHeader = () => (
     <View style={styles.headerContainer}>
-      <Text style={[styles.headerTitle, { color: colors.text , marginTop:20}]}>
+      <Text style={[styles.headerTitle, { color: colors.text, marginTop: 20 }]}>
         {currentTranslations.favorites}
       </Text>
       <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>
@@ -81,8 +87,11 @@ const FavoritesScreen = ({ navigation }) => {
   }, {});
 
   const sections = [
-    {  title: currentTranslations.chapters, data: groupedFavorites.chapter || [] },
-    {title: currentTranslations.verses, data: groupedFavorites.verse || [] },
+    {
+      title: currentTranslations.chapters,
+      data: groupedFavorites.chapter || [],
+    },
+    { title: currentTranslations.verses, data: groupedFavorites.verse || [] },
   ];
 
   return (
@@ -102,9 +111,16 @@ const FavoritesScreen = ({ navigation }) => {
                     <ChapterCard
                       chapter={{
                         ...item,
-                        title: item[currentLanguage]?.title || item.en?.title || item.title,
-                        description: item[currentLanguage]?.description || item.en?.description || item.description
+                        title:
+                          item[currentLanguage]?.title ||
+                          item.en?.title ||
+                          item.title,
+                        description:
+                          item[currentLanguage]?.description ||
+                          item.en?.description ||
+                          item.description,
                       }}
+                      verseCount={verseCounts[item.chapter] || "0"}
                       onPress={() => handleItemPress(item)}
                     />
                   </View>
@@ -146,7 +162,7 @@ const styles = StyleSheet.create({
     opacity: 0.2,
   },
   cardWrapper: {
-    marginBottom: 12
+    marginBottom: 12,
   },
   sectionContainer: {
     paddingHorizontal: 16,
