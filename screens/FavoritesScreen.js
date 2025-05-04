@@ -2,14 +2,22 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
-import { FavoriteItems } from "../components";
+import { ChapterCard } from "../components";
+import { favoriteScreenTranslations } from "../configs";
 import { useFavorites, useLanguage, useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
+import versesData from "../data/verses.json";
+import { calculateVerseCounts } from "../utils";
 
 const FavoritesScreen = ({ navigation }) => {
   const { colors } = useTheme();
   const { favorites } = useFavorites();
   const { currentLanguage } = useLanguage();
+  const currentTranslations =
+    favoriteScreenTranslations[currentLanguage] ||
+    favoriteScreenTranslations.en;
+
+  const verseCounts = calculateVerseCounts(versesData);
 
   const handleItemPress = (item) => {
     if (item.type === "chapter") {
@@ -49,11 +57,11 @@ const FavoritesScreen = ({ navigation }) => {
 
   const renderHeader = () => (
     <View style={styles.headerContainer}>
-      <Text style={[styles.headerTitle, { color: colors.text }]}>
-        Favorites
+      <Text style={[styles.headerTitle, { color: colors.text, marginTop: 20 }]}>
+        {currentTranslations.favorites}
       </Text>
       <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>
-        Your favorite chapters and verses from Bhagavad Gita
+        {currentTranslations.favoritesDescription}
       </Text>
       <View style={[styles.divider, { backgroundColor: colors.border }]} />
     </View>
@@ -63,10 +71,10 @@ const FavoritesScreen = ({ navigation }) => {
     <View style={styles.emptyContainer}>
       <MaterialIcons name="favorite" size={64} color="#FF3B30" />
       <Text style={[styles.emptyText, { color: colors.text }]}>
-        No favorites yet
+        {currentTranslations.noFavorites}
       </Text>
       <Text style={[styles.emptySubtext, { color: colors.secondaryText }]}>
-        Add chapters or verses to your favorites{"\n"}by tapping the heart icon
+        {currentTranslations.addFavoritesHint}
       </Text>
     </View>
   );
@@ -79,8 +87,11 @@ const FavoritesScreen = ({ navigation }) => {
   }, {});
 
   const sections = [
-    { title: "Chapters", data: groupedFavorites.chapter || [] },
-    { title: "Verses", data: groupedFavorites.verse || [] },
+    {
+      title: currentTranslations.chapters,
+      data: groupedFavorites.chapter || [],
+    },
+    { title: currentTranslations.verses, data: groupedFavorites.verse || [] },
   ];
 
   return (
@@ -96,11 +107,23 @@ const FavoritesScreen = ({ navigation }) => {
                   {section.title}
                 </Text>
                 {section.data.map((item) => (
-                  <FavoriteItems
-                    key={item.id}
-                    item={item}
-                    onPress={() => handleItemPress(item)}
-                  />
+                  <View key={item.id} style={styles.cardWrapper}>
+                    <ChapterCard
+                      chapter={{
+                        ...item,
+                        title:
+                          item[currentLanguage]?.title ||
+                          item.en?.title ||
+                          item.title,
+                        description:
+                          item[currentLanguage]?.description ||
+                          item.en?.description ||
+                          item.description,
+                      }}
+                      verseCount={verseCounts[item.chapter] || "0"}
+                      onPress={() => handleItemPress(item)}
+                    />
+                  </View>
                 ))}
               </View>
             )}
@@ -111,6 +134,7 @@ const FavoritesScreen = ({ navigation }) => {
           styles.listContent,
           favorites.length === 0 && styles.emptyList,
         ]}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -136,6 +160,9 @@ const styles = StyleSheet.create({
   divider: {
     height: 1,
     opacity: 0.2,
+  },
+  cardWrapper: {
+    marginBottom: 12,
   },
   sectionContainer: {
     paddingHorizontal: 16,
@@ -167,7 +194,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   listContent: {
-    paddingBottom: 24,
+    paddingBottom: 50,
   },
 });
 

@@ -1,4 +1,4 @@
-// screens/ChapterDetailScreen.js
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -7,12 +7,15 @@ import tw from "twrnc";
 import { Header, SectionAccordion, TabView } from "../components";
 import { tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
-import { createTextStyles } from "../utils";
+import versesData from "../data/verses.json";
+import { calculateVerseCounts, createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { chapter } = route.params;
+  const verseCounts = calculateVerseCounts(versesData);
+
   const textStyles = createTextStyles(currentLanguage);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -57,11 +60,16 @@ const ChapterDetailScreen = ({ route, navigation }) => {
   const renderDetailsTab = () => (
     <View>
       <View
-        style={[tw`p-6 rounded-2xl mb-4`, { backgroundColor: colors.cardBg }]}
+        style={[
+          tw`p-6 rounded-3xl mb-6 border border-gray-200`,
+          {
+            backgroundColor: colors.cardBg,
+          },
+        ]}
       >
         <Text
           style={[
-            tw`text-2xl font-bold mb-2 text-center`,
+            tw`text-3xl font-bold mb-2 text-center`,
             textStyles.heading1,
             { color: colors.text },
           ]}
@@ -89,7 +97,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         <Text
           style={[
             tw`leading-6 pt-4`,
-            { color: colors.text, lineHeight: 28 },
+            { color: colors.text, lineHeight: 30 },
             textStyles.heading3,
           ]}
         >
@@ -97,7 +105,9 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         </Text>
 
         <Text style={[tw`text-sm italic mt-4`, { color: colors.primary }]}>
-          Contains {chapter.verses_count} Sacred Verses
+          Contains{" "}
+          {convertDigits(verseCounts[chapter.chapter] || 0, currentLanguage)}{" "}
+          Sacred Verses
         </Text>
       </View>
 
@@ -118,15 +128,16 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         <TouchableOpacity
           key={index}
           style={[
-            tw`p-4 mb-3 rounded-xl flex-row items-center`,
-            { backgroundColor: colors.cardBg },
+            tw`p-4 mb-2 rounded-xl flex-row items-center`,
+            {
+              backgroundColor: colors.cardBg,
+            },
           ]}
           onPress={() =>
             navigation.navigate("VerseDetail", {
               verse: {
                 chapter: chapter.chapter,
                 number: index + 1,
-                // Add other verse details as needed
               },
             })
           }
@@ -157,7 +168,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
 
       <View
         style={{
-          marginTop: 130, // Add margin to clear the header
+          marginTop: 130,
           flex: 1,
         }}
       >
@@ -168,6 +179,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         />
 
         <ScrollView
+          // showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             paddingHorizontal: 16,
             paddingBottom: 32,

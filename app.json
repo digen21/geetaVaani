@@ -1,8 +1,7 @@
 {
   "expo": {
-    "name": "GitaVaani",
+    "name": "Gitavaani",
     "slug": "gitavaani",
-    "owner": "dmx214",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "edgeToEdgeEnabled": true,
       "package": "com.dmx214.gitavaani"
     },
     "web": {
@@ -28,20 +28,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "93c0f36e-ad03-48dd-890c-e90c9ab3d0ea"
+        "projectId": "03609a9d-8927-40c4-8833-6c121d623205"
       }
     },
-    "assetBundlePatterns": ["**/*"],
-    "plugins": [],
-    "updates": {},
-    "packagerOpts": {},
-    "githubUrl": "https://github.com/digen21/geetaVaani.git",
-    "androidNavigationBar": {},
-    "androidStatusBar": {},
-    "notification": {},
-    "platforms": ["ios", "android"],
-    "primaryColor": "#1E88E5",
-    "backgroundColor": "#FFFFFF",
-    "description": ""
+    "owner": "dmx214"
   }
 }

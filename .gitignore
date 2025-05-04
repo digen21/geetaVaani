@@ -1,11 +1,7 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
 # dependencies
-/node_modules/
-package-lock.json
-yarn.lock
-
-/password
+node_modules/
 
 # Expo
 .expo/
@@ -13,7 +9,10 @@ dist/
 web-build/
 expo-env.d.ts
 
+package-lock.json
+
 # Native
+.kotlin/
 *.orig.*
 *.jks
 *.p8
@@ -38,24 +37,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-
-.gradle/
-build/
-local.properties
-*.iml
-
-*.xml
-*.pro
-*.bat
-# *.gradle
-*.kt
-*.properties
-*.jar
-# *.png
-# *.webp
-*.keystore
-
-
-/android
-/ios
