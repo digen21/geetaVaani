@@ -34,7 +34,7 @@ const ChaptersScreen = () => {
           renderItem={({ item }) => (
             <View style={styles.cardWrapper}>
               <ChapterCard
-                verseCount={verseCounts[item.chapter] || 0}
+                verseCount={verseCounts[item.chapter] || "0"}
                 chapter={item}
                 onPress={() =>
                   navigation.navigate("ChapterDetail", { chapter: item })

@@ -11,6 +11,10 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
   const { currentLanguage } = useLanguage();
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
+  if (!chapter || !chapter[currentLanguage]) {
+    return null; // or handle the error as neededq
+  }
+
   const translations = chapter[currentLanguage] || chapter.en;
   const HEART_COLOR = "#FF3B30";
 
