@@ -1,3 +1,4 @@
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -6,12 +7,15 @@ import tw from "twrnc";
 import { Header, SectionAccordion, TabView } from "../components";
 import { tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
-import { createTextStyles } from "../utils";
+import versesData from "../data/verses.json";
+import { calculateVerseCounts, createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { chapter } = route.params;
+  const verseCounts = calculateVerseCounts(versesData);
+
   const textStyles = createTextStyles(currentLanguage);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -101,7 +105,9 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         </Text>
 
         <Text style={[tw`text-sm italic mt-4`, { color: colors.primary }]}>
-          Contains {chapter.verses_count} Sacred Verses
+          Contains{" "}
+          {convertDigits(verseCounts[chapter.chapter] || 0, currentLanguage)}{" "}
+          Sacred Verses
         </Text>
       </View>
 
@@ -124,7 +130,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           style={[
             tw`p-4 mb-2 rounded-xl flex-row items-center`,
             {
-              backgroundColor: colors.cardBg
+              backgroundColor: colors.cardBg,
             },
           ]}
           onPress={() =>
