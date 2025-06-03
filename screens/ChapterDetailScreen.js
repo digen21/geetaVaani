@@ -74,7 +74,9 @@ const ChapterDetailScreen = ({ route, navigation }) => {
             { color: colors.text },
           ]}
         >
-          {translations.title.split(":")[0]?.trim()}
+          {translations.title?.includes(":")
+            ? translations.title.split(":")[0]?.trim()
+            : translations.title ?? ""}
         </Text>
 
         <Text
@@ -91,7 +93,9 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           numberOfLines={1}
           ellipsizeMode="tail"
         >
-          {translations.title.split(":")[1]?.trim()}
+          {translations.title?.includes(":")
+            ? translations.title.split(":")[1]?.trim()
+            : ""}
         </Text>
 
         <Text

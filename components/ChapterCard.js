@@ -46,8 +46,12 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
       <View style={styles.row}>
         <View style={styles.textContainer}>
           <Text style={[styles.titleText, { color: colors.text }]}>
-            {translations.title.split(":")[0]}:{" "}
-            {translations.title.split(":")[1]?.split("-").join(" ")}
+            {translations.title?.includes(":")
+              ? translations.title?.split(":")[0]
+              : translations.title ?? ""}
+            {translations.title?.includes(":")
+              ? `: ${translations.title?.split(":")[1]?.split("-").join(" ")}`
+              : ""}
           </Text>
           <Text style={[styles.verseText, { color: colors.primary }]}>
             {`${
