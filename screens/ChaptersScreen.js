@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { ChapterCard, Header } from "../components";
+import { ChapterCard } from "../components";
 import { useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
 import versesData from "../data/verses.json";
@@ -25,10 +25,8 @@ const ChaptersScreen = () => {
   const verseCounts = calculateVerseCounts(versesData);
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <Header />
-
-      <View style={{ marginTop: 110 }}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={['top']}>
+      <View style={{ marginTop: 10 }}>
         <FlatList
           data={chaptersData}
           renderItem={({ item }) => (
@@ -49,7 +47,7 @@ const ChaptersScreen = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
