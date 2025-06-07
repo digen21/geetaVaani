@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ChapterDetailScreen, ChaptersScreen, HomeScreen } from '../screens';
+import { AboutScreen, ChapterDetailScreen, ChaptersScreen, FavoritesScreen, HomeScreen } from '../screens';
 
 
 const HomeStack = createNativeStackNavigator();
@@ -10,6 +10,8 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen name="HomeMain" component={HomeScreen} />
       <HomeStack.Screen name="Chapters" component={ChaptersScreen} />
       <HomeStack.Screen name="ChapterDetail" component={ChapterDetailScreen} />
+      <HomeStack.Screen name="About" component={AboutScreen} />
+      <HomeStack.Screen name="Favorites" component={FavoritesScreen} />
     </HomeStack.Navigator>
   );
 };

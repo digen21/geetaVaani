@@ -1,24 +1,33 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  useWindowDimensions,
+} from "react-native";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
-import { Header, SectionAccordion, TabView } from "../components";
+import SectionAccordion from "../components/SectionAccordion";
 import { tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { calculateVerseCounts, createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
+  const insets = useSafeAreaInsets();
+
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const { chapter } = route.params;
   const verseCounts = calculateVerseCounts(versesData);
+  const layout = useWindowDimensions();
 
   const textStyles = createTextStyles(currentLanguage);
-  const [activeTab, setActiveTab] = useState(0);
-
   const [openSections, setOpenSections] = useState({
     teachings: false,
     tips: false,
@@ -34,10 +43,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     }));
   };
 
-  const getTabLabels = () => {
-    const translations = tabTranslations[currentLanguage] || tabTranslations.en;
-    return [{ label: translations.details }, { label: translations.verses }];
-  };
+  const tabLabels = tabTranslations[currentLanguage] || tabTranslations.en;
 
   const sections = [
     {
@@ -58,13 +64,13 @@ const ChapterDetailScreen = ({ route, navigation }) => {
   ];
 
   const renderDetailsTab = () => (
-    <View>
+    <ScrollView
+      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 50, }}
+    >
       <View
         style={[
-          tw`p-6 rounded-3xl mb-6 border border-gray-200`,
-          {
-            backgroundColor: colors.cardBg,
-          },
+          tw`p-6 rounded-3xl mt-6 mb-6 border border-gray-200`,
+          { backgroundColor: colors.cardBg },
         ]}
       >
         <Text
@@ -123,26 +129,23 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         colors={colors}
         textStyles={textStyles}
       />
-    </View>
+    </ScrollView>
   );
 
   const renderVersesTab = () => (
-    <View>
+    <ScrollView
+      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}
+    >
       {Array.from({ length: chapter.verses_count }, (_, index) => (
         <TouchableOpacity
           key={index}
           style={[
             tw`p-4 mb-2 rounded-xl flex-row items-center`,
-            {
-              backgroundColor: colors.cardBg,
-            },
+            { backgroundColor: colors.cardBg },
           ]}
           onPress={() =>
             navigation.navigate("VerseDetail", {
-              verse: {
-                chapter: chapter.chapter,
-                number: index + 1,
-              },
+              verse: { chapter: chapter.chapter, number: index + 1 },
             })
           }
         >
@@ -163,37 +166,47 @@ const ChapterDetailScreen = ({ route, navigation }) => {
           />
         </TouchableOpacity>
       ))}
-    </View>
+    </ScrollView>
   );
+
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    { key: "details", title: tabLabels.details },
+    { key: "verses", title: tabLabels.verses },
+  ]);
+
+  const renderScene = SceneMap({
+    details: renderDetailsTab,
+    verses: renderVersesTab,
+  });
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <Header showBackButton onBackPress={() => navigation.goBack()} />
-
-      <View
-        style={{
-          marginTop: 130,
-          flex: 1,
-        }}
-      >
-        <TabView
-          tabs={getTabLabels()}
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-        />
-
-        <ScrollView
-          // showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingHorizontal: 16,
-            paddingBottom: 32,
-          }}
-        >
-          {activeTab === 0 ? renderDetailsTab() : renderVersesTab()}
-        </ScrollView>
-      </View>
-    </View>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["top"]}>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+        renderTabBar={(props) => (
+          <TabBar
+            {...props}
+            style={{ backgroundColor: colors.background }}
+            indicatorStyle={{ backgroundColor: colors.primary, height: 2 }}
+            labelStyle={{ fontWeight: "bold", fontSize: 16 }}
+            activeColor={colors.primary}
+            inactiveColor="#999"
+            pressColor="#e0e0e0"
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default ChapterDetailScreen;
