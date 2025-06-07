@@ -1,13 +1,12 @@
-import { Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { Header } from "../components";
+import { Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const ProfileScreen = () => {
   const userEmail = "test@test.com";
 
   const MenuItem = ({ title, onPress }) => (
-    <Pressable 
-      style={styles.menuItem} 
+    <Pressable
+      style={styles.menuItem}
       onPress={onPress}
     >
       <Text style={styles.menuText}>{title}</Text>
@@ -16,12 +15,11 @@ const ProfileScreen = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header showBackButton />
+    <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.screen}>
         <View style={styles.header}>
           <View style={styles.avatarContainer}>
-            <Image 
+            <Image
               source={require('../assets/default-avatar.png')}
               style={styles.avatar}
               defaultSource={require('../assets/default-avatar.png')}
@@ -33,9 +31,9 @@ const ProfileScreen = () => {
 
         <View style={styles.menuGroups}>
           <View style={styles.menuSection}>
-            <MenuItem title="My Account" onPress={() => {}} />
-            <MenuItem title="Notifications" onPress={() => {}} />
-            <MenuItem title="Sign Out" onPress={() => {}} />
+            <MenuItem title="My Account" onPress={() => { }} />
+            <MenuItem title="Notifications" onPress={() => { }} />
+            <MenuItem title="Sign Out" onPress={() => { }} />
           </View>
 
         </View>
@@ -55,8 +53,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     paddingVertical: 20,
-    marginTop: 120,
-    marginBottom:40,
+    marginBottom: 40,
   },
   avatarContainer: {
     width: 200,
