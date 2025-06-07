@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { enableScreens } from 'react-native-screens';
-enableScreens();
 
 import {
   FavoritesProvider,

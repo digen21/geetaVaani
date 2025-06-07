@@ -1,46 +1,62 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import tw from "twrnc";
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useTheme } from "../contexts";
 
 const TabView = ({ tabs, activeTab, onTabChange }) => {
-  return (
-    <View style={tw`flex-row justify-around p-4 border-b border-gray-200`}>
-      {tabs.map((tab, index) => {
-        const isActive = index === activeTab;
-        return (
-          <TouchableOpacity
-            key={index}
-            style={tw`flex-1 items-center pb-2`}
-            onPress={() => onTabChange(index)}
-            activeOpacity={0.7}
-          >
-            <Text
-              style={[
-                tw`text-base`,
-                {
-                  color: isActive ? "#007AFF" : "#A0A0A0", // active: blue, inactive: gray
-                  fontWeight: isActive ? "bold" : "normal",
-                },
-              ]}
-            >
-              {tab.label}
-            </Text>
+  const { colors } = useTheme();
 
-            {isActive && (
-              <View
-                style={{
-                  height: 2,
-                  backgroundColor: "#007AFF", // blue underline
-                  width: "50%",
-                  marginTop: 4,
-                  borderRadius: 1,
-                }}
-              />
-            )}
-          </TouchableOpacity>
-        );
-      })}
+  return (
+    <View style={styles.tabContainer}>
+      {tabs.map((tab, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => onTabChange(index)}
+          style={[
+            styles.tab,
+            {
+              backgroundColor:
+                activeTab === index ? colors.primary : "transparent",
+              borderColor: colors.primary,
+            },
+          ]}
+        >
+          <Text
+            style={[
+              styles.tabText,
+              {
+                color: activeTab === index ? "#FFF" : colors.primary,
+              },
+            ]}
+          >
+            {tab.label}
+          </Text>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  tabContainer: {
+    flexDirection: "row",
+    marginBottom: 16,
+    padding: 4,
+    borderRadius: 8,
+    backgroundColor: "rgba(0,0,0,0.05)",
+  },
+  tab: {
+    flex: 1,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    borderWidth: 1,
+    marginHorizontal: 4,
+  },
+  tabText: {
+    fontSize: 16,
+    textAlign: "center",
+    fontWeight: "600",
+  },
+});
 
 export default TabView;
