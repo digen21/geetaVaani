@@ -3,7 +3,7 @@ name: GitaVaani Android Build
 on:
   push:
     branches:
-      - main
+      - gita-vaani
 
 jobs:
   build-and-upload:
@@ -23,6 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Install expired dependencies
+        run:  echo y | npx expo install --check
 
       - name: Run expo doctor
         run: npx expo-doctor
