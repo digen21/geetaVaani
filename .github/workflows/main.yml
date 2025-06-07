@@ -1,0 +1,37 @@
+name: GitaVaani Android Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Expo CLI
+        run: npm install -g expo-cli eas-cli
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run expo doctor
+        run: npx expo-doctor
+
+      - name: Authenticate with Expo
+        run: npx eas login --token ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build Android APK
+        run: npx eas build --platform android --profile preview --non-interactive --no-wait
+
+      - name: Upload Android APK URL
+        run: echo "Build triggered on Expo. Monitor progress in your Expo dashboard."
