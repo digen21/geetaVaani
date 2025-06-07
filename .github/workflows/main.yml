@@ -10,28 +10,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the code from the repo
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install Expo CLI
+      # Step 3: Install Expo CLI and EAS CLI globally
+      - name: Install Expo & EAS CLI
         run: npm install -g expo-cli eas-cli
 
+      # Step 4: Install dependencies
+      # Use `npm ci` if you have package-lock.json. Otherwise use `npm install`
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci..."
+            npm ci
+          else
+            echo "Using npm install..."
+            npm install
+          fi
 
+      # Step 5: Run Expo doctor to check for project issues
       - name: Run expo doctor
         run: npx expo-doctor
 
+      # Step 6: Authenticate with Expo using access token
       - name: Authenticate with Expo
         run: npx eas login --token ${{ secrets.EXPO_TOKEN }}
 
+      # Step 7: Trigger Android build
       - name: Build Android APK
         run: npx eas build --platform android --profile preview --non-interactive --no-wait
 
-      - name: Upload Android APK URL
-        run: echo "Build triggered on Expo. Monitor progress in your Expo dashboard."
+      # Step 8: Output info
+      - name: Notify
+        run: echo "✅ Expo Android build triggered. Check progress in Expo dashboard."
