@@ -54,4 +54,4 @@ jobs:
 
       # Step 8: Output info
       - name: Notify
-        run: echo "✅ Expo Android build triggered. Check progress in Expo dashboard."
+        run: echo "✅Expo Android build triggered. Check progress in Expo dashboard."
