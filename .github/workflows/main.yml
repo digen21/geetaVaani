@@ -3,7 +3,7 @@ name: GitaVaani Android Build
 on:
   push:
     branches:
-      - main
+      - gita-vaani
 
 jobs:
   build-and-upload:
