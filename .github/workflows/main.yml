@@ -38,7 +38,7 @@ jobs:
 
       # Step 3: Install Expired Dependencies
       - name: Install Expired Dependencies
-        run: echo y | npx expo install --check
+        run: npx expo install -- --non-interactive
 
       # Step 5: Run Expo doctor to check for project issues
       - name: Run expo doctor
