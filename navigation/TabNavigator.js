@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { FavoritesScreen, HomeScreen, ProfileScreen } from "../screens";
+import HomeStackNavigator from './HomeStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,19 +38,19 @@ const TabNavigator = () => {
         },
       }}
     >
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen}
+      <Tab.Screen
+        name="Home"
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({ focused, color }) => (
-            <Ionicons 
-              name={focused ? 'home' : 'home-outline'} 
-              size={24} 
-              color={focused ? '#007AFF' : 'gray'} 
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
+              size={24}
+              color={focused ? '#007AFF' : 'gray'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ 
+            <Text style={{
               color: focused ? '#007AFF' : 'gray',
               fontSize: 12,
               marginBottom: 5
@@ -60,37 +60,42 @@ const TabNavigator = () => {
           )
         }}
       />
-      <Tab.Screen 
-        name="Favorites" 
-        component={FavoritesScreen}
+      <Tab.Screen
+        name="Favorites"
+        component={HomeStackNavigator}
         options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Ionicons name={focused ? 'heart' : 'heart-outline'} size={24} color={color} />
-          ),
-        }}
-      />
-      {/* <Tab.Screen 
-        name="Bookmarks" 
-        component={BookmarksScreen}
-        options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Ionicons name={focused ? 'bookmark' : 'bookmark-outline'} size={24} color={color} />
-          ),
-        }}
-      /> */}
-      <Tab.Screen 
-        name="Profile" 
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Ionicons 
-              name={focused ? 'person' : 'person-outline'} 
-              size={24} 
-              color={focused ? '#007AFF' : 'gray'} 
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'heart' : 'heart-outline'}
+              size={24}
+              color={focused ? '#007AFF' : 'gray'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ 
+            <Text style={{
+              color: focused ? '#007AFF' : 'gray',
+              fontSize: 12,
+              marginBottom: 5
+            }}>
+              Favorites
+            </Text>
+          )
+        }}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={HomeStackNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'person' : 'person-outline'}
+              size={24}
+              color={focused ? '#007AFF' : 'gray'}
+            />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{
               color: focused ? '#007AFF' : 'gray',
               fontSize: 12,
               marginBottom: 5
@@ -100,6 +105,7 @@ const TabNavigator = () => {
           )
         }}
       />
+
     </Tab.Navigator>
   );
 };
