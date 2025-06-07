@@ -4,10 +4,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 // Get device language using Expo's localization
 // const systemLanguage = locales.split("-")[0] || "en";
-const systemLanguage =
-  typeof Localization.locale === "string"
-    ? Localization.locale.split?.("-")[0] || Localization.locale || "en"
-    : "en";
+const systemLanguage = Localization.locale.split("-")[0] || "en";
 
 // Load fonts based on languages
 const loadFonts = async () => {
