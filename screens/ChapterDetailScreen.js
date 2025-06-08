@@ -14,7 +14,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
 import SectionAccordion from "../components/SectionAccordion";
-import { tabTranslations } from "../configs";
+import { containTranslations, tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { calculateVerseCounts, createTextStyles } from "../utils";
@@ -116,9 +116,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         </Text>
 
         <Text style={[tw`text-sm italic mt-4`, { color: colors.primary }]}>
-          Contains{" "}
-          {convertDigits(verseCounts[chapter.chapter] || 0, currentLanguage)}{" "}
-          Sacred Verses
+          {containTranslations(currentLanguage, convertDigits(verseCounts[chapter.chapter] || 0, currentLanguage))}
         </Text>
       </View>
 

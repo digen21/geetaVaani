@@ -329,3 +329,22 @@ export const digitMaps = {
   sa: ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"], // Sanskrit (Devanagari)
   en: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], // English
 };
+
+
+
+
+
+export const containTranslations = (languageCode, count) => {
+  switch (languageCode) {
+    case "en":
+      return `Contains ${count} sacred verses`;
+    case "hi":
+      return `${count} श्लोकों का समावेश है`;
+    case "gu":
+      return `${count} પવિત્ર શ્લોકોનો સમાવેશ થાય છે`;
+    case "mr":
+      return `${count} पवित्र श्लोकांचा समावेश आहे`;
+    case "sk":
+      return `${count} पवित्र श्लोकान् समाविशति`;
+  }
+}
