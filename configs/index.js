@@ -1,3 +1,5 @@
+export { sections } from "./chapterDetails";
+export { default as chapterImagesUrls } from "./chapterImagesUrls";
 export {
   characterScreenTranslations, commentaryTranslations, containTranslations, detailsScreenTranslations,
   digitMaps,

@@ -32,7 +32,7 @@ const SectionAccordion = ({
           isOpen={openSections[section.key]}
           onPress={() => toggleSection(section.key)}
           colors={colors}
-          fontStyle={textStyles.heading3}
+          fontStyle={textStyles.textThin}
         />
       ))}
     </View>
