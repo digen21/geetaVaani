@@ -2,6 +2,7 @@ import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { useState } from "react";
 import {
   ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
