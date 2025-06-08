@@ -1,18 +1,23 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const ProfileScreen = () => {
   const userEmail = "test@test.com";
-
-  const MenuItem = ({ title, onPress }) => (
+  const navigation = useNavigation();
+  const MenuItem = ({ title, onPress, style }) => (
     <Pressable
-      style={styles.menuItem}
+      style={[styles.menuItem, style]}
       onPress={onPress}
     >
       <Text style={styles.menuText}>{title}</Text>
       <Ionicons name="chevron-forward-outline" size={18} color="#C7C7CC" />
     </Pressable>
   );
+
+  const handleAboutPress = () => {
+    navigation.navigate('About');
+  }
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -33,9 +38,13 @@ const ProfileScreen = () => {
           <View style={styles.menuSection}>
             <MenuItem title="My Account" onPress={() => { }} />
             <MenuItem title="Notifications" onPress={() => { }} />
-            <MenuItem title="Sign Out" onPress={() => { }} />
+            <MenuItem title="About App" onPress={handleAboutPress} />
+            <MenuItem
+              title="Sign Out"
+              onPress={() => { }}
+              style={{ borderBottomWidth: 0 }}
+            />
           </View>
-
         </View>
       </View>
     </SafeAreaView>
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
     color: '#8E8E93',
   },
   menuGroups: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
   },
   menuSection: {
     backgroundColor: '#fff',

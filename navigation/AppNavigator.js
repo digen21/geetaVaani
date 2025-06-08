@@ -5,6 +5,7 @@ import {
   ChapterDetailScreen,
   ChaptersScreen,
   FavoritesScreen,
+  VerseDetailScreen,
 } from "../screens";
 import TabNavigator from "./TabNavigator";
 
@@ -30,6 +31,7 @@ const AppNavigator = () => {
       <Stack.Screen name="ChapterDetail" component={ChapterDetailScreen} />
       <Stack.Screen name="About" component={AboutScreen} />
       <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="VerseDetail" component={VerseDetailScreen} />
     </Stack.Navigator>
   );
 };

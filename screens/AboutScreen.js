@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 
-import { GradientText } from "../components";
+import { BackButton, GradientText } from "../components";
 import { useTheme } from "../contexts";
 
 const featureList = [
@@ -39,6 +39,7 @@ const AboutScreen = () => {
       style={[styles.container, { backgroundColor: colors.backgroundColor }]}
       showsVerticalScrollIndicator={false}
     >
+      <BackButton />
       <BlurView
         intensity={50}
         tint="systemThinMaterial"

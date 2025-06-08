@@ -1,14 +1,15 @@
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
-import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
+import { createTextStyles } from "../utils";
 
 const ChapterCard = ({ chapter, verseCount, onPress }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
+  const textStyles = createTextStyles(currentLanguage)
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   if (!chapter || !chapter[currentLanguage]) {
@@ -45,7 +46,7 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>
-          <Text style={[styles.titleText, { color: colors.text }]}>
+          <Text style={[{ color: colors.text }, textStyles.body]}>
             {translations.title?.includes(":")
               ? translations.title?.split(":")[0]
               : translations.title ?? ""}
@@ -54,9 +55,8 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
               : ""}
           </Text>
           <Text style={[styles.verseText, { color: colors.primary }]}>
-            {`${
-              verseTranslations[currentLanguage] || "Verses"
-            }: ${convertDigits(verseCount, currentLanguage)}`}
+            {`${verseTranslations[currentLanguage] || "Verses"
+              }: ${convertDigits(verseCount, currentLanguage)}`}
           </Text>
         </View>
         <Pressable
