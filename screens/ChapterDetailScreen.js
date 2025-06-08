@@ -131,42 +131,59 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     </ScrollView>
   );
 
-  const renderVersesTab = () => (
-    <ScrollView
-      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}
-    >
-      {Array.from({ length: chapter.verses_count }, (_, index) => (
-        <TouchableOpacity
-          key={index}
-          style={[
-            tw`p-4 mb-2 rounded-xl flex-row items-center`,
-            { backgroundColor: colors.cardBg },
-          ]}
-          onPress={() =>
-            navigation.navigate("VerseDetail", {
-              verse: { chapter: chapter.chapter, number: index + 1 },
-            })
-          }
+  const renderVersesTab = () => {
+    // Ensure chapter numbers are numbers
+    const currentChapterNumber = Number(chapter.chapter);
+
+    // Filter verses for the current chapter (handle type mismatch)
+    const chapterVerses = versesData.filter(
+      (v) => Number(v.chapter) === currentChapterNumber
+    );
+
+
+    return (
+
+      <SafeAreaView style={{ flex: 1, paddingTop: 10 }} edges={["bottom"]}>
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 60 }}
         >
-          <Text
-            style={[
-              tw`text-lg flex-1`,
-              textStyles.heading3,
-              { color: colors.text },
-            ]}
-          >
-            Verse {index + 1}
-          </Text>
-          <Icon
-            name="chevron-right"
-            size={24}
-            color={colors.primary}
-            style={tw`ml-2`}
-          />
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
+          {chapterVerses.map((verse) => (
+            <TouchableOpacity
+              key={`${verse.chapter}-${verse.verse}`}
+              style={[
+                tw`pr-8 pl-4 py-4 mb-2 rounded-xl flex-row items-center`,
+                { backgroundColor: colors.cardBg },
+              ]}
+              onPress={() =>
+                navigation.navigate("VerseDetail", {
+                  verse: { chapter: verse.chapter, number: verse.verse },
+                })
+              }
+            >
+              <View style={tw`flex-1 justify-between flex-row items-center`}>
+                <Text
+                  style={[
+                    textStyles.text,
+                    { color: colors.text },
+                  ]}
+                >
+                  {verse.sk}
+                </Text>
+                <Icon
+                  name="chevron-right"
+                  size={24}
+                  color={colors.primary}
+                  style={tw`ml-2`}
+                />
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </SafeAreaView>
+
+    );
+  };
+
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([

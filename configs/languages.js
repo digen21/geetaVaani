@@ -30,6 +30,12 @@ export const LANGUAGE_FONTS = {
     bold: "Gujarati-Bold",
     semiBold: "Gujarati-SemiBold",
   },
+  sk: {
+    regular: "Mukta-Regular",
+    medium: "Mukta-Medium",
+    bold: "Mukta-Bold",
+    semiBold: "Mukta-SemiBold",
+  },
   sn: {
     regular: "Mukta-Regular",
     medium: "Mukta-Medium",
@@ -330,10 +336,6 @@ export const digitMaps = {
   en: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], // English
 };
 
-
-
-
-
 export const containTranslations = (languageCode, count) => {
   switch (languageCode) {
     case "en":
@@ -346,5 +348,23 @@ export const containTranslations = (languageCode, count) => {
       return `${count} पवित्र श्लोकांचा समावेश आहे`;
     case "sk":
       return `${count} पवित्र श्लोकान् समाविशति`;
+    default:
+      return `Contains ${count} sacred verses`;
   }
+}
+
+export const translations = {
+  en: "Translations",
+  hi: "अनुवाद",
+  gu: "અનુવાદ",
+  mr: "अनुवाद",
+  sk: "अनुवादः",
+}
+
+export const commentaryTranslations = {
+  en: "Commentary",
+  hi: "टिप्पणी",
+  gu: "ટિપ્પણી",
+  mr: "टिप्पणी",
+  sk: "टिप्पणीः",
 }
