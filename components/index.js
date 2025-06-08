@@ -1,5 +1,6 @@
 export { default as AccordionItem } from "./AccordionItem";
 export { default as BackButton } from "./BackButton";
+export { default as BackgroundImage } from "./BackgroundImage";
 export { default as BurgerMenu } from "./BurgerMenu";
 export { default as ChapterCard } from "./ChapterCard";
 export { default as CharacterCard } from "./CharacterCard";

@@ -3,7 +3,7 @@ name: GitaVaani Android Build
 on:
   push:
     branches:
-      - main
+      - gita-vaani
 
 jobs:
   build-and-upload:
@@ -36,6 +36,10 @@ jobs:
             npm install
           fi
 
+      # Step 3: Install Expired Dependencies
+      - name: Install Expired Dependencies
+        run: npx expo install -- --non-interactive
+
       # Step 5: Run Expo doctor to check for project issues
       - name: Run expo doctor
         run: npx expo-doctor
@@ -50,4 +54,4 @@ jobs:
 
       # Step 8: Output info
       - name: Notify
-        run: echo "✅ Expo Android build triggered. Check progress in Expo dashboard."
+        run: echo "✅Expo Android build triggered. Check progress in Expo dashboard."

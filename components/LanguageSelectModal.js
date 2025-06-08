@@ -4,10 +4,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
 import { useLanguage, useTheme } from "../contexts";
+import { createTextStyles } from "../utils";
 
 const LanguageSelectModal = ({ visible, onClose }) => {
   const { colors } = useTheme();
   const { currentLanguage, changeLanguage } = useLanguage();
+  const textStyles = createTextStyles(currentLanguage);
 
   const languages = [
     { code: "en", name: "English", native: "English" },
@@ -50,10 +52,10 @@ const LanguageSelectModal = ({ visible, onClose }) => {
                 onClose();
               }}
             >
-              <Text style={[styles.languageText, { color: colors.text }]}>
+              <Text style={[styles.languageText, { color: colors.text }, textStyles.body]}>
                 {lang.native}
               </Text>
-              <Text style={[styles.languageSubtext, { color: colors.primary }]}>
+              <Text style={[styles.languageSubtext, { color: colors.primary }, textStyles.body]}>
                 {lang.name}
               </Text>
               {lang.code === currentLanguage && (

@@ -8,6 +8,10 @@ const createTextStyles = (language) => {
     text: {
       fontFamily: fonts.regular,
     },
+    textThin: {
+      fontFamily: fonts.regular,
+      fontSize: 14
+    },
     textMedium: {
       fontFamily: fonts.medium,
     },
