@@ -41,7 +41,8 @@
     "react-native-tab-view": "^4.1.1",
     "react-native-vector-icons": "^10.2.0",
     "rimraf": "^4.4.1",
-    "twrnc": "^4.6.1"
+    "twrnc": "^4.6.1",
+    "expo-updates": "~0.28.14"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
