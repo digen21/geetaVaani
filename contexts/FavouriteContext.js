@@ -12,7 +12,6 @@ export const FavoritesProvider = ({ children }) => {
     loadFavorites();
   }, []);
 
-  // Update favorites when language changes
   useEffect(() => {
     updateFavoritesLanguage();
   }, [currentLanguage]);
@@ -30,10 +29,9 @@ export const FavoritesProvider = ({ children }) => {
 
   const updateFavoritesLanguage = async () => {
     try {
-      // Update each favorite's title based on current language
       const updatedFavorites = favorites.map((item) => ({
         ...item,
-        title: item[currentLanguage]?.title || item.en.title,
+        title: item[currentLanguage]?.title || item.en?.title || item.title,
       }));
       setFavorites(updatedFavorites);
       await AsyncStorage.setItem("favorites", JSON.stringify(updatedFavorites));
@@ -44,13 +42,19 @@ export const FavoritesProvider = ({ children }) => {
 
   const addFavorite = async (item) => {
     try {
+      // Use consistent and unique ID
+      const id = `${item.type}_${item.chapter}_${item.number}`;
       const itemWithMetadata = {
         ...item,
+        id,
         addedAt: Date.now(),
-        id: `${item.type}_${item.number}`,
         [currentLanguage]: { title: item.title },
-        en: { title: item.title }, // Always store English as fallback
+        en: { title: item.title },
       };
+
+      const alreadyExists = favorites.find((fav) => fav.id === id);
+      if (alreadyExists) return;
+
       const newFavorites = [...favorites, itemWithMetadata];
       setFavorites(newFavorites);
       await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
@@ -69,13 +73,28 @@ export const FavoritesProvider = ({ children }) => {
     }
   };
 
+  const clearFavorites = async () => {
+    try {
+      setFavorites([]);
+      await AsyncStorage.removeItem("favorites");
+    } catch (error) {
+      console.error("Error clearing favorites:", error);
+    }
+  };
+
   const isFavorite = (itemId) => {
     return favorites.some((item) => item.id === itemId);
   };
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, isFavorite }}
+      value={{
+        favorites,
+        addFavorite,
+        removeFavorite,
+        isFavorite,
+        clearFavorites,
+      }}
     >
       {children}
     </FavoritesContext.Provider>

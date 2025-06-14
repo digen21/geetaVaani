@@ -328,6 +328,32 @@ export const favoriteScreenTranslations = {
   },
 };
 
+export const deleteAllTranslations = {
+  en: "Delete All",
+  hi: "सभी हटाएँ",
+  gu: "બધું કાઢી નાખો",
+  mr: "सर्वकाही हटवा",
+  sk: "Všetko vymažte"
+}
+
+export const chapterVersesTranslations = {
+  "chapter": {
+    "en": "Chapter",
+    "hi": "अध्याय",
+    "sk": "अध्यायः",
+    "mr": "अध्याय",
+    "gu": "અધ્યાય"
+  },
+  "verse": {
+    "en": "Verse",
+    "hi": "श्लोक",
+    "sk": "श्लोकः",
+    "mr": "श्लोक",
+    "gu": "શ્લોક"
+  }
+}
+
+
 export const digitMaps = {
   hi: ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"], // Hindi/Devanagari
   gu: ["૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯"], // Gujarati
