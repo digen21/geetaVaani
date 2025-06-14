@@ -36,15 +36,11 @@ const VerseDetailScreen = ({ route, navigation }) => {
   const summary = langData.summary || "";
 
   // Title for the verse (forcefully convert all parts to string)
-  const verseTitle =
-    `${String(
-      chapterVersesTranslations.chapter?.[currentLanguage] || "Chapter"
-    )} ` +
-    `${String(convertDigits(verse.chapter, currentLanguage))}, ` +
-    `${String(
-      chapterVersesTranslations.verse?.[currentLanguage] || "Verse"
-    )} ` +
-    `${String(convertDigits(verse.number, currentLanguage))}`;
+  const verseTitle = `${
+    chapterVersesTranslations.chapter?.[currentLanguage]
+  } ${convertDigits(verse.chapter, currentLanguage)} ${
+    chapterVersesTranslations.verse?.[currentLanguage]
+  } ${convertDigits(verse.number, currentLanguage)}`;
 
   return (
     <SafeAreaView
