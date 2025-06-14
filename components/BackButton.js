@@ -20,7 +20,7 @@ const BackButton = ({ onPress, style }) => {
   return (
     <TouchableOpacity
       style={[
-        tw`absolute top-11 left-5 z-10 p-2 rounded-full`,
+        tw`p-2 rounded-full`,
         { backgroundColor: colors.primary + "20", opacity: 0.8 },
         style,
       ]}

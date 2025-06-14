@@ -20,6 +20,7 @@ const createTextStyles = (language) => {
     },
     heading1: {
       fontFamily: fonts.bold,
+      fontWeight: 600,
       fontSize: 24,
     },
     heading2: {

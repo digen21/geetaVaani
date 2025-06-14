@@ -14,10 +14,11 @@ import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import Icon from "react-native-vector-icons/Feather";
 import tw from "twrnc";
 import { BackButton, BackgroundImage, SectionAccordion } from "../components";
-import { chapterImagesUrls, containTranslations, sections, tabTranslations } from "../configs";
+import { chapterImagesUrls, containTranslations, LANGUAGE_FONTS, sections, tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { calculateVerseCounts, createTextStyles } from "../utils";
+import VerseCard from "../components/VerseCard"; // Import at the top
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
@@ -101,20 +102,16 @@ const ChapterDetailScreen = ({ route, navigation }) => {
       <SafeAreaView style={{ flex: 1, paddingTop: 10 }} edges={["bottom"]}>
         <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 60 }}>
           {chapterVerses.map((verse) => (
-            <TouchableOpacity
+            <VerseCard
               key={`${verse.chapter}-${verse.verse}`}
-              style={[tw`pr-8 pl-4 py-4 mb-2 rounded-xl flex-row items-center`, { backgroundColor: colors.cardBg }]}
+              verse={verse}
+              colors={colors}
               onPress={() =>
                 navigation.navigate("VerseDetail", {
                   verse: { chapter: verse.chapter, number: verse.verse },
                 })
               }
-            >
-              <View style={tw`flex-1 justify-between flex-row items-center`}>
-                <Text style={[textStyles.text, { color: colors.text }]}>{verse.sk}</Text>
-                <Icon name="chevron-right" size={24} color={colors.primary} style={tw`ml-2`} />
-              </View>
-            </TouchableOpacity>
+            />
           ))}
         </ScrollView>
       </SafeAreaView>
