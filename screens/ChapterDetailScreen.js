@@ -1,20 +1,20 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { useState } from "react";
 import {
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
   useWindowDimensions,
+  View,
 } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/Feather";
 import tw from "twrnc";
-
-import SectionAccordion from "../components/SectionAccordion";
-import { containTranslations, tabTranslations } from "../configs";
+import { BackButton, BackgroundImage, SectionAccordion } from "../components";
+import { chapterImagesUrls, containTranslations, sections, tabTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { calculateVerseCounts, createTextStyles } from "../utils";
@@ -36,6 +36,8 @@ const ChapterDetailScreen = ({ route, navigation }) => {
   });
 
   const translations = chapter[currentLanguage] || chapter.en;
+  const tabLabels = tabTranslations[currentLanguage] || tabTranslations.en;
+  const imageUrls = chapterImagesUrls[chapter.chapter];
 
   const toggleSection = (section) => {
     setOpenSections((prev) => ({
@@ -44,77 +46,37 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     }));
   };
 
-  const tabLabels = tabTranslations[currentLanguage] || tabTranslations.en;
 
-  const sections = [
-    {
-      key: "teachings",
-      titleKey: "mainTeachings",
-      contentKey: "main_teachings",
-    },
-    {
-      key: "tips",
-      titleKey: "practicalTips",
-      contentKey: "practical_tips",
-    },
-    {
-      key: "learnings",
-      titleKey: "whatWeCanLearn",
-      contentKey: "what_we_can_learn",
-    },
-  ];
+
+
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    { key: "details", title: tabLabels.details },
+    { key: "verses", title: tabLabels.verses },
+  ]);
 
   const renderDetailsTab = () => (
     <ScrollView
-      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 50, }}
-    >
-      <View
-        style={[
-          tw`p-6 rounded-3xl mt-6 mb-6 border border-gray-200`,
-          { backgroundColor: colors.cardBg },
-        ]}
-      >
-        <Text
-          style={[
-            tw`text-3xl font-bold mb-2 text-center`,
-            textStyles.heading1,
-            { color: colors.text },
-          ]}
-        >
-          {translations.title?.includes(":")
-            ? translations.title.split(":")[0]?.trim()
-            : translations.title ?? ""}
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 50 }}>
+      <View style={[tw`p-6 rounded-3xl mt-6 mb-6 border border-gray-200`, { backgroundColor: colors.cardBg }]}>
+        <Text style={[tw`text-3xl font-bold mb-2 text-center`, textStyles.heading1, { color: colors.text }]}>
+          {translations.title?.includes(":") ? translations.title.split(":")[0]?.trim() : translations.title ?? ""}
         </Text>
-
         <Text
           style={[
             tw`text-3xl mt-1 mb-4 text-center`,
             textStyles.heading1,
-            {
-              color: colors.primary,
-              flexShrink: 1,
-              flexWrap: "nowrap",
-              includeFontPadding: false,
-            },
+            { color: colors.primary, flexShrink: 1, flexWrap: "nowrap", includeFontPadding: false },
           ]}
           numberOfLines={1}
           ellipsizeMode="tail"
         >
-          {translations.title?.includes(":")
-            ? translations.title.split(":")[1]?.trim()
-            : ""}
+          {translations.title?.includes(":") ? translations.title.split(":")[1]?.trim() : ""}
         </Text>
-
-        <Text
-          style={[
-            tw`leading-6 pt-4`,
-            { color: colors.text, lineHeight: 30 },
-            textStyles.heading3,
-          ]}
-        >
+        <Text style={[tw`leading-6 pt-4`, { color: colors.text, lineHeight: 30 }, textStyles.body]}>
           {translations.summary}
         </Text>
-
         <Text style={[tw`text-sm italic mt-4`, { color: colors.primary }]}>
           {containTranslations(currentLanguage, convertDigits(verseCounts[chapter.chapter] || 0, currentLanguage))}
         </Text>
@@ -132,28 +94,16 @@ const ChapterDetailScreen = ({ route, navigation }) => {
   );
 
   const renderVersesTab = () => {
-    // Ensure chapter numbers are numbers
     const currentChapterNumber = Number(chapter.chapter);
-
-    // Filter verses for the current chapter (handle type mismatch)
-    const chapterVerses = versesData.filter(
-      (v) => Number(v.chapter) === currentChapterNumber
-    );
-
+    const chapterVerses = versesData.filter((v) => Number(v.chapter) === currentChapterNumber);
 
     return (
-
       <SafeAreaView style={{ flex: 1, paddingTop: 10 }} edges={["bottom"]}>
-        <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 60 }}
-        >
+        <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 60 }}>
           {chapterVerses.map((verse) => (
             <TouchableOpacity
               key={`${verse.chapter}-${verse.verse}`}
-              style={[
-                tw`pr-8 pl-4 py-4 mb-2 rounded-xl flex-row items-center`,
-                { backgroundColor: colors.cardBg },
-              ]}
+              style={[tw`pr-8 pl-4 py-4 mb-2 rounded-xl flex-row items-center`, { backgroundColor: colors.cardBg }]}
               onPress={() =>
                 navigation.navigate("VerseDetail", {
                   verse: { chapter: verse.chapter, number: verse.verse },
@@ -161,35 +111,17 @@ const ChapterDetailScreen = ({ route, navigation }) => {
               }
             >
               <View style={tw`flex-1 justify-between flex-row items-center`}>
-                <Text
-                  style={[
-                    textStyles.text,
-                    { color: colors.text },
-                  ]}
-                >
-                  {verse.sk}
-                </Text>
-                <Icon
-                  name="chevron-right"
-                  size={24}
-                  color={colors.primary}
-                  style={tw`ml-2`}
-                />
+                <Text style={[textStyles.text, { color: colors.text }]}>{verse.sk}</Text>
+                <Icon name="chevron-right" size={24} color={colors.primary} style={tw`ml-2`} />
               </View>
             </TouchableOpacity>
           ))}
         </ScrollView>
       </SafeAreaView>
-
     );
   };
 
 
-  const [index, setIndex] = useState(0);
-  const [routes] = useState([
-    { key: "details", title: tabLabels.details },
-    { key: "verses", title: tabLabels.verses },
-  ]);
 
   const renderScene = SceneMap({
     details: renderDetailsTab,
@@ -198,17 +130,28 @@ const ChapterDetailScreen = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["top"]}>
+      {/* Top Image Banner */}
+      {<BackgroundImage
+        source={imageUrls}
+        styles={styles.imageBanner}
+        resizeMode="cover"
+        children={<View style={[styles.topOverlay, { paddingTop: insets.top + 16 }]}>
+          <BackButton />
+        </View>} />}
+
+      {/* Tab View Below Image */}
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
+        style={[styles.contentCard, { backgroundColor: colors.cardBg }]}
         renderTabBar={(props) => (
           <TabBar
             {...props}
-            style={{ backgroundColor: colors.background }}
-            indicatorStyle={{ backgroundColor: colors.primary, height: 2 }}
-            labelStyle={{ fontWeight: "bold", fontSize: 16 }}
+            style={{ backgroundColor: colors.cardBg, borderRadius: 16, marginBottom: 8, marginHorizontal: 8, elevation: 0, shadowOpacity: 0 }}
+            indicatorStyle={{ backgroundColor: colors.primary, height: 3, borderRadius: 2 }}
+            labelStyle={{ fontWeight: "bold", fontSize: 16, textTransform: "none" }}
             activeColor={colors.primary}
             inactiveColor="#999"
             pressColor="#e0e0e0"
@@ -222,6 +165,24 @@ const ChapterDetailScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  imageBanner: {
+    width: "100%",
+    height: 230,
+    justifyContent: "flex-start",
+  },
+  topOverlay: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 50,
+    paddingHorizontal: 16,
+  },
+  contentCard: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    marginTop: -25,
+    paddingTop: 5,
   },
 });
 
