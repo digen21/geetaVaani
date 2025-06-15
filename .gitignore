@@ -20,6 +20,8 @@ package-lock.json
 *.key
 *.mobileprovision
 
+android
+
 # Metro
 .metro-health-check*
 
