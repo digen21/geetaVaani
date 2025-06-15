@@ -1,19 +1,20 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { useState } from "react";
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   useWindowDimensions,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
-import Icon from "react-native-vector-icons/Feather";
 import tw from "twrnc";
+
 import { BackButton, BackgroundImage, SectionAccordion } from "../components";
+import VerseCard from "../components/VerseCard"; // Import at the top
 import {
   chapterImagesUrls,
   containTranslations,
@@ -24,7 +25,6 @@ import {
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { calculateVerseCounts, createTextStyles } from "../utils";
-import VerseCard from "../components/VerseCard"; // Import at the top
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
@@ -62,9 +62,10 @@ const ChapterDetailScreen = ({ route, navigation }) => {
   const renderDetailsTab = () => (
     <ScrollView
       keyboardShouldPersistTaps="handled"
+      removeClippedSubviews={false}
       contentContainerStyle={{
         paddingHorizontal: 16,
-        paddingBottom: insets.bottom + 50,
+        paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
       }}
     >
       <View
@@ -139,7 +140,10 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     return (
       <SafeAreaView style={{ flex: 1, paddingTop: 10 }} edges={["bottom"]}>
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 60 }}
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
+          }}
         >
           {chapterVerses.map((verse) => (
             <VerseCard

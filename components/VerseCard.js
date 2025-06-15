@@ -2,14 +2,28 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LANGUAGE_FONTS } from "../configs/languages";
 import { useFavorites } from "../contexts";
+import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
 
+/**
+ * VerseCard component displays a verse with its text and a favorite icon.
+ * Allows users to mark/unmark the verse as a favorite.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Object} props.verse - The verse object containing verse details.
+ * @param {function} props.onPress - Callback function when the card is pressed.
+ * @param {Object} props.colors - Colors object for theming the text.
+ *
+ * @returns {JSX.Element} The rendered VerseCard component.
+ */
 const VerseCard = ({ verse, onPress, colors }) => {
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
-  const HEART_COLOR = "#FF3B30";
   const verseId = `verse_${verse.chapter}_${verse.verse}`;
 
   const handleFavoritePress = (e) => {
-    e.stopPropagation();
+    if (e && typeof e.stopPropagation === "function") {
+      e.stopPropagation();
+    }
     if (isFavorite(verseId)) {
       removeFavorite(verseId);
     } else {
@@ -46,16 +60,10 @@ const VerseCard = ({ verse, onPress, colors }) => {
           </Text>
         </View>
         <View style={styles.iconContainer}>
-          <Pressable
-            onPress={handleFavoritePress}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <MaterialIcons
-              name={isFavorite(verseId) ? "favorite" : "favorite-border"}
-              size={22}
-              color={HEART_COLOR}
-            />
-          </Pressable>
+          <AnimatedFavoriteIcon
+            isFav={isFavorite(verseId)}
+            onToggle={handleFavoritePress}
+          />
         </View>
       </View>
     </Pressable>

@@ -14,6 +14,18 @@ import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
 import { createTextStyles } from "../utils";
 
+/**
+ * VerseDetailScreen displays detailed information about a specific verse,
+ * including its Sanskrit text, translation, and optional commentary.
+ *
+ * @component
+ * @param {object} props - Component props.
+ * @param {object} props.route - React Navigation route object containing params.
+ * @param {object} props.route.params - Parameters passed to the screen.
+ * @param {object} props.route.params.verse - The verse object with chapter and number.
+ * @param {object} props.navigation - React Navigation navigation object.
+ * @returns {JSX.Element} The rendered verse detail screen.
+ */
 const VerseDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();

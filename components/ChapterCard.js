@@ -6,23 +6,40 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
 import { createTextStyles } from "../utils";
+import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
 
+/**
+ * ChapterCard component displays information about a chapter, including its title,
+ * verse count, and favorite status. Allows users to mark/unmark the chapter as favorite.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Object} props.chapter - Chapter data object, containing translations and metadata.
+ * @param {number} props.verseCount - Number of verses in the chapter.
+ * @param {Function} props.onPress - Callback function invoked when the card is pressed.
+ *
+ * @returns {JSX.Element|null} The rendered ChapterCard component, or null if chapter data is invalid.
+ */
 const ChapterCard = ({ chapter, verseCount, onPress }) => {
-  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
   const HEART_COLOR = "#FF3B30";
-  const chapterId = `chapter_${chapter.chapter}`;
-
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const textStyles = createTextStyles(currentLanguage);
 
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const chapterId = `chapter_${chapter.chapter}`;
+
   if (!chapter || !chapter[currentLanguage]) {
     return null; // or handle the error as neededq
   }
+
   const translations = chapter[currentLanguage] || chapter.en;
   const favorite = isFavorite(chapterId);
+
   const handleFavoritePress = (e) => {
-    e.stopPropagation();
+    if (e && typeof e.stopPropagation === "function") {
+      e.stopPropagation();
+    }
     if (favorite) {
       removeFavorite(chapterId);
     } else {
@@ -62,16 +79,13 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
             }: ${convertDigits(verseCount, currentLanguage)}`}
           </Text>
         </View>
-        <Pressable
-          onPress={handleFavoritePress}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <MaterialIcons
-            name={favorite ? "favorite" : "favorite-border"}
-            size={22}
-            color={HEART_COLOR}
+
+        <View>
+          <AnimatedFavoriteIcon
+            isFav={favorite}
+            onToggle={handleFavoritePress}
           />
-        </Pressable>
+        </View>
       </View>
     </Pressable>
   );
