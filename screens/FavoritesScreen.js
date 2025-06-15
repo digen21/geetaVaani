@@ -186,15 +186,14 @@ const FavoritesScreen = ({ navigation }) => {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
-        style={
-          ({ flex: 1, backgroundColor: colors.background }, textStyles.body)
-        }
+        style={({ flex: 1, backgroundColor: colors.cardBg }, textStyles.body)}
         renderTabBar={(props) => (
           <TabBar
             {...props}
             style={{
               backgroundColor: colors.cardBg,
-              borderRadius: 16,
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30,
               margin: 8,
               elevation: 0,
               shadowOpacity: 0,
