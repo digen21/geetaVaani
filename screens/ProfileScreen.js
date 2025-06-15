@@ -8,7 +8,6 @@ import {
   Text,
   View,
 } from "react-native";
-import checkForUpdates from "../checkForUpdates";
 
 const ProfileScreen = () => {
   const userEmail = "test@test.com";
@@ -44,7 +43,7 @@ const ProfileScreen = () => {
             <MenuItem title="My Account" onPress={() => {}} />
             <MenuItem title="Notifications" onPress={() => {}} />
             <MenuItem title="About App" onPress={handleAboutPress} />
-            <MenuItem title="Check For Update" onPress={checkForUpdates} />
+            {/* <MenuItem title="Check For Update" onPress={checkForUpdates} /> */}
             <MenuItem
               title="Sign Out"
               onPress={() => {}}
