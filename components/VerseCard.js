@@ -29,10 +29,7 @@ const VerseCard = ({ verse, onPress, colors }) => {
     <Pressable
       onPress={onPress}
       android_ripple={{ color: "#00000005", borderless: false }}
-      style={({ pressed }) => [
-        styles.card,
-        { backgroundColor: colors.cardBg, opacity: pressed ? 0.95 : 1 },
-      ]}
+      style={({ pressed }) => [styles.card, { opacity: pressed ? 0.95 : 1 }]}
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>
@@ -55,7 +52,7 @@ const VerseCard = ({ verse, onPress, colors }) => {
           >
             <MaterialIcons
               name={isFavorite(verseId) ? "favorite" : "favorite-border"}
-              size={28}
+              size={22}
               color={HEART_COLOR}
             />
           </Pressable>
@@ -79,18 +76,17 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    height: "100%",
   },
   textContainer: {
-    flex: 2, // 2/3 of the row
-    paddingRight: 12, // add some spacing to the right
-    justifyContent: "center",
+    flex: 2,
+    paddingRight: 12,
   },
   iconContainer: {
-    flex: 1, // 1/3 of the row
+    flex: 1,
     alignItems: "flex-end",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
 });
 

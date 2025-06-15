@@ -40,10 +40,21 @@ export const FavoritesProvider = ({ children }) => {
     }
   };
 
+  const generateFavoriteId = (item) => {
+    if (item.type === "verse") {
+      return `verse_${item.chapter}_${item.number}`;
+    } else if (item.type === "chapter") {
+      return `chapter_${item.chapter}`;
+    } else {
+      return item.id || `${item.type}_${Date.now()}`;
+    }
+  };
+
   const addFavorite = async (item) => {
     try {
       // Use consistent and unique ID
-      const id = `${item.type}_${item.chapter}_${item.number}`;
+      const id = generateFavoriteId(item);
+
       const itemWithMetadata = {
         ...item,
         id,
@@ -63,9 +74,12 @@ export const FavoritesProvider = ({ children }) => {
     }
   };
 
-  const removeFavorite = async (itemId) => {
+  const removeFavorite = async (itemOrId) => {
     try {
-      const newFavorites = favorites.filter((item) => item.id !== itemId);
+      const id =
+        typeof itemOrId === "string" ? itemOrId : generateFavoriteId(itemOrId);
+
+      const newFavorites = favorites.filter((item) => item.id !== id);
       setFavorites(newFavorites);
       await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
     } catch (error) {

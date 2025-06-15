@@ -2,32 +2,34 @@ import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+
 import { verseTranslations } from "../configs";
 import { useFavorites, useLanguage } from "../contexts";
 import { createTextStyles } from "../utils";
 
 const ChapterCard = ({ chapter, verseCount, onPress }) => {
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const HEART_COLOR = "#FF3B30";
+  const chapterId = `chapter_${chapter.chapter}`;
+
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
-  const textStyles = createTextStyles(currentLanguage)
-  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const textStyles = createTextStyles(currentLanguage);
 
   if (!chapter || !chapter[currentLanguage]) {
     return null; // or handle the error as neededq
   }
-
   const translations = chapter[currentLanguage] || chapter.en;
-  const HEART_COLOR = "#FF3B30";
-
+  const favorite = isFavorite(chapterId);
   const handleFavoritePress = (e) => {
     e.stopPropagation();
-    const chapterId = `chapter_${chapter.chapter}`;
-    if (isFavorite(chapterId)) {
+    if (favorite) {
       removeFavorite(chapterId);
     } else {
       addFavorite({
         id: chapterId,
         type: "chapter",
+        chapter: chapter.chapter,
         number: chapter.chapter,
         title: translations.title,
         ...chapter,
@@ -38,7 +40,7 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
   return (
     <Pressable
       onPress={onPress}
-      android_ripple={{ color: "#00000005", borderless: false }} // android ripple effect
+      android_ripple={{ color: "#00000005", borderless: false }}
       style={({ pressed }) => [
         styles.card,
         { backgroundColor: colors.cardBg, opacity: pressed ? 0.95 : 1 },
@@ -55,8 +57,9 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
               : ""}
           </Text>
           <Text style={[styles.verseText, { color: colors.primary }]}>
-            {`${verseTranslations[currentLanguage] || "Verses"
-              }: ${convertDigits(verseCount, currentLanguage)}`}
+            {`${
+              verseTranslations[currentLanguage] || "Verses"
+            }: ${convertDigits(verseCount, currentLanguage)}`}
           </Text>
         </View>
         <Pressable
@@ -64,11 +67,7 @@ const ChapterCard = ({ chapter, verseCount, onPress }) => {
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
           <MaterialIcons
-            name={
-              isFavorite(`chapter_${chapter.chapter}`)
-                ? "favorite"
-                : "favorite-border"
-            }
+            name={favorite ? "favorite" : "favorite-border"}
             size={22}
             color={HEART_COLOR}
           />
@@ -84,6 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 16,
     paddingHorizontal: 16,
+    marginBottom: 8,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "rgba(0,0,0,0.04)",
