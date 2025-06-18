@@ -3,6 +3,7 @@ import {
   AboutScreen,
   ChapterDetailScreen,
   ChaptersScreen,
+  CharacterDetailScreen,
   CharacterListScreen,
   FavoritesScreen,
   HomeScreen,
@@ -20,6 +21,10 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen name="About" component={AboutScreen} />
       <HomeStack.Screen name="Favorites" component={FavoritesScreen} />
       <HomeStack.Screen name="VerseDetail" component={VerseDetailScreen} />
+      <HomeStack.Screen
+        name="CharacterDetail"
+        component={CharacterDetailScreen}
+      />
       <HomeStack.Screen name="Characters" component={CharacterListScreen} />
     </HomeStack.Navigator>
   );
