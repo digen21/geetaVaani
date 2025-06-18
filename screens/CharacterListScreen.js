@@ -63,7 +63,13 @@ const CharacterListScreen = () => {
             key={character.id}
             style={styles.card}
             onPress={() =>
-              navigation.navigate("CharacterDetail", { character: character })
+              navigation.navigate("CharacterDetail", {
+                name: character?.name?.[currentLanguage] || character?.name?.en,
+                id: character.id,
+                type: character.type,
+                relation: character?.relations,
+                role: character?.role,
+              })
             }
             activeOpacity={0.7}
           >
