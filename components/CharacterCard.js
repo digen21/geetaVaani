@@ -1,82 +1,46 @@
-import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useLanguage, useTheme } from "../contexts";
+import { useNavigation } from "@react-navigation/native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
-const CharacterCard = ({ character, onPress }) => {
-  const { colors } = useTheme();
-  const { currentLanguage } = useLanguage();
+/**
+ * Renders a character card with an image, an indicator, and a name.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {any} props.image - The image source for the character (compatible with React Native Image).
+ * @param {string} props.indicatorColor - The background color for the indicator circle.
+ * @param {React.ReactNode} props.indicatorContent - The content to display inside the indicator (e.g., an icon or text).
+ * @param {string} [props.name] - The name of the character to display below the image.
+ * @returns {JSX.Element} The rendered character card component.
+ */
+const CharacterCard = ({ image, indicatorColor, indicatorContent, name }) => {
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      style={[styles.card, { backgroundColor: colors.cardBg }]}
-      onPress={onPress}
+      onPress={() => navigation.navigate("CharacterDetail", { name })}
+      className="items-center"
     >
-      <Image
-        source={{
-          uri:
-            character.image ||
-            "https://e7.pngegg.com/pngimages/981/645/png-clipart-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-thumbnail.png",
-        }}
-        style={styles.image}
-      />
-      <View style={styles.content}>
-        <Text style={[styles.name, { color: colors.text }]}>
-          {character.name[currentLanguage]}
-        </Text>
-        <Text style={[styles.type, { color: colors.primary }]}>
-          {character.type
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")}
-        </Text>
-        <Text
-          style={[styles.role, { color: colors.secondaryText }]}
-          numberOfLines={3}
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <Image
+          source={image}
+          style={{
+            width: 80,
+            height: 80,
+            borderRadius: 40, // Makes the image circular
+            // backgroundColor: bgColor, // Optional: background color behind image
+          }}
+          resizeMode="cover"
+        />
+        <View
+          className="absolute bottom-0 right-0 w-5 h-5 rounded-full items-center justify-center"
+          style={{ backgroundColor: indicatorColor }}
         >
-          {character.role[currentLanguage]}
-        </Text>
+          {indicatorContent}
+        </View>
       </View>
+      {name && <Text className="mt-1 text-xs text-center">{name}</Text>}
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    flexDirection: "row",
-    marginHorizontal: 16,
-    marginVertical: 8,
-    borderRadius: 12,
-    padding: 12,
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginRight: 16,
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  type: {
-    fontSize: 14,
-    marginBottom: 8,
-    textTransform: "capitalize",
-  },
-  role: {
-    fontSize: 14,
-    lineHeight: 20,
-  },
-});
 
 export default CharacterCard;

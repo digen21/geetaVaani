@@ -1,11 +1,15 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import LanguageSelectModal from "../components/LanguageSelectModal";
-import { FavoritesScreen, ProfileScreen } from "../screens";
-import HomeStackNavigator from './HomeStackNavigator';
+import {
+  CharacterListScreen,
+  FavoritesScreen,
+  ProfileScreen,
+} from "../screens";
+import HomeStackNavigator from "./HomeStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +36,7 @@ const TabNavigator = () => {
             height: 60 + insets.bottom,
             backgroundColor: "white",
             elevation: 8,
-            shadowColor: '#000',
+            shadowColor: "#000",
             shadowOffset: {
               width: 0,
               height: -4,
@@ -50,20 +54,46 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <Ionicons
-                name={focused ? 'home' : 'home-outline'}
+                name={focused ? "home" : "home-outline"}
                 size={24}
-                color={focused ? '#007AFF' : 'gray'}
+                color={focused ? "#007AFF" : "gray"}
               />
             ),
             tabBarLabel: ({ focused }) => (
-              <Text style={{
-                color: focused ? '#007AFF' : 'gray',
-                fontSize: 12,
-                marginBottom: 5
-              }}>
+              <Text
+                style={{
+                  color: focused ? "#007AFF" : "gray",
+                  fontSize: 12,
+                  marginBottom: 5,
+                }}
+              >
                 Home
               </Text>
-            )
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Characters"
+          component={CharacterListScreen}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "people" : "people-outline"}
+                size={24}
+                color={focused ? "#007AFF" : "gray"}
+              />
+            ),
+            tabBarLabel: ({ focused }) => (
+              <Text
+                style={{
+                  color: focused ? "#007AFF" : "gray",
+                  fontSize: 12,
+                  marginBottom: 5,
+                }}
+              >
+                Characters
+              </Text>
+            ),
           }}
         />
         <Tab.Screen
@@ -72,20 +102,22 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <Ionicons
-                name={focused ? 'heart' : 'heart-outline'}
+                name={focused ? "heart" : "heart-outline"}
                 size={24}
-                color={focused ? '#007AFF' : 'gray'}
+                color={focused ? "#007AFF" : "gray"}
               />
             ),
             tabBarLabel: ({ focused }) => (
-              <Text style={{
-                color: focused ? '#007AFF' : 'gray',
-                fontSize: 12,
-                marginBottom: 5
-              }}>
+              <Text
+                style={{
+                  color: focused ? "#007AFF" : "gray",
+                  fontSize: 12,
+                  marginBottom: 5,
+                }}
+              >
                 Favorites
               </Text>
-            )
+            ),
           }}
         />
         <Tab.Screen
@@ -96,24 +128,26 @@ const TabNavigator = () => {
               <Ionicons
                 name="language"
                 size={24}
-                color={focused ? '#007AFF' : 'gray'}
+                color={focused ? "#007AFF" : "gray"}
               />
             ),
             tabBarLabel: ({ focused }) => (
-              <Text style={{
-                color: focused ? '#007AFF' : 'gray',
-                fontSize: 12,
-                marginBottom: 5
-              }}>
+              <Text
+                style={{
+                  color: focused ? "#007AFF" : "gray",
+                  fontSize: 12,
+                  marginBottom: 5,
+                }}
+              >
                 Language
               </Text>
-            )
+            ),
           }}
           listeners={{
             tabPress: (e) => {
               e.preventDefault(); // Prevent navigation
               setShowLangModal(true);
-            }
+            },
           }}
         />
         <Tab.Screen
@@ -122,24 +156,29 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <Ionicons
-                name={focused ? 'person' : 'person-outline'}
+                name={focused ? "person" : "person-outline"}
                 size={24}
-                color={focused ? '#007AFF' : 'gray'}
+                color={focused ? "#007AFF" : "gray"}
               />
             ),
             tabBarLabel: ({ focused }) => (
-              <Text style={{
-                color: focused ? '#007AFF' : 'gray',
-                fontSize: 12,
-                marginBottom: 5
-              }}>
+              <Text
+                style={{
+                  color: focused ? "#007AFF" : "gray",
+                  fontSize: 12,
+                  marginBottom: 5,
+                }}
+              >
                 Profile
               </Text>
-            )
+            ),
           }}
         />
       </Tab.Navigator>
-      <LanguageSelectModal visible={showLangModal} onClose={() => setShowLangModal(false)} />
+      <LanguageSelectModal
+        visible={showLangModal}
+        onClose={() => setShowLangModal(false)}
+      />
     </>
   );
 };
