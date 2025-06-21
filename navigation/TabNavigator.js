@@ -34,7 +34,7 @@ const TabNavigator = () => {
             borderTopRightRadius: 25,
             overflow: "hidden",
             height: 60 + insets.bottom,
-            backgroundColor: "white",
+            backgroundColor: "#fff",
             elevation: 8,
             shadowColor: "#000",
             shadowOffset: {
@@ -90,6 +90,7 @@ const TabNavigator = () => {
                   fontSize: 12,
                   marginBottom: 5,
                 }}
+                numberOfLines={1}
               >
                 Characters
               </Text>

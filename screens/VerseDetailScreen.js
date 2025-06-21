@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 
-import { BackButton } from "../components";
+import { TopBar } from "../components";
 import {
   chapterVersesTranslations,
   commentaryTranslations,
@@ -58,25 +58,11 @@ const VerseDetailScreen = ({ route, navigation }) => {
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
     >
-      <View style={[styles.topBar, { backgroundColor: colors.background }]}>
-        <BackButton />
-
-        <Text
-          style={[
-            styles.verseTitle,
-            textStyles.heading3,
-            {
-              color: colors.text,
-              fontSize: 18,
-              textAlign: "center",
-            },
-          ]}
-          numberOfLines={1}
-          ellipsizeMode="tail"
-        >
-          {verseTitle}
-        </Text>
-      </View>
+      <TopBar
+        title={verseTitle}
+        textStyle={[textStyles.heading3, styles.verseTitle]}
+        onBack={() => navigation.goBack()}
+      />
 
       <ScrollView contentContainerStyle={{ padding: 20 }}>
         <View

@@ -338,7 +338,7 @@ export const deleteAllTranslations = {
 
 export const chapterVersesTranslations = {
   chapter: {
-    en: "Chapter",
+    en: "Chapters",
     hi: "अध्याय",
     sk: "अध्यायः",
     mr: "अध्याय",
@@ -398,18 +398,27 @@ export const CharacterDetailTranslations = {
   en: {
     characterRole: "Character Role",
     characterDescription: "Character Description",
+    character: "Characters",
   },
   hi: {
     characterRole: "चरित्र भूमिका",
     characterDescription: "चरित्र विवरण",
+    character: "चरित्र",
   },
   gu: {
     characterRole: "પાત્ર ભૂમિકા",
     characterDescription: "પાત્ર વર્ણન",
+    character: "પાત્ર",
   },
   mr: {
     characterRole: "पात्र भूमिका",
     characterDescription: "पात्र वर्णन",
+    character: "पात्र",
+  },
+  sk: {
+    characterRole: "पात्रभूमिका",
+    characterDescription: "पात्रवर्णनम्",
+    character: "पात्रम्",
   },
 };
 

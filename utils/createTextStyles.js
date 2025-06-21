@@ -10,7 +10,7 @@ const createTextStyles = (language) => {
     },
     textThin: {
       fontFamily: fonts.regular,
-      fontSize: 14
+      fontSize: 14,
     },
     textMedium: {
       fontFamily: fonts.medium,
@@ -21,11 +21,11 @@ const createTextStyles = (language) => {
     heading1: {
       fontFamily: fonts.bold,
       fontWeight: 600,
-      fontSize: 24,
+      fontSize: 26,
     },
     heading2: {
       fontFamily: fonts.medium,
-      fontSize: 20,
+      fontSize: 24,
     },
     heading3: {
       fontFamily: fonts.medium,

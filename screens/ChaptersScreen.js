@@ -5,11 +5,12 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 
-import { ChapterCard } from "../components";
-import { useTheme } from "../contexts";
+import { ChapterCard, TopBar } from "../components";
+import { useLanguage, useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
 import versesData from "../data/verses.json";
-import { calculateVerseCounts } from "../utils";
+import { calculateVerseCounts, createTextStyles } from "../utils";
+import { chapterVersesTranslations } from "../configs";
 
 /**
  * ChaptersScreen component that displays a list of chapters.
@@ -28,6 +29,8 @@ import { calculateVerseCounts } from "../utils";
 const ChaptersScreen = () => {
   const { colors } = useTheme();
   const navigation = useNavigation();
+  const { currentLanguage } = useLanguage();
+  const textStyles = createTextStyles(currentLanguage);
   const insets = useSafeAreaInsets();
   // Calculate verse counts
   const verseCounts = calculateVerseCounts(versesData);
@@ -35,8 +38,15 @@ const ChaptersScreen = () => {
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
-      edges={["top"]}
+      edges={["top", "bottom"]}
     >
+      <TopBar
+        textStyle={
+          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading1
+        }
+        compStyle={{ marginLeft: 10 }}
+        title={chapterVersesTranslations.chapter[currentLanguage]}
+      />
       <View style={{ marginTop: 10 }}>
         <FlatList
           data={chaptersData}
@@ -54,7 +64,7 @@ const ChaptersScreen = () => {
             styles.listContent,
             {
               paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
-            }, // <-- add safe area bottom
+            },
           ]}
           ListHeaderComponent={<View style={{ height: 0 }} />}
           stickyHeaderIndices={[0]}

@@ -17,4 +17,5 @@ export { default as SectionAccordion } from "./SectionAccordion";
 export { default as Separator } from "./Separator";
 export { default as GeetaSummaryComic } from "./Summary";
 export { default as TabView } from "./TabView";
+export { default as TopBar } from "./TopBar";
 export { default as VerseCard } from "./VerseCard";

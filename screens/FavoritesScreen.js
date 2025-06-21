@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ChapterCard } from "../components";
 import VerseCard from "../components/VerseCard"; // Make sure this is imported
@@ -114,6 +115,8 @@ const FavoritesScreen = ({ navigation }) => {
     return acc;
   }, {});
 
+  const insets = useSafeAreaInsets();
+
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -122,55 +125,65 @@ const FavoritesScreen = ({ navigation }) => {
   ]);
 
   const renderChaptersTab = () => (
-    <FlatList
-      data={groupedFavorites.chapter || []}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <View style={styles.cardWrapper}>
-          <ChapterCard
-            chapter={{
-              ...item,
-              title:
-                item[currentLanguage]?.title || item.en?.title || item.title,
-              description:
-                item[currentLanguage]?.description ||
-                item.en?.description ||
-                item.description,
-            }}
-            verseCount={verseCounts[item.chapter] || "0"}
-            onPress={() => handleItemPress(item)}
-          />
-        </View>
-      )}
-      ListEmptyComponent={renderEmptyState}
-      contentContainerStyle={[
-        styles.listContent,
-        groupedFavorites.chapter?.length === 0 && styles.emptyList,
-      ]}
-      showsVerticalScrollIndicator={false}
-    />
+    <SafeAreaView
+      edges={["bottom"]}
+      style={{ paddingBottom: insets.bottom - 30 }}
+    >
+      <FlatList
+        data={groupedFavorites.chapter || []}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.cardWrapper}>
+            <ChapterCard
+              chapter={{
+                ...item,
+                title:
+                  item[currentLanguage]?.title || item.en?.title || item.title,
+                description:
+                  item[currentLanguage]?.description ||
+                  item.en?.description ||
+                  item.description,
+              }}
+              verseCount={verseCounts[item.chapter] || "0"}
+              onPress={() => handleItemPress(item)}
+            />
+          </View>
+        )}
+        ListEmptyComponent={renderEmptyState}
+        contentContainerStyle={[
+          styles.listContent,
+          groupedFavorites.chapter?.length === 0 && styles.emptyList,
+        ]}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
   );
 
   const renderVersesTab = () => (
-    <FlatList
-      data={groupedFavorites.verse || []}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <View style={styles.cardWrapper}>
-          <VerseCard
-            verse={item}
-            colors={colors}
-            onPress={() => handleItemPress(item)}
-          />
-        </View>
-      )}
-      ListEmptyComponent={renderEmptyState}
-      contentContainerStyle={[
-        styles.listContent,
-        groupedFavorites.verse?.length === 0 && styles.emptyList,
-      ]}
-      showsVerticalScrollIndicator={false}
-    />
+    <SafeAreaView
+      edges={["bottom"]}
+      style={{ paddingBottom: insets.bottom - 30 }}
+    >
+      <FlatList
+        data={groupedFavorites.verse || []}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.cardWrapper}>
+            <VerseCard
+              verse={item}
+              colors={colors}
+              onPress={() => handleItemPress(item)}
+            />
+          </View>
+        )}
+        ListEmptyComponent={renderEmptyState}
+        contentContainerStyle={[
+          styles.listContent,
+          groupedFavorites.verse?.length === 0 && styles.emptyList,
+        ]}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
   );
 
   const renderScene = SceneMap({

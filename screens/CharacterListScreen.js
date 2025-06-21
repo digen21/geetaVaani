@@ -12,6 +12,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { TopBar } from "../components";
+import { CharacterDetailTranslations } from "../configs";
 import { useLanguage } from "../contexts";
 import characters from "../data/characterAndRoles/characters.json";
 import { createTextStyles } from "../utils";
@@ -37,12 +39,11 @@ const CharacterListScreen = () => {
       edges={["top", "left", "right", "bottom"]}
     >
       {/* Top Bar */}
-      <View style={styles.topBar}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-left" size={24} color="#007AFF" />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Characters</Text>
-      </View>
+      <TopBar
+        title={CharacterDetailTranslations[currentLanguage].character}
+        textStyle={[textStyles.heading3, styles.verseTitle]}
+        onBack={() => navigation.goBack()}
+      />
 
       {/* Search Bar */}
       <View style={styles.searchBar}>

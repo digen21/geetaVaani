@@ -1,3 +1,5 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
@@ -16,11 +18,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { Ionicons } from "@expo/vector-icons";
+
+import { CharacterDetailTranslations, infoTranslations } from "../configs";
 import { useLanguage } from "../contexts";
 import { createTextStyles } from "../utils";
-import { CharacterDetailTranslations, infoTranslations } from "../configs";
-import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 const CARD_HEIGHT = 450;
@@ -135,10 +136,12 @@ const CharacterDetailScreen = ({ route }) => {
 
             {/* Info Section */}
             <View style={styles.infoSection}>
-              <Text style={styles.sectionTitle}>
+              <Text style={[textStyles.heading1, styles.sectionTitle]}>
                 {infoTranslations[currentLanguage]}
               </Text>
-              <Text style={styles.infoText}>{description}</Text>
+              <Text style={[textStyles.body, styles.infoText]}>
+                {description}
+              </Text>
             </View>
 
             {/* Action Buttons */}
@@ -291,7 +294,7 @@ const styles = StyleSheet.create({
   infoText: {
     color: "#ccc",
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 26,
   },
   actions: {
     flexDirection: "row",
