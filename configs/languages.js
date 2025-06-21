@@ -333,26 +333,25 @@ export const deleteAllTranslations = {
   hi: "सभी हटाएँ",
   gu: "બધું કાઢી નાખો",
   mr: "सर्वकाही हटवा",
-  sk: "Všetko vymažte"
-}
+  sk: "Všetko vymažte",
+};
 
 export const chapterVersesTranslations = {
-  "chapter": {
-    "en": "Chapter",
-    "hi": "अध्याय",
-    "sk": "अध्यायः",
-    "mr": "अध्याय",
-    "gu": "અધ્યાય"
+  chapter: {
+    en: "Chapter",
+    hi: "अध्याय",
+    sk: "अध्यायः",
+    mr: "अध्याय",
+    gu: "અધ્યાય",
   },
-  "verse": {
-    "en": "Verse",
-    "hi": "श्लोक",
-    "sk": "श्लोकः",
-    "mr": "श्लोक",
-    "gu": "શ્લોક"
-  }
-}
-
+  verse: {
+    en: "Verse",
+    hi: "श्लोक",
+    sk: "श्लोकः",
+    mr: "श्लोक",
+    gu: "શ્લોક",
+  },
+};
 
 export const digitMaps = {
   hi: ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"], // Hindi/Devanagari
@@ -377,7 +376,7 @@ export const containTranslations = (languageCode, count) => {
     default:
       return `Contains ${count} sacred verses`;
   }
-}
+};
 
 export const translations = {
   en: "Translations",
@@ -385,7 +384,7 @@ export const translations = {
   gu: "અનુવાદ",
   mr: "अनुवाद",
   sk: "अनुवादः",
-}
+};
 
 export const commentaryTranslations = {
   en: "Commentary",
@@ -393,4 +392,31 @@ export const commentaryTranslations = {
   gu: "ટિપ્પણી",
   mr: "टिप्पणी",
   sk: "टिप्पणीः",
-}
+};
+
+export const CharacterDetailTranslations = {
+  en: {
+    characterRole: "Character Role",
+    characterDescription: "Character Description",
+  },
+  hi: {
+    characterRole: "चरित्र भूमिका",
+    characterDescription: "चरित्र विवरण",
+  },
+  gu: {
+    characterRole: "પાત્ર ભૂમિકા",
+    characterDescription: "પાત્ર વર્ણન",
+  },
+  mr: {
+    characterRole: "पात्र भूमिका",
+    characterDescription: "पात्र वर्णन",
+  },
+};
+
+export const infoTranslations = {
+  en: "Info",
+  hi: "जानकारी",
+  gu: "માહિતી",
+  mr: "माहिती",
+  sk: "सूचना",
+};

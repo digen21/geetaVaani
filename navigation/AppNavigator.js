@@ -4,6 +4,8 @@ import {
   AboutScreen,
   ChapterDetailScreen,
   ChaptersScreen,
+  CharacterDetailScreen,
+  CharacterListScreen,
   FavoritesScreen,
   VerseDetailScreen,
 } from "../screens";
@@ -32,6 +34,8 @@ const AppNavigator = () => {
       <Stack.Screen name="About" component={AboutScreen} />
       <Stack.Screen name="Favorites" component={FavoritesScreen} />
       <Stack.Screen name="VerseDetail" component={VerseDetailScreen} />
+      <Stack.Screen name="Characters" component={CharacterListScreen} />
+      <Stack.Screen name="CharacterDetail" component={CharacterDetailScreen} />
     </Stack.Navigator>
   );
 };
