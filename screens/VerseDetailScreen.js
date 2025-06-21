@@ -56,11 +56,18 @@ const VerseDetailScreen = ({ route, navigation }) => {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingBottom: 25 },
+      ]}
+      edges={["top", "bottom"]}
     >
       <TopBar
         title={verseTitle}
-        textStyle={[textStyles.heading3, styles.verseTitle]}
+        textStyle={[
+          { color: colors.textPrimary },
+          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading2,
+        ]}
         onBack={() => navigation.goBack()}
       />
 

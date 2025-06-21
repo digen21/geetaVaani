@@ -37,13 +37,17 @@ const ChaptersScreen = () => {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingBottom: insets.bottom },
+      ]}
       edges={["top", "bottom"]}
     >
       <TopBar
-        textStyle={
-          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading2
-        }
+        textStyle={[
+          { color: colors.textPrimary },
+          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading2,
+        ]}
         compStyle={{ marginLeft: 10 }}
         title={chapterVersesTranslations.chapter[currentLanguage]}
       />

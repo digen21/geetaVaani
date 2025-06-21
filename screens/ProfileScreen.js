@@ -9,6 +9,8 @@ import {
   View,
 } from "react-native";
 
+import { ToggleThemeButton } from "../components";
+
 const ProfileScreen = () => {
   const userEmail = "test@test.com";
   const navigation = useNavigation();
@@ -24,8 +26,9 @@ const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
+    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
       <View style={styles.screen}>
+        <ToggleThemeButton style={{ margin: 20, marginTop: 20 }} />
         <View style={styles.header}>
           <View style={styles.avatarContainer}>
             <Image

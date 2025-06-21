@@ -1,4 +1,3 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LANGUAGE_FONTS } from "../configs/languages";
 import { useFavorites } from "../contexts";
@@ -43,7 +42,10 @@ const VerseCard = ({ verse, onPress, colors }) => {
     <Pressable
       onPress={onPress}
       android_ripple={{ color: "#00000005", borderless: false }}
-      style={({ pressed }) => [styles.card, { opacity: pressed ? 0.95 : 1 }]}
+      style={({ pressed }) => [
+        styles.card,
+        { opacity: pressed ? 0.95 : 1, backgroundColor: colors.cardBg },
+      ]}
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>

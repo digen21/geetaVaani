@@ -67,6 +67,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         paddingHorizontal: 16,
         paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
       }}
+      style={{ backgroundColor: colors.background }}
     >
       <View
         style={[
@@ -138,7 +139,10 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     );
 
     return (
-      <SafeAreaView style={{ flex: 1, paddingTop: 10 }} edges={["bottom"]}>
+      <SafeAreaView
+        style={{ flex: 1, paddingTop: 10, backgroundColor: colors.background }}
+        edges={["bottom"]}
+      >
         <ScrollView
           contentContainerStyle={{
             paddingHorizontal: 16,
@@ -192,7 +196,10 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
-        style={[styles.contentCard, textStyles.body]}
+        style={
+          ([styles.contentCard, textStyles.body],
+          { backgroundColor: colors.cardBg })
+        }
         renderTabBar={(props) => (
           <TabBar
             {...props}

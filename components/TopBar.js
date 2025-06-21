@@ -1,18 +1,24 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const TopBar = ({ title, onBack, textStyle, compStyle }) => (
-  <View style={[compStyle, styles.topBar]}>
-    {onBack ? (
-      <TouchableOpacity onPress={onBack}>
-        <Icon name="arrow-left" size={24} color="#007AFF" />
-      </TouchableOpacity>
-    ) : null}
-    <Text style={[textStyle, styles.headerText, !onBack && { marginLeft: 0 }]}>
-      {title}
-    </Text>
-  </View>
-);
+const TopBar = ({ title, onBack, textStyle, compStyle }) => {
+  const textColor = textStyle[0]?.color;
+
+  return (
+    <View style={[compStyle, styles.topBar]}>
+      {onBack ? (
+        <TouchableOpacity onPress={onBack}>
+          <Icon name="arrow-left" size={24} color="#007AFF" />
+        </TouchableOpacity>
+      ) : null}
+      <Text
+        style={[styles.headerText, !onBack && { marginLeft: 0 }, ...textStyle]}
+      >
+        {title}
+      </Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   topBar: {
