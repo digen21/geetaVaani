@@ -20,11 +20,19 @@ import Animated, {
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import { CharacterDetailTranslations, infoTranslations } from "../configs";
+import { MAHABHARATA_GRADIENTS } from "../constants";
 import { useLanguage } from "../contexts";
 import { createTextStyles } from "../utils";
 
 const { width } = Dimensions.get("window");
 const CARD_HEIGHT = 450;
+const bgColor = "#ffffff22"; // light background for tags
+
+// Utility to pick a random gradient
+function getRandomGradient() {
+  const idx = Math.floor(Math.random() * MAHABHARATA_GRADIENTS.length);
+  return MAHABHARATA_GRADIENTS[idx];
+}
 
 const CharacterDetailScreen = ({ route }) => {
   const { currentLanguage } = useLanguage();
@@ -33,12 +41,15 @@ const CharacterDetailScreen = ({ route }) => {
 
   const character = route.params;
 
-  const [gradientColors, setGradientColors] = useState(["#3B0B54", "#631E38"]); // Default dark gradient
+  const [gradientColors, setGradientColors] = useState(getRandomGradient());
   const fadeAnim = useSharedValue(0);
 
+  // Change gradient on every visit/mount
   useEffect(() => {
+    setGradientColors(getRandomGradient());
     fadeAnim.value = withTiming(1, { duration: 500 });
-  }, [gradientColors]); // Trigger fade animation when gradientColors change
+    // eslint-disable-next-line
+  }, []); // Only on mount
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: fadeAnim.value,
@@ -54,7 +65,6 @@ const CharacterDetailScreen = ({ route }) => {
     (role ? role.split(",") : [])
       .filter((tag) => tag.trim().length > 0)
       .map((tag, index) => {
-        const bgColor = "#ffffff22"; // light background for tags
         const textColor = "#fff"; // dark text for light backgrounds
 
         return (
@@ -121,7 +131,7 @@ const CharacterDetailScreen = ({ route }) => {
                 />
                 <View style={styles.overlay}>
                   <Text
-                    style={[styles.name, styles.nameTag, textStyles.heading2]}
+                    style={[styles.name, styles.nameTag, textStyles.heading3]}
                   >
                     {name}
                   </Text>
@@ -175,7 +185,7 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   backButton: {
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     borderWidth: 1,
     borderColor: "#ffffff44",
     borderRadius: 24,
@@ -188,7 +198,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: "#fff",
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     borderWidth: 1,
     borderColor: "#ffffff44",
     borderRadius: 24,
@@ -245,7 +255,7 @@ const styles = StyleSheet.create({
   },
   pillText: {
     flexWrap: "wrap",
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     padding: 10,
     borderRadius: 16,
     marginTop: 30,
@@ -256,7 +266,7 @@ const styles = StyleSheet.create({
   },
   nameTag: {
     color: "#fff",
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     maxWidth: "60%",
     padding: 5,
     borderRadius: 24,
@@ -279,7 +289,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     marginHorizontal: 20,
     borderRadius: 16,
     borderWidth: 1,
@@ -303,7 +313,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   iconBtn: {
-    backgroundColor: "#ffffff22",
+    backgroundColor: bgColor,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
