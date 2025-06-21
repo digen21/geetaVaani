@@ -11,7 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { ChapterCard } from "../components";
+import { ChapterCard, TopBar } from "../components";
 import VerseCard from "../components/VerseCard"; // Make sure this is imported
 import { favoriteScreenTranslations } from "../configs";
 import { useFavorites, useLanguage, useTheme } from "../contexts";
@@ -67,14 +67,13 @@ const FavoritesScreen = ({ navigation }) => {
   };
 
   const renderHeader = () => (
-    <SafeAreaView style={styles.headerContainer}>
-      <Text style={[textStyles.heading1, { color: colors.text, fontSize: 28 }]}>
-        {currentTranslations.favorites}
-      </Text>
-      <Text style={[textStyles.body, { color: colors.secondaryText }]}>
-        {currentTranslations.favoritesDescription}
-      </Text>
-      <View style={[styles.divider, { backgroundColor: colors.border }]} />
+    <View style={styles.headerContainer}>
+      <TopBar
+        title={currentTranslations.favorites}
+        textStyle={[textStyles.heading3]}
+        onBack={() => navigation.goBack()}
+      />
+
       {/* {favorites.length > 0 && (
         <TouchableOpacity
           style={[styles.clearButton, { backgroundColor: colors.primary, }]}
@@ -83,7 +82,7 @@ const FavoritesScreen = ({ navigation }) => {
           <MaterialIcons name="delete" size={20} color="#fff" />
         </TouchableOpacity>
       )} */}
-    </SafeAreaView>
+    </View>
   );
 
   const renderEmptyState = () => (
@@ -125,10 +124,7 @@ const FavoritesScreen = ({ navigation }) => {
   ]);
 
   const renderChaptersTab = () => (
-    <SafeAreaView
-      edges={["bottom"]}
-      style={{ paddingBottom: insets.bottom - 30 }}
-    >
+    <View edges={["bottom"]} style={{ paddingBottom: insets.bottom - 30 }}>
       <FlatList
         data={groupedFavorites.chapter || []}
         keyExtractor={(item) => item.id}
@@ -156,14 +152,11 @@ const FavoritesScreen = ({ navigation }) => {
         ]}
         showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 
   const renderVersesTab = () => (
-    <SafeAreaView
-      edges={["bottom"]}
-      style={{ paddingBottom: insets.bottom - 30 }}
-    >
+    <View edges={["bottom"]} style={{ paddingBottom: insets.bottom - 30 }}>
       <FlatList
         data={groupedFavorites.verse || []}
         keyExtractor={(item) => item.id}
@@ -183,7 +176,7 @@ const FavoritesScreen = ({ navigation }) => {
         ]}
         showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 
   const renderScene = SceneMap({
@@ -192,8 +185,24 @@ const FavoritesScreen = ({ navigation }) => {
   });
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       {renderHeader()}
+      <Text
+        style={[
+          textStyles.body,
+          {
+            color: colors.secondaryText,
+            marginVertical: 20,
+            paddingHorizontal: 16,
+          },
+        ]}
+      >
+        {currentTranslations.favoritesDescription}
+      </Text>
+      <View style={[styles.divider, { backgroundColor: colors.border }]} />
+
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
@@ -227,7 +236,7 @@ const FavoritesScreen = ({ navigation }) => {
           />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -236,7 +245,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
   },
 
   divider: {

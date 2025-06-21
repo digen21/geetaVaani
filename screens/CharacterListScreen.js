@@ -5,14 +5,11 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { TopBar } from "../components";
+import { SearchBar, TopBar } from "../components";
 import { CharacterDetailTranslations } from "../configs";
 import { useLanguage } from "../contexts";
 import characters from "../data/characterAndRoles/characters.json";
@@ -41,21 +38,16 @@ const CharacterListScreen = () => {
       {/* Top Bar */}
       <TopBar
         title={CharacterDetailTranslations[currentLanguage].character}
-        textStyle={[textStyles.heading3, styles.verseTitle]}
+        textStyle={[textStyles.heading3]}
         onBack={() => navigation.goBack()}
       />
 
       {/* Search Bar */}
-      <View style={styles.searchBar}>
-        <Icon name="magnify" size={20} color="#9ca3af" />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search characters..."
-          placeholderTextColor="#9ca3af"
-          value={search}
-          onChangeText={setSearch}
-        />
-      </View>
+      <SearchBar
+        value={search}
+        onChangeText={setSearch}
+        placeholder="Search characters..."
+      />
 
       {/* User List */}
       <ScrollView
