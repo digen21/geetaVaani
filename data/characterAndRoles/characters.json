@@ -10,13 +10,15 @@
     },
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/arjuna.png",
+
     "role": {
-      "en": "Warrior prince of the Pandavas; represents the conflicted human soul.",
-      "hi": "पांडवों के योद्धा राजकुमार; मानव आत्मा की द्वंद्व को दर्शाते हैं।",
-      "mr": "पांडवांचे योद्धा राजपुत्र; मानवी आत्म्याच्या संघर्षाचे प्रतीक।",
-      "sk": "पाण्डवानां योद्धा राजपुत्रः; मानवात्मनः संघर्षं प्रतिबिम्बयति।",
-      "gu": "પાંડવોના યોદ્ધા રાજકુમાર; માનવી આત્માની વિસંગતિને દર્શાવે છે."
+      "en": "Master Archer, Pandava Prince, Devoted Disciple, Brave Warrior",
+      "hi": "श्रेष्ठ धनुर्धर, पांडव राजकुमार, समर्पित शिष्य, वीर योद्धा",
+      "mr": "श्रेष्ठ धनुर्धर, पांडव राजकुमार, निष्ठावान शिष्य, शूर योद्धा",
+      "sk": "श्रेष्ठधनुर्धरः, पाण्डवकुमारः, भक्तशिष्यः, पराक्रमीयोधः",
+      "gu": "ઉત્કૃષ્ટ ધનુર્ધર, પાંડવ રાજકુમાર, નિષ્ઠાવાન શિષ્ય, વીર યોદ્ધા"
     },
+
     "description": {
       "en": "Arjuna is a central character in the Indian epic, the Mahabharata. He is a warrior prince of the Pandavas and is known for his exceptional skills in archery and combat. Arjuna represents the conflicted human soul, grappling with moral dilemmas and the responsibilities of duty. His journey is marked by moments of doubt and introspection, particularly during the great war of Kurukshetra, where he receives guidance from Lord Krishna, who serves as his charioteer. Arjuna's character embodies the struggle between righteousness and the complexities of human emotions.",
       "hi": "अर्जुन भारतीय महाकाव्य महाभारत का एक केंद्रीय पात्र है। वह पांडवों के योद्धा राजकुमार हैं और धनुर्विद्या और युद्ध में अपनी असाधारण क्षमताओं के लिए जाने जाते हैं। अर्जुन मानव आत्मा की द्वंद्व को दर्शाते हैं, जो नैतिक दुविधाओं और कर्तव्य की जिम्मेदारियों से जूझते हैं। उनकी यात्रा संदेह और आत्म-चिंतन के क्षणों से भरी हुई है, विशेष रूप से कुरुक्षेत्र के महान युद्ध के दौरान, जहाँ उन्हें भगवान कृष्ण से मार्गदर्शन मिलता है, जो उनके सारथी के रूप में कार्य करते हैं। अर्जुन का चरित्र धर्म और मानव भावनाओं की जटिलताओं के बीच संघर्ष को व्यक्त करता है।",
@@ -102,11 +104,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890619/GitaVaani-Verses/Characters/krishna.png",
     "role": {
-      "en": "Divine charioteer and teacher; incarnation of Vishnu.",
-      "hi": "दिव्य सारथी और गुरु; विष्णु के अवतार।",
-      "mr": "दिव्य सारथी आणि गुरु; विष्णूचे अवतार।",
-      "sk": "दिव्यसारथिः तथा गुरुः; विष्णोः अवतारः।",
-      "gu": "દિવ્ય સારથિ અને ગુરુ; વિશ્વનુ અવતાર."
+      "en": "Supreme Guide, Charioteer of Arjuna, Gita Speaker, Divine Protector",
+      "hi": "परम मार्गदर्शक, अर्जुन के सारथी, गीता वक्ता, दिव्य रक्षक",
+      "mr": "परम मार्गदर्शक, अर्जुनचा सारथी, गीतेचा वक्ता, दैवी रक्षक",
+      "sk": "परमार्गदर्शकः, अर्जुनस्य सारथिः, गीतोपदेशकः, दैवरक्षकः",
+      "gu": "પરમ માર્ગદર્શક, અર્જુનનો સારથી, ગીતા વક્તા, દિવ્ય રક્ષક"
     },
     "description": {
       "en": "Lord Krishna is a central figure in Hindu mythology and is revered as the eighth avatar of Vishnu. He is known for his wisdom, compassion, and playful nature. As a divine charioteer, he guided Arjuna during the Kurukshetra war, imparting profound spiritual teachings that form the essence of the Bhagavad Gita. Krishna's life is filled with enchanting stories, including his childhood exploits in Vrindavan, his role as a lover, and his leadership in the Mahabharata. He embodies the principles of dharma and devotion.",
@@ -214,11 +216,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890626/GitaVaani-Verses/Characters/sanjaya.png",
     "role": {
-      "en": "Narrator of the Gita to Dhritarashtra; granted divine vision.",
-      "hi": "धृतराष्ट्र को गीता का वक्ता; दिव्य दृष्टि प्राप्त।",
-      "mr": "धृतराष्ट्राला गीता सांगणारा; दिव्य दृष्टी प्राप्त।",
-      "sk": "धृतराष्ट्राय गीतावक्ता; दिव्यदृष्टिं प्राप्तवान्।",
-      "gu": "ધૃતરાષ્ટ્રને ગીતા જણાવનાર; દિવ્ય દ્રષ્ટિ પ્રાપ્ત."
+      "en": "Divine Vision, Gita Narrator, Loyal Advisor, Spiritual Messenger",
+      "hi": "दिव्य दृष्टि, गीता वक्ता, विश्वस्त सलाहकार, आध्यात्मिक दूत",
+      "mr": "दिव्य दृष्टी, गीता वक्ता, निष्ठावान सल्लागार, अध्यात्मिक दूत",
+      "sk": "दिव्यदृष्टिः, गीतावक्ता, विश्वस्तो मन्त्रदातृ, अध्यात्मदूतः",
+      "gu": "દિવ્ય દ્રષ્ટિ, ગીતા વર્ણનકર્તા, વિશ્વાસુ સલાહકાર, આધ્યાત્મિક દૂત"
     },
     "description": {
       "en": "Sanjaya was the trusted charioteer, counselor, and minister of the blind king Dhritarashtra. During the war of Mahabharata, Sanjaya was granted divine vision (divya drishti) by the sage Vyasa, which allowed him to see distant events in real time. With this power, he narrated the entire Kurukshetra war to Dhritarashtra, including the sacred conversation between Krishna and Arjuna known as the Bhagavad Gita. Sanjaya’s narration was unbiased, insightful, and spiritual. His role was not only to inform the king but also to make him reflect on dharma, justice, and righteousness. He symbolizes inner clarity, divine perception, and truthful communication.",
@@ -291,11 +293,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743889143/GitaVaani-Verses/Characters/dhritarashtra.png",
     "role": {
-      "en": "Blind king; father of the Kauravas.",
-      "hi": "अंध राजा; कौरवों के पिता।",
-      "mr": "अंध राजा; कौरवांचे पिता।",
-      "sk": "अन्धः राजा; कौरवाणां पिता।",
-      "gu": "આંધળો રાજા; કૌરવનો પિતા."
+      "en": "Blind King, Father of Kauravas, Attached to Duryodhana, Listener of Gita",
+      "hi": "अंध राजा, कौरवों के पिता, दुर्योधन से आसक्त, गीता के श्रोता",
+      "mr": "आंधळा राजा, कौरवांचा पिता, दुर्योधनावर आसक्त, गीतेचा श्रोता",
+      "sk": "अन्धराजा, कौरवपिता, दुर्योधनासक्तः, गीताश्रावकः",
+      "gu": "આંધળો રાજા, કૌરવોના પિતા, દુર્યોધનથી આસક્ત, ગીતા શ્રોતા"
     },
     "description": {
       "en": "Dhritarashtra was the blind king of Hastinapur and the father of the Kauravas. Despite his physical blindness, he was also often portrayed as morally blind due to his inability to act justly when his sons committed wrongs. He was deeply attached to Duryodhana and allowed his ambition to cloud his judgment. Dhritarashtra’s story is one of internal conflict — between dharma (righteousness) and familial attachment. Though he knew what was right, he often failed to act on it. His character represents the struggles of leadership, attachment, and the consequences of inaction in the face of injustice. His dialogue opens the Bhagavad Gita.",
@@ -368,11 +370,11 @@
     "type": "secondary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890622/GitaVaani-Verses/Characters/bhisma.png",
     "role": {
-      "en": "Grandsire and commander of the Kaurava army.",
-      "hi": "कौरव सेना के कमांडर और पितामह।",
-      "mr": "कौरव सेनेचे सेनापती आणि पितामह।",
-      "sk": "कौरवसेनायाः सेनापतिः पितामहश्च।",
-      "gu": "કૌરવ સેના ના પિતામહ અને સેના પ્રમુખ."
+      "en": "Vow-Bound Warrior, Grand Sire of Kuru Dynasty, Unbeaten in Battle, Guardian of Dharma",
+      "hi": "प्रतिज्ञाबद्ध योद्धा, कुरु वंश के पितामह, अजेय योद्धा, धर्म के रक्षक",
+      "mr": "प्रतिज्ञाबद्ध योद्धा, कुरुवंशाचे पितामह, अजय योद्धा, धर्माचा रक्षक",
+      "sk": "प्रतिज्ञायोधः, कुरुपितामहः, अजयः समरः, धर्मरक्षकः",
+      "gu": "પ્રતિજ્ઞાબદ્ધ યોદ્ધા, કુરુ વંશના પિતામહ, અજય યોદ્ધા, ધર્મના રક્ષક"
     },
     "description": {
       "en": "Bhishma was one of the most respected and powerful warriors in the Mahabharata. Known for his vow of celibacy and loyalty to the throne of Hastinapur, he was the grandsire of both the Kauravas and Pandavas. Despite knowing the righteousness of the Pandavas' cause, Bhishma fought on the side of the Kauravas due to his loyalty to the kingdom. His wisdom, strength, and discipline made him a revered figure. Bhishma had the boon of choosing the time of his death and finally fell on the battlefield after being pierced by Arjuna's arrows. He lay on a bed of arrows and imparted deep knowledge to Yudhishthira before passing away.",
@@ -459,11 +461,11 @@
     "type": "secondary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/drona.png",
     "role": {
-      "en": "Teacher of the Pandavas and Kauravas.",
-      "hi": "पांडवों और कौरवों के गुरु।",
-      "mr": "पांडव आणि कौरव यांचे गुरु।",
-      "sk": "पाण्डवकौरवानां गुरुः।",
-      "gu": "પાંડવ અને કૌરવ ના ગુરુ."
+      "en": "Royal Guru, Master of Weapons, Teacher of Kauravas & Pandavas, Fierce Warrior",
+      "hi": "राजगुरु, शस्त्रों के मर्मज्ञ, कौरव-पांडवों के आचार्य, प्रखर योद्धा",
+      "mr": "राजगुरु, शस्त्रविद्या निपुण, कौरव-पांडवांचे गुरु, प्रखर योद्धा",
+      "sk": "राजगुरुः, शस्त्रविद्याप्रवीणः, कौरवपाण्डवाचार्यः, महायोधः",
+      "gu": "રાજગુરુ, શસ્ત્રવિદ્યામાં પારંગત, કૌરવ-પાંડવોના આચાર્ય, શૂરવીર યોદ્ધા"
     },
     "description": {
       "en": "Drona, also known as Dronacharya, was a revered teacher and warrior in the Mahabharata. Born to the sage Bharadwaja, he mastered the art of warfare and was appointed as the royal preceptor for both the Pandavas and Kauravas. Drona was especially skilled in archery and martial arts, and he played a crucial role in training the young princes of Hastinapur. Despite his wisdom and sense of dharma, Drona chose to fight on the side of the Kauravas out of loyalty to the kingdom and its ruler. He was a complex figure, torn between duty and righteousness, and was eventually slain during the Kurukshetra war through a strategic deception by the Pandavas.",
@@ -550,11 +552,11 @@
     "type": "secondary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890621/GitaVaani-Verses/Characters/karna.png",
     "role": {
-      "en": "Arjuna's half-brother; fights for the Kauravas.",
-      "hi": "अर्जुन के सौतेले भाई; कौरवों के लिए लड़े।",
-      "mr": "अर्जुनाचे सावत्र भाऊ; कौरवांसाठी लढले।",
-      "sk": "अर्जुनस्य सोदरः; कौरवाणां पक्षे युद्धम् अकरोत्।",
-      "gu": "અર્જુનનો અડધો ભાઇ; કૌરવ માટે લડતો."
+      "en": "Son of the Sun, Generous Warrior, Loyal to Duryodhana, Tragic Hero",
+      "hi": "सूर्यपुत्र, दानी योद्धा, दुर्योधन का विश्वासी, त्रासदीपूर्ण नायक",
+      "mr": "सूर्यपुत्र, दानशूर योद्धा, दुर्योधनाचा निष्ठावान, शोकांत नायक",
+      "sk": "सूर्यपुत्रः, महादानी योधः, दुर्योधनस्य विश्वस्तः, दुःखान्तनायकः",
+      "gu": "સૂર્યપુત્ર, દાનવીર યોદ્ધા, દુર્યોધનનો વફાદાર, દુ:ખદ નાયક"
     },
     "description": {
       "en": "Karna, also known as the 'Sun's son,' was one of the most prominent and tragic characters in the Mahabharata. Born to Kunti before her marriage, he was raised by a charioteer’s family, unaware of his royal lineage. Despite facing many hardships, Karna grew up to be a formidable warrior, rivaling Arjuna in skill and valor. He fought for the Kauravas during the Kurukshetra war out of loyalty to Duryodhana, his friend and benefactor. His life was marked by loyalty, honor, and tragic circumstances, including the curse that led to his downfall. Karna's death at the hands of Arjuna remains one of the most poignant moments in the Mahabharata.",
@@ -655,11 +657,11 @@
     "type": "secondary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1743890619/GitaVaani-Verses/Characters/yudhisthira.png",
     "role": {
-      "en": "Eldest Pandava; symbol of righteousness.",
-      "hi": "सबसे बड़े पांडव; धर्म के प्रतीक।",
-      "mr": "सर्वात मोठे पांडव; धर्माचे प्रतीक।",
-      "sk": "ज्येष्ठः पाण्डवः; धर्मस्य प्रतीकः।",
-      "gu": "સૌથી મોટો પાંડવ; ધર્મના પ્રતિક."
+      "en": "Eldest Pandava, Son of Dharma, Truthful King, Upholder of Justice",
+      "hi": "ज्येष्ठ पांडव, धर्मपुत्र, सत्यनिष्ठ राजा, न्याय के रक्षक",
+      "mr": "ज्येष्ठ पांडव, धर्मपुत्र, सत्यनिष्ठ राजा, न्यायरक्षक",
+      "sk": "ज्येष्ठः पाण्डवः, धर्मपुत्रः, सत्यप्रियः राजा, न्यायपालकः",
+      "gu": "મુખ્ય પાંડવ, ધર્મપુત્ર, સત્યનિષ્ઠ રાજા, ન્યાયના રક્ષક"
     },
     "description": {
       "en": "Yudhishthira, the eldest of the Pandavas, is often considered the epitome of righteousness and justice in the Mahabharata. Known for his unwavering commitment to truth and dharma, Yudhishthira always sought to act in accordance with moral principles, even in the face of tremendous adversity. His leadership, wisdom, and compassion were key elements in guiding the Pandavas through their many trials. As the rightful heir to the throne, Yudhishthira's reign was marked by a strong sense of justice and fairness. His role in the Kurukshetra war is pivotal, as he was the one to take the throne after the war and restore peace and order.",
@@ -760,11 +762,11 @@
     "type": "secondary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530025/GitaVaani-Verses/Characters/bhima.png",
     "role": {
-      "en": "Second Pandava; symbol of strength.",
-      "hi": "दूसरे पांडव; शक्ति के प्रतीक।",
-      "mr": "दुसरे पांडव; शक्तीचे प्रतीक।",
-      "sk": "द्वितीयः पाण्डवः; बलस्य प्रतीकः।",
-      "gu": "બીજો પાંડવ; શક્તિનો પ્રતિક."
+      "en": "Eldest Pandava, Son of Dharma, Truthful King, Upholder of Justice",
+      "hi": "ज्येष्ठ पांडव, धर्मपुत्र, सत्यनिष्ठ राजा, न्याय के रक्षक",
+      "mr": "ज्येष्ठ पांडव, धर्मपुत्र, सत्यनिष्ठ राजा, न्यायरक्षक",
+      "sk": "ज्येष्ठः पाण्डवः, धर्मपुत्रः, सत्यप्रियः राजा, न्यायपालकः",
+      "gu": "મુખ્ય પાંડવ, ધર્મપુત્ર, સત્યનિષ્ઠ રાજા, ન્યાયના રક્ષક"
     },
     "description": {
       "en": "Bhima, the second of the five Pandava brothers, is widely revered as a symbol of immense physical strength and fearless bravery. From a young age, he demonstrated extraordinary might, and his valor was crucial in many battles during the Mahabharata. Known for his impulsive nature but deep loyalty to his family, Bhima played a key role in avenging Draupadi’s humiliation and defeating many powerful warriors such as Duryodhana and Jarasandha. His strength was matched by his sense of justice and unwavering commitment to his brothers. In the Kurukshetra war, he was a fearsome warrior who destroyed many enemies with his mace.",
@@ -859,11 +861,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530025/GitaVaani-Verses/Characters/nakul-sahadeva.png",
     "type": "secondary_character",
     "role": {
-      "en": "Youngest Pandavas; symbol of loyalty.",
-      "hi": "सबसे छोटे पांडव; निष्ठा के प्रतीक।",
-      "mr": "सर्वात धाकटे पांडव; निष्ठेचे प्रतीक।",
-      "sk": "कनिष्ठौ पाण्डवौ; निष्ठायाः प्रतीकौ।",
-      "gu": "સૌથી નાનું પાંડવ; વિશ્વસનિયતા નું પ્રતિક."
+      "en": "Twin Pandavas, Skilled Swordsman & Strategist, Graceful Warriors, Experts in Horses & Astrology",
+      "hi": "जुड़वां पांडव, कुशल तलवारबाज़ व रणनीतिकार, सुंदर योद्धा, घुड़सवारी व ज्योतिष में निपुण",
+      "mr": "जुळे पांडव, कुशल तलवारबाज व रणनितीकार, देखणे योद्धे, घोड्यां व ज्योतिषतज्ज्ञ",
+      "sk": "यमलपाण्डवौ, निपुणखड्गी च नीतिज्ञः, सौम्ययोद्धारौ, अश्वज्योतिषविदौ",
+      "gu": "જોડિયા પાંડવો, કુશળ તલવારબાજ અને વ્યૂહરચનાવિદ, સુંદર યોદ્ધાઓ, ઘોડા અને જ્યોતિષ નિષ્ણાત"
     },
     "description": {
       "en": "Nakula and Sahadeva were the twin sons of Madri and Pandu, and the youngest among the five Pandava brothers. Known for their beauty, intelligence, and unwavering loyalty, they played vital supporting roles throughout the Mahabharata. Nakula was an expert horseman and skilled in swordsmanship, while Sahadeva was wise and known for his deep knowledge of astrology and strategy. Despite often being in the background, their contributions were critical in the war and in guiding the Pandavas during exile. Their humility, devotion to Dharma, and dedication to their elder brothers made them respected and dependable warriors in the epic.",
@@ -957,11 +959,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530591/GitaVaani-Verses/Characters/duryodhana.png",
     "type": "secondary_character",
     "role": {
-      "en": "Eldest Kaurava; Arjuna's adversary.",
-      "hi": "सबसे बड़ा कौरव; अर्जुन का विरोधी।",
-      "mr": "सर्वात मोठा कौरव; अर्जुनाचा प्रतिस्पर्धी।",
-      "sk": "ज्येष्ठः कौरवः; अर्जुनस्य प्रतिद्वन्द्वी।",
-      "gu": "સૌથી મોટો કૌરવ; અર્જુનનો વિરોધી."
+      "en": "Kaurava Prince, Ambitious Leader, Arjuna’s Rival, Opposer of Dharma",
+      "hi": "कौरव राजकुमार, महत्वाकांक्षी नेता, अर्जुन का प्रतिद्वंदी, धर्म का विरोधी",
+      "mr": "कौरव राजकुमार, महत्त्वाकांक्षी नेता, अर्जुनचा प्रतिस्पर्धी, धर्मविरोधी",
+      "sk": "कौरवराजपुत्रः, महत्त्वाकाङ्क्षी नेता, अर्जुनस्य शत्रुः, अधर्मसंस्थापकः",
+      "gu": "કૌરવ રાજકુમાર, મહત્ત્વાકાંક્ષી નેતા, અર્જુનનો વિરોધી, ધર્મનો વિરોધી"
     },
     "description": {
       "en": "Duryodhana, the eldest of the Kauravas, is portrayed as the main antagonist in the Mahabharata. Ambitious and proud, he was determined to deny the Pandavas their rightful kingdom. Influenced heavily by his uncle Shakuni, Duryodhana orchestrated the infamous dice game that led to the exile of the Pandavas. Despite his flaws, he was a brave warrior and a loyal friend, especially to Karna. His deep-rooted jealousy and desire for power drove many of the major conflicts in the epic. Duryodhana's story is a reminder of how unchecked ambition and ego can lead to one's downfall, even if one possesses strength and valor.",
@@ -1062,11 +1064,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530076/GitaVaani-Verses/Characters/krup.png",
     "type": "secondary_character",
     "role": {
-      "en": "Royal teacher of the Kauravas; a warrior and scholar.",
-      "hi": "कौरवों के राजगुरु; एक योद्धा और विद्वान।",
-      "mr": "कौरवांचे राजगुरु; एक योद्धा आणि पंडित।",
-      "sk": "कौरवाणां राजगुरुः; योद्धा च विद्वांश्च।",
-      "gu": "કૌરવોના રાજગુરુ; યોદ્ધા અને વિદ્વાન."
+      "en": "Royal Guru, Immortal Warrior, Wise Counselor, Survivor of Kurukshetra",
+      "hi": "राजगुरु, अमर योद्धा, बुद्धिमान सलाहकार, कुरुक्षेत्र के जीवित योद्धा",
+      "mr": "राजगुरु, अमर योद्धा, बुद्धिमान सल्लागार, कुरुक्षेत्रातील एकमेव वाचलेला",
+      "sk": "राजगुरुः, चिरंजीवी योधः, धीरमन्त्रदाता, कुरुक्षेत्रयुद्धे जीवितः",
+      "gu": "રાજગુરુ, અમર યોદ્ધા, વિદ્વાન સલાહકાર, કુરુક્ષેત્રનો જીવિત યોદ્ધા"
     },
     "description": {
       "en": "Kripa, also known as Kripacharya, was one of the few characters in the Mahabharata who survived the war. He was the royal teacher of the Kauravas and renowned for his deep knowledge of scriptures and martial arts. Born miraculously and adopted by King Shantanu, Kripa was respected by both Pandavas and Kauravas alike. Despite being on the Kaurava side, he maintained a sense of fairness and discipline. He played a key role in training princes in archery and warfare. After the war, he became the teacher and guardian of Parikshit, Arjuna’s grandson. Kripa's life is a symbol of wisdom, endurance, and neutrality amidst chaos.",
@@ -1153,11 +1155,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1745049838/GitaVaani-Verses/Characters/ashwatthama.png",
     "type": "secondary_character",
     "role": {
-      "en": "Son of Dronacharya; cursed to immortality.",
-      "hi": "द्रोणाचार्य के पुत्र; अमरता का श्राप मिला।",
-      "mr": "द्रोणाचार्यांचे पुत्र; अमरतेचे शाप लाभलेले।",
-      "sk": "द्रोणाचार्यस्य पुत्रः; अमरत्वेन शप्तः।",
-      "gu": "દ્રોણાચાર્યનો પુત્ર; અમરતા નો શાપ મળ્યો હતો."
+      "en": "Son of Drona, Immortal Warrior, Cursed by Krishna, Avenger of Kauravas",
+      "hi": "द्रोणपुत्र, अमर योद्धा, कृष्ण का शापित, कौरवों का प्रतिशोधी",
+      "mr": "द्रोणपुत्र, अमर योद्धा, कृष्णाचा शापित, कौरवांचा सूड घेणारा",
+      "sk": "द्रोणपुत्रः, चिरंजीवी योधः, कृष्णशापितः, कौरववैरिविनाशकः",
+      "gu": "દ્રોણપુત્ર, અમર યોદ્ધા, કૃષ્ણ દ્વારા શાપિત, કૌરવોનો બદલો લેનાર"
     },
     "description": {
       "en": "Ashwatthama, the son of Guru Dronacharya, was a mighty warrior and one of the few characters in the Mahabharata who was born with a gem on his forehead that granted him protection from all harm. Fierce in battle and loyal to the Kauravas, Ashwatthama played a controversial role after the fall of Duryodhana. In an act of revenge, he attacked the Pandava camp at night and killed the sons of the Pandavas while they were asleep. For this unforgivable act, Lord Krishna cursed him with immortality, condemning him to roam the earth in pain and misery for eternity. His story is a warning about uncontrolled anger and vengeance.",
@@ -1244,11 +1246,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530604/GitaVaani-Verses/Characters/draupadi.png",
     "type": "primary_character",
     "role": {
-      "en": "Wife of the Pandavas; symbol of strength and dignity.",
-      "hi": "पांडवों की पत्नी; शक्ति और गरिमा की प्रतीक।",
-      "mr": "पांडवांची पत्नी; सामर्थ्य आणि प्रतिष्ठेचे प्रतीक।",
-      "sk": "पाण्डवानां पत्नी; शक्तेः गौरवस्य च प्रतीका।",
-      "gu": "પાંડવોની પત્ની; શક્તિ અને ગૌરવનું પ્રતિક."
+      "en": "Fiery Princess, Wife of Pandavas, Symbol of Honor, Seeker of Justice",
+      "hi": "अग्निकन्या, पांडवों की पत्नी, सम्मान की प्रतीक, न्याय की मांगकर्ता",
+      "mr": "अग्नीकन्या, पांडवांची पत्नी, सन्मानाचे प्रतीक, न्याय मागणारी",
+      "sk": "अग्निजा राजकुमारी, पाण्डवपत्नी, मानसंकेतः, न्याययाचिका",
+      "gu": "અગ્નિકન્યા, પાંડવોની પત્ની, સન્માનનું પ્રતિક, ન્યાયની માંગણી કરનાર"
     },
     "description": {
       "en": "Draupadi, born from fire, was the daughter of King Drupada and the wife of all five Pandavas. She was known for her unwavering dignity, courage, and deep sense of justice. Her humiliation in the Kaurava court after the dice game became a major turning point in the Mahabharata, fueling the fire of the great war. Despite the immense pain and suffering she faced, Draupadi remained firm and fearless, demanding justice and standing tall among kings and warriors. Her strength lay not in physical power but in her resilience, moral integrity, and fierce resolve. Draupadi is revered as a symbol of feminine strength, honor, and unshakable will.",
@@ -1328,11 +1330,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530823/GitaVaani-Verses/Characters/Sakuni.png",
     "type": "secondary_character",
     "role": {
-      "en": "Maternal uncle of the Kauravas; expert in deceit.",
-      "hi": "कौरवों के मामा; कपट में माहिर।",
-      "mr": "कौरवांचे मामा; कपटामध्ये पारंगत।",
-      "sk": "कौरवाणां मामा; कपटज्ञः।",
-      "gu": "કૌરવોના મામા; કપટમાં પારંગત."
+      "en": "Master Schemer, Prince of Gandhara, Dice Game Manipulator, Catalyst of War",
+      "hi": "चतुर चालबाज़, गांधार का राजकुमार, पासे का खिलाड़ी, युद्ध का कारण",
+      "mr": "चतुर डावपेचकार, गांधारचा राजकुमार, पास्यांचा खेळाडू, युद्धाचा कारणकर्ता",
+      "sk": "कपटशिक्षिणी, गान्धारराजपुत्रः, अक्षविन्यस्त्राता, युद्धकारणं कर्ता",
+      "gu": "ચતુર રચનાકાર, ગાંધારનો રાજકુમાર, જુગારનો ખેલાડી, યુદ્ધનો પ્રેરક"
     },
     "description": {
       "en": "Shakuni, the maternal uncle of the Kauravas, was a devious and cunning figure in the Mahabharata. Known for his sharp intellect and his ability to manipulate others, he was the mastermind behind many of the Kaurava's schemes. He was highly skilled in the art of deceit and played a key role in sowing discord between the Pandavas and Kauravas. His deep hatred for the Pandavas and his desire for power led him to orchestrate the infamous game of dice, which was a major turning point in the war of Kurukshetra. Shakuni's intelligence, along with his willingness to use underhanded methods, made him a formidable and feared character in the epic.",
@@ -1470,11 +1472,11 @@
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1744530591/GitaVaani-Verses/Characters/dushasana.png",
     "type": "secondary_character",
     "role": {
-      "en": "Second eldest Kaurava; known for his cruelty, particularly during the game of dice.",
-      "hi": "कौरवों में दूसरा सबसे बड़ा पुत्र; विशेष रूप से पासे के खेल के दौरान अपनी क्रूरता के लिए प्रसिद्ध।",
-      "mr": "कौरवांमध्ये दुसर्‍या क्रमांकाचा मुलगा; विशेषत: पासे खेळ दरम्यान आपल्या क्रूरतेसाठी प्रसिद्ध.",
-      "sk": "कौरवाणां मध्ये द्वितीयः पुत्रः; विशेषत: पण खेलकाले क्रूरतायाः प्रसिद्धः।",
-      "gu": "કૌરવોમાં બીજું સૌથી મોટું પુત્ર; ખાસ કરીને પિસાના ખેલ દરમિયાન તેની ક્રૂરતાને માટે પ્રસિદ્ધ."
+      "en": "Duryodhana's Brother, Draupadi's Offender, Kaurava Warrior, Killed by Bhima",
+      "hi": "दुर्योधन का भाई, द्रौपदी का अपमान, कौरव योद्धा, भीम द्वारा वध",
+      "mr": "दुर्योधनाचा भाऊ, द्रौपदीचा अपमान, कौरव योद्धा, भीमाने वध",
+      "sk": "दुर्योधनभ्राता, द्रौपद्या अपमानकः, कौरवयोधः, भीमवधः",
+      "gu": "દુર્યોધનનો ભાઈ, દ્રૌપદીનો અપમાન, કૌરવ યોદ્ધા, ભીમ દ્વારા વધ"
     },
     "description": {
       "en": "Dushasana was one of the Kaurava princes, known for his cruelty and antagonism towards the Pandavas. He was particularly infamous for his role in the disrobing of Draupadi during the infamous dice game in the court of Hastinapura. He was the second eldest son of Dhritarashtra and Gandhari, and a loyal supporter of his elder brother Duryodhana. His actions in the Kurukshetra war and his hatred towards the Pandavas marked his character as one of the primary antagonists of the epic.",
@@ -1496,11 +1498,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1746299680/GitaVaani-Verses/Characters/vidura.png",
     "role": {
-      "en": "Wise counselor of the Kuru dynasty; represents righteousness and moral clarity.",
-      "hi": "कुरु वंश के बुद्धिमान सलाहकार; धर्म और नैतिक स्पष्टता का प्रतीक।",
-      "mr": "कुरु वंशाचा बुद्धिमान सल्लागार; धर्म आणि नैतिक स्पष्टतेचे प्रतीक.",
-      "sk": "कुरुवंशस्य बुद्धिमान् मन्त्रदाता; धर्मनैतिकस्पष्टतायाः प्रतीकः।",
-      "gu": "કુરુ વંશના વિદ્વાન સલાહકાર; ધર્મ અને નૈતિક સ્પષ્ટતાનું પ્રતિક."
+      "en": "Wise Counselor, Dharma Incarnate, Loyal Advisor, Voice of Truth",
+      "hi": "बुद्धिमान सलाहकार, धर्म अवतार, विश्वस्त मार्गदर्शक, सत्य की आवाज",
+      "mr": "शहाणा सल्लागार, धर्माचा अवतार, निष्ठावान मार्गदर्शक, सत्याचा आवाज",
+      "sk": "मन्त्रदाताऽज्ञानी, धर्मावतारः, विश्वस्तः सखा, सत्यवक्ता",
+      "gu": "બુદ્ધિશાળી સલાહકાર, ધર્મનો અવતાર, વફાદાર સલાહકાર, સત્યની અવાજ"
     },
     "description": {
       "en": "Vidura was a wise and respected counselor in the court of Hastinapura. Born of a sage and a maid, he was known for his deep understanding of dharma and his fearless expression of truth. Despite his birth, he held great influence due to his wisdom, integrity, and unwavering commitment to righteousness. He consistently advised the Kauravas and Pandavas to act in accordance with dharma. Vidura's insights and moral clarity are captured in the 'Vidura Niti', a revered text of ethical wisdom.",
@@ -1552,11 +1554,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1746247684/GitaVaani-Verses/Characters/shantanu.png",
     "role": {
-      "en": "King of Hastinapura and father of Bhishma; symbolizes the complexities of desire and duty.",
-      "hi": "हस्तिनापुर के राजा और भीष्म के पिता; इच्छा और कर्तव्य की जटिलताओं का प्रतीक।",
-      "mr": "हस्तिनापूरचे राजा आणि भीष्मांचे वडील; इच्छा आणि कर्तव्याच्या गुंतागुंतीचे प्रतीक.",
-      "sk": "हस्तिनापुरस्य राजा च भीष्मस्य पिता; इच्छाया कर्तव्यानां च जटिलतां दर्शयति।",
-      "gu": "હસ્તિનાપુરના રાજા અને ભીષ્મના પિતા; ઈચ્છા અને ફરજની જટિલતાનું પ્રતિક."
+      "en": "Kuru King, Father of Bhishma, Ganga’s Husband, Ancestor of Pandavas",
+      "hi": "कुरु राजा, भीष्म के पिता, गंगा के पति, पांडवों के पूर्वज",
+      "mr": "कुरु राजा, भीष्मचे वडील, गंगेचे पती, पांडवांचे पूर्वज",
+      "sk": "कुरुराजः, भीष्मपिता, गङ्गायाः पति, पाण्डवानां पूर्वजः",
+      "gu": "કુરુ રાજા, ભીષ્મના પિતા, ગંગાના પતિ, પાંડવોના પૂર્વજ"
     },
     "description": {
       "en": "Shantanu was a noble king of Hastinapura in the Mahabharata. He is best known as the father of Bhishma and husband of Ganga. His deep love for Ganga led him to agree to her unusual conditions, including not questioning her actions. Later, his love for Satyavati caused a turning point in the Kuru dynasty when Bhishma took a vow of lifelong celibacy. Shantanu’s character illustrates the challenges kings face between personal desires and royal responsibilities.",
@@ -1608,11 +1610,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1746247684/GitaVaani-Verses/Characters/kunti.png",
     "role": {
-      "en": "Mother of the Pandavas, symbol of strength, sacrifice, and wisdom.",
-      "hi": "पांडवों की माता, शक्ति, त्याग और बुद्धिमत्ता का प्रतीक।",
-      "mr": "पांडवांची माता, शक्ती, त्याग आणि बुद्धिमत्तेचे प्रतीक.",
-      "sk": "पाण्डवानां माता, शक्तेः त्यागस्य च प्रतीका च बुद्धिमता।",
-      "gu": "પાંડવોની માતા, શક્તિ, ત્યાગ અને જ્ઞાનનું પ્રતિક."
+      "en": "Mother of Pandavas, Devoted Queen, Keeper of Secrets, Symbol of Strength",
+      "hi": "पांडवों की माँ, समर्पित रानी, रहस्यों की रक्षक, शक्ति की प्रतीक",
+      "mr": "पांडवांची आई, समर्पित राणी, रहस्यांची रक्षक, शक्तीचं प्रतीक",
+      "sk": "पाण्डवमाता, भक्ताराज्ञी, रहस्यगोप्त्री, शक्तिस्वरूपा",
+      "gu": "પાંડવોની માતા, નિષ્ઠાવાન રાણી, રહસ્યોની રક્ષા, શક્તિનું પ્રતિક"
     },
     "description": {
       "en": "Kunti was the mother of the Pandavas and a central figure in the Mahabharata. Born as Pritha, she received a boon from Sage Durvasa to invoke any god and bear a child. Before marriage, she invoked Surya and gave birth to Karna, whom she had to abandon. Later, she married King Pandu and bore Yudhishthira, Bhima, and Arjuna through divine intervention. Kunti raised the Pandavas with resilience after Pandu’s death and guided them with wisdom throughout their journey. Her life reflects dignity, inner strength, and the pain of many difficult choices.",
@@ -1657,11 +1659,11 @@
     "type": "primary_character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1746247684/GitaVaani-Verses/Characters/ved-vyas.png",
     "role": {
-      "en": "Sage and author of the Mahabharata, symbol of knowledge and divine wisdom.",
-      "hi": "महाभारत के रचयिता, ज्ञान और दिव्य बुद्धि के प्रतीक।",
-      "mr": "महाभारताचे रचयिता, ज्ञान आणि दिव्य बुद्धीचे प्रतीक.",
-      "sk": "महाभारतस्य रचयिता, ज्ञानस्य दिव्यबुद्धेः च प्रतीकः।",
-      "gu": "મહાભારતના રચયિતા, જ્ઞાન અને દિવ્ય બુદ્ધિના પ્રતિક."
+      "en": "Mahabharata Author, Sage of Wisdom, Father of Pandu, Veda Compiler",
+      "hi": "महाभारत लेखक, ज्ञान के ऋषि, पांडु के पिता, वेदों के संकलक",
+      "mr": "महाभारत लेखक, ज्ञानसंपन्न ऋषी, पांडूचे वडील, वेद संकलक",
+      "sk": "महाभारतकर्ता, ज्ञानमुनिः, पाण्डुपिता, वेदसंग्राहकः",
+      "gu": "મહાભારત રચનાકાર, જ્ઞાનમય ઋષિ, પાંડુના પિતા, વેદ સંકલક"
     },
     "description": {
       "en": "Ved Vyasa, also known as Krishna Dvaipayana Vyasa, was a revered sage and the legendary author of the Mahabharata. He is considered one of the greatest sages in Hindu tradition. Vyasa was the son of sage Parashara and Satyavati. He is credited with composing not only the Mahabharata but also compiling the Vedas and writing the 18 Puranas. In the Mahabharata, he also plays a key role by fathering Dhritarashtra, Pandu, and Vidura through a custom known as 'Niyoga'. Vyasa represents eternal wisdom, spiritual insight, and divine authorship.",
@@ -1706,11 +1708,11 @@
     "type": "deity",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1745052170/GitaVaani-Verses/Characters/Indra.png",
     "role": {
-      "en": "King of the Devas and ruler of Svarga, associated with rain, thunder, and war.",
-      "hi": "देवों के राजा और स्वर्ग के अधिपति, वर्षा, वज्र और युद्ध के देवता।",
-      "mr": "देवतांचे राजा आणि स्वर्गाचे अधिपती, पावसाचे, वज्राचे आणि युद्धाचे देवता.",
-      "sk": "देवानां राजा, स्वर्गस्य अधिपः, वर्षायाः वज्रस्य च देवता।",
-      "gu": "દેવતાઓના રાજા અને સ્વર્ગના શાસક, વરસાદ, વીજળી અને યુદ્ધના દેવતા."
+      "en": "King of Gods, Lord of Heaven, Arjuna's Father, Wielder of Vajra",
+      "hi": "देवों के राजा, स्वर्ग के अधिपति, अर्जुन के पिता, वज्रधारी",
+      "mr": "देवतांचे राजा, स्वर्गाचे अधिपती, अर्जुनचे वडील, वज्रधारी",
+      "sk": "देवराजः, स्वर्गेश्वरः, अर्जुनपिता, वज्रधारी",
+      "gu": "દેવતાઓના રાજા, સ્વર્ગના રાજા, અર્જુનના પિતા, વજ્રધારી"
     },
     "description": {
       "en": "Indra is the king of the Devas (gods) and ruler of the heavenly realm, Svarga. He is the god of thunder, rain, and war, wielding the powerful weapon Vajra (thunderbolt). In the Mahabharata, Indra plays a crucial role as the father of Arjuna, the mightiest of the Pandavas, born through a divine boon to Kunti. Indra often appears to guide, test, or aid the Pandavas on their journey. He symbolizes power, leadership, and divine intervention.",
@@ -1748,11 +1750,11 @@
     "type": "deity",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1745052392/GitaVaani-Verses/Characters/vayudeva.png",
     "role": {
-      "en": "God of wind, strength, and life breath; father of Bhima and Hanuman.",
-      "hi": "वायु, शक्ति और प्राणों के देवता; भीम और हनुमान के पिता।",
-      "mr": "वारा, शक्ती आणि प्राणशक्तीचे देव; भीम आणि हनुमानाचे वडील.",
-      "sk": "वायुः वायोः शक्तेः च देवता, भीमस्य हनूमतः च पिता।",
-      "gu": "પવન, શક્તિ અને પ્રાણશક્તિના દેવ; ભીમ અને હનુમાનના પિતા."
+      "en": "God of Wind, Force of Life, Bhima’s Father, Elemental Deity",
+      "hi": "वायु देवता, जीवन की शक्ति, भीम के पिता, पंचतत्व देव",
+      "mr": "वायू देवता, जीवनशक्ती, भीमाचे वडील, पंचतत्त्व देव",
+      "sk": "वायुदेवः, प्राणशक्तिः, भीमपिता, पञ्चतत्त्वदेवः",
+      "gu": "વાયુ દેવ,生命 શક્તિ, ભીમના પિતા, તત્વોના દેવ"
     },
     "description": {
       "en": "Vayu Deva is the Hindu god of wind and one of the Ashta-Dikpalas (guardians of the directions). He represents the life force (prana) and is associated with immense strength. In the Mahabharata, he is the divine father of Bhima, born to Kunti through a boon. He is also considered the father of Hanuman in the Ramayana. Vayu symbolizes speed, power, and the invisible force that sustains life.",
@@ -1790,11 +1792,11 @@
     "type": "character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1745051993/GitaVaani-Verses/Characters/ghatotkacha.png",
     "role": {
-      "en": "Son of Bhima and the Rakshasi Hidimba; a powerful warrior who fought for the Pandavas in the Kurukshetra war.",
-      "hi": "भीम और राक्षसी हिडिंबा का पुत्र; एक शक्तिशाली योद्धा जो कुरुक्षेत्र युद्ध में पांडवों के लिए लड़ा।",
-      "mr": "भीम आणि राक्षसी हिडिंबाचा पुत्र; कुरुक्षेत्र युद्धात पांडवांसाठी लढणारा शक्तिशाली योद्धा.",
-      "sk": "भीमस्य हिडिम्बायाः च पुत्रः; कुरुक्षेत्रयुद्धे पाण्डवपक्षे योद्धा अभवत्।",
-      "gu": "ભીમ અને રાક્ષસી હિડીમ્બાનો પુત્ર; પાંડવો માટે કુરુક્ષેત્ર યુદ્ધમાં લડનાર શક્તિશાળી યુદ્ધા."
+      "en": "Son of Bhima, Mighty Rakshasa, Night Warrior, Karna’s Victim",
+      "hi": "भीम का पुत्र, बलशाली राक्षस, रात्रि योद्धा, कर्ण का शिकार",
+      "mr": "भीमचा पुत्र, बलाढ्य राक्षस, रात्रीचा योद्धा, कर्णाचा बळी",
+      "sk": "भीमपुत्रः, महाबलराक्षसः, रात्रियोधः, कर्णेन हतः",
+      "gu": "ભીમનો પુત્ર, શક્તિશાળી રાક્ષસ, રાત્રિ યોદ્ધા, કર્ણનો શિકાર"
     },
     "description": {
       "en": "Ghatotkacha was the son of Bhima and the Rakshasi (demoness) Hidimba. He inherited immense strength and magical powers from his Rakshasa lineage. Though he lived in the forest, he remained loyal to the Pandavas. During the Kurukshetra war, he played a crucial role on the Pandava side, especially with his nighttime warfare skills. His death was significant — Karna used his divine weapon, Vasavi Shakti, to kill Ghatotkacha, which meant he could no longer use it on Arjuna. Thus, Ghatotkacha's sacrifice protected Arjuna.",
@@ -1822,11 +1824,11 @@
     "type": "character",
     "image": "https://res.cloudinary.com/dar7hn3v1/image/upload/v1745050800/GitaVaani-Verses/Characters/abhimanyu.png",
     "role": {
-      "en": "Son of Arjuna and Subhadra; a valiant young warrior known for his role in the Chakravyuha formation during the Kurukshetra war.",
-      "hi": "अर्जुन और सुभद्रा के पुत्र; चक्रव्यूह में अपने साहसिक युद्ध के लिए प्रसिद्ध एक वीर युवा योद्धा।",
-      "mr": "अर्जुन आणि सुभद्राचा पुत्र; चक्रव्यूहातल्या शौर्याने प्रसिद्ध असलेला एक धाडसी तरुण योद्धा.",
-      "sk": "अर्जुनस्य सुभद्रायाः च पुत्रः; चक्रव्यूहे युद्धकौशलं दर्शयन् वीरः युवकः।",
-      "gu": "અર્જુન અને સુભદ્રાનો પુત્ર; કુરુક્ષેત્ર યુદ્ધમાં ચક્રવ્યૂહમાં દાખલ થવા માટે જાણીતો શૂરવીર યુવા યોદ્ધા."
+      "en": "Son of Arjuna, Young Warrior, Chakravyuha Breaker, Martyred Hero",
+      "hi": "अर्जुन का पुत्र, युवा योद्धा, चक्रव्यूह भेदी, शहीद नायक",
+      "mr": "अर्जुनचा पुत्र, तरुण योद्धा, चक्रव्यूह भेदक, शहीद नायक",
+      "sk": "अर्जुनपुत्रः, युवा योधः, चक्रव्यूहभेत्ता, वीरमृत्युः",
+      "gu": "અર્જુનનો પુત્ર, યુવા યોદ્ધા, ચક્રવ્યુહ ભેદનાર, શહીદ નાયક"
     },
     "description": {
       "en": "Abhimanyu was the son of Arjuna and Subhadra, and the nephew of Lord Krishna. He was a courageous and skilled warrior even at a young age. While still in Subhadra’s womb, he learned about the complex military formation called Chakravyuha. During the Kurukshetra war, he bravely entered this formation but didn't know how to exit it. Trapped and surrounded by multiple Kaurava warriors, including Dronacharya, Karna, Duryodhana, and others, he fought valiantly till his last breath. His death deeply grieved the Pandavas and was a turning point in the war.",

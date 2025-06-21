@@ -32,7 +32,10 @@ const CharacterListScreen = () => {
   );
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["top", "left", "right"]}>
+    <SafeAreaView
+      style={[styles.safeArea, styles.bottomSafeArea]}
+      edges={["top", "left", "right", "bottom"]}
+    >
       {/* Top Bar */}
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -68,7 +71,11 @@ const CharacterListScreen = () => {
                 id: character.id,
                 type: character.type,
                 relation: character?.relations,
-                role: character?.role,
+                role: character?.role[currentLanguage] || character?.role.en,
+                description:
+                  character.description[currentLanguage] ||
+                  character.description.en,
+                image: character.image,
               })
             }
             activeOpacity={0.7}
@@ -91,7 +98,6 @@ const CharacterListScreen = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <SafeAreaView edges={["bottom"]} style={styles.bottomSafeArea} />
     </SafeAreaView>
   );
 };
@@ -161,6 +167,7 @@ const styles = StyleSheet.create({
   },
   bottomSafeArea: {
     backgroundColor: "#fff",
+    paddingBottom: 24,
   },
 });
 
