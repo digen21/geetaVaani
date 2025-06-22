@@ -70,7 +70,7 @@ const FavoritesScreen = ({ navigation }) => {
     <View style={styles.headerContainer}>
       <TopBar
         title={currentTranslations.favorites}
-        textStyle={[textStyles.heading3]}
+        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
         onBack={() => navigation.goBack()}
       />
 
@@ -90,8 +90,8 @@ const FavoritesScreen = ({ navigation }) => {
       <MaterialIcons name="favorite" size={64} color="#FF3B30" />
       <Text
         style={[
-          textStyles.heading2,
           { color: colors.text, textAlign: "center", marginTop: 16 },
+          textStyles.heading2,
         ]}
       >
         {currentTranslations.noFavorites}
@@ -99,7 +99,7 @@ const FavoritesScreen = ({ navigation }) => {
       <Text
         style={[
           textStyles.text,
-          { color: colors.secondaryText, textAlign: "center", lineHeight: 24 },
+          { color: colors.text, textAlign: "center", lineHeight: 24 },
         ]}
       >
         {currentTranslations.addFavoritesHint}
@@ -193,7 +193,7 @@ const FavoritesScreen = ({ navigation }) => {
         style={[
           textStyles.body,
           {
-            color: colors.secondaryText,
+            color: colors.text,
             marginVertical: 20,
             paddingHorizontal: 16,
           },

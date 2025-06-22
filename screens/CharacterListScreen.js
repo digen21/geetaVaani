@@ -11,12 +11,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { SearchBar, TopBar } from "../components";
 import { CharacterDetailTranslations } from "../configs";
-import { useLanguage } from "../contexts";
+import { useLanguage, useTheme } from "../contexts";
 import characters from "../data/characterAndRoles/characters.json";
 import { createTextStyles } from "../utils";
 
 const CharacterListScreen = () => {
   const navigation = useNavigation();
+  const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
   const textStyles = createTextStyles(currentLanguage);
   const [search, setSearch] = useState("");
@@ -32,13 +33,20 @@ const CharacterListScreen = () => {
 
   return (
     <SafeAreaView
-      style={[styles.safeArea, styles.bottomSafeArea]}
+      style={
+        ([styles.safeArea, styles.bottomSafeArea],
+        { backgroundColor: colors.background })
+      }
       edges={["top", "left", "right", "bottom"]}
     >
       {/* Top Bar */}
+
       <TopBar
         title={CharacterDetailTranslations[currentLanguage].character}
-        textStyle={[textStyles.heading3]}
+        textStyle={[
+          { color: colors.textPrimary },
+          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading2,
+        ]}
         onBack={() => navigation.goBack()}
       />
 
@@ -57,7 +65,10 @@ const CharacterListScreen = () => {
         {filteredCharacters.map((character) => (
           <TouchableOpacity
             key={character.id}
-            style={styles.card}
+            style={[
+              { color: colors.text, backgroundColor: colors.cardBg },
+              styles.card,
+            ]}
             onPress={() =>
               navigation.navigate("CharacterDetail", {
                 name: character?.name?.[currentLanguage] || character?.name?.en,
@@ -83,7 +94,11 @@ const CharacterListScreen = () => {
               resizeMode="cover"
             />
             <Text
-              style={[styles.characterName, textStyles.heading3]}
+              style={[
+                { color: colors.text },
+                styles.characterName,
+                textStyles.heading3,
+              ]}
               numberOfLines={1}
             >
               {character?.name?.[currentLanguage] || character?.name?.en}
@@ -98,7 +113,7 @@ const CharacterListScreen = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
   topBar: {
     flexDirection: "row",
@@ -137,7 +152,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 16,
     marginVertical: 8,
-    backgroundColor: "#fff",
     borderRadius: 16,
     padding: 16,
     shadowColor: "#000",
@@ -155,7 +169,6 @@ const styles = StyleSheet.create({
   },
   characterName: {
     fontSize: 18,
-    color: "#111827",
     fontWeight: "600",
   },
   bottomSafeArea: {

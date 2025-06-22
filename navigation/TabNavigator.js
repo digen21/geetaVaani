@@ -10,12 +10,14 @@ import {
   ProfileScreen,
 } from "../screens";
 import HomeStackNavigator from "./HomeStackNavigator";
+import { useTheme } from "../contexts";
 
 const Tab = createBottomTabNavigator();
 
 const LanguageScreen = () => <View />; // Empty screen for Language tab
 
 const TabNavigator = () => {
+  const { colors } = useTheme();
   const insets = useSafeAreaInsets();
   const [showLangModal, setShowLangModal] = useState(false);
 
@@ -34,7 +36,7 @@ const TabNavigator = () => {
             borderTopRightRadius: 25,
             overflow: "hidden",
             height: 60 + insets.bottom,
-            backgroundColor: "#fff",
+            backgroundColor: colors.cardBg,
             elevation: 8,
             shadowColor: "#000",
             shadowOffset: {

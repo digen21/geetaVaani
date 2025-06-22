@@ -77,8 +77,8 @@ const ChapterDetailScreen = ({ route, navigation }) => {
       >
         <Text
           style={[
-            tw`text-3xl font-bold mb-2 text-center`,
-            textStyles.heading1,
+            tw`text-3xl text-center`,
+            textStyles.heading3,
             { color: colors.text },
           ]}
         >
@@ -89,7 +89,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         <Text
           style={[
             tw`text-3xl mt-1 mb-4 text-center`,
-            textStyles.heading1,
+            textStyles.heading2,
             {
               color: colors.primary,
               flexShrink: 1,

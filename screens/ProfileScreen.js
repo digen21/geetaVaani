@@ -9,15 +9,25 @@ import {
   View,
 } from "react-native";
 
-import { ToggleThemeButton } from "../components";
+import ToggleThemeButton from "../components/ToggleThemeButton";
+import { useTheme } from "../contexts";
 
 const ProfileScreen = () => {
-  const userEmail = "test@test.com";
   const navigation = useNavigation();
+  const { colors, isDark } = useTheme();
+  const userEmail = "test@test.com";
+
   const MenuItem = ({ title, onPress, style }) => (
-    <Pressable style={[styles.menuItem, style]} onPress={onPress}>
-      <Text style={styles.menuText}>{title}</Text>
-      <Ionicons name="chevron-forward-outline" size={18} color="#C7C7CC" />
+    <Pressable
+      style={[styles.menuItem, { borderBottomColor: colors.border }, style]}
+      onPress={onPress}
+    >
+      <Text style={[styles.menuText, { color: colors.text }]}>{title}</Text>
+      <Ionicons
+        name="chevron-forward-outline"
+        size={18}
+        color={colors.icon || "#C7C7CC"}
+      />
     </Pressable>
   );
 
@@ -26,7 +36,10 @@ const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+      edges={["top", "bottom"]}
+    >
       <View style={styles.screen}>
         <ToggleThemeButton style={{ margin: 20, marginTop: 20 }} />
         <View style={styles.header}>
@@ -37,12 +50,26 @@ const ProfileScreen = () => {
               defaultSource={require("../assets/default-avatar.png")}
             />
           </View>
-          <Text style={styles.userName}>User</Text>
-          <Text style={styles.userEmail}>{userEmail}</Text>
+          <Text style={[styles.userName, { color: colors.textPrimary }]}>
+            {"User"}
+          </Text>
+          <Text
+            style={[
+              styles.userEmail,
+              { color: colors.textSecondary || "#8E8E93" },
+            ]}
+          >
+            {userEmail}
+          </Text>
         </View>
 
         <View style={styles.menuGroups}>
-          <View style={styles.menuSection}>
+          <View
+            style={[
+              styles.menuSection,
+              { backgroundColor: colors.cardBg || "#fff" },
+            ]}
+          >
             <MenuItem title="My Account" onPress={() => {}} />
             <MenuItem title="Notifications" onPress={() => {}} />
             <MenuItem title="About App" onPress={handleAboutPress} />
@@ -62,7 +89,6 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F7",
   },
   screen: {
     flex: 1,
@@ -86,18 +112,15 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 30,
     fontWeight: "600",
-    color: "#000",
     marginBottom: 4,
   },
   userEmail: {
     fontSize: 20,
-    color: "#8E8E93",
   },
   menuGroups: {
     paddingHorizontal: 20,
   },
   menuSection: {
-    backgroundColor: "#fff",
     borderRadius: 10,
     marginBottom: 35,
   },
@@ -108,11 +131,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: "#C6C6C8",
   },
   menuText: {
     fontSize: 17,
-    color: "#000",
   },
   signOutSection: {
     marginBottom: 0,

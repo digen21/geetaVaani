@@ -51,7 +51,8 @@ const ChaptersScreen = () => {
         compStyle={{ marginLeft: 10 }}
         title={chapterVersesTranslations.chapter[currentLanguage]}
       />
-      <View style={{ marginTop: 10 }}>
+
+      <View>
         <FlatList
           data={chaptersData}
           renderItem={({ item }) => (
@@ -82,7 +83,6 @@ const ChaptersScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F7",
   },
   listContent: {
     paddingTop: 16,

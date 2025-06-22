@@ -64,10 +64,7 @@ const VerseDetailScreen = ({ route, navigation }) => {
     >
       <TopBar
         title={verseTitle}
-        textStyle={[
-          { color: colors.textPrimary },
-          currentLanguage === "en" ? textStyles.heading2 : textStyles.heading2,
-        ]}
+        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
         onBack={() => navigation.goBack()}
       />
 

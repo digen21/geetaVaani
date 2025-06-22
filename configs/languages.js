@@ -338,7 +338,7 @@ export const deleteAllTranslations = {
 
 export const chapterVersesTranslations = {
   chapter: {
-    en: "Chapters",
+    en: "Chapter",
     hi: "अध्याय",
     sk: "अध्यायः",
     mr: "अध्याय",
