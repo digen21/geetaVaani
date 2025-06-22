@@ -1,7 +1,8 @@
-import { View, TouchableOpacity, Animated } from "react-native";
-import { useEffect, useRef } from "react";
-import tw from "twrnc";
 import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useRef } from "react";
+import { Animated, TouchableOpacity } from "react-native";
+import tw from "twrnc";
+
 import { useTheme } from "../contexts";
 
 const ToggleThemeButton = ({ style }) => {
