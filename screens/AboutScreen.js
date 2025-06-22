@@ -11,8 +11,12 @@ import {
   View,
 } from "react-native";
 
-import { BackButton, GradientText } from "../components";
-import { useTheme } from "../contexts";
+import { BackButton, GradientText, TopBar } from "../components";
+import { useLanguage, useTheme } from "../contexts";
+import { createTextStyles } from "../utils";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { profileTranslations } from "../configs";
+import { useNavigation } from "@react-navigation/native";
 
 const featureList = [
   "Multiple language translations",
@@ -25,6 +29,9 @@ const featureList = [
 
 const AboutScreen = () => {
   const { colors } = useTheme();
+  const { currentLanguage } = useLanguage();
+  const navigation = useNavigation();
+  const textStyles = createTextStyles(currentLanguage);
 
   const openLink = async (url) => {
     try {
@@ -35,85 +42,151 @@ const AboutScreen = () => {
   };
 
   return (
-    <ScrollView
-      style={[styles.container, { backgroundColor: colors.backgroundColor }]}
-      showsVerticalScrollIndicator={false}
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
     >
-      <BackButton />
-      <BlurView
-        intensity={50}
-        tint="systemThinMaterial"
-        style={styles.blurContainer}
-      >
-        <View style={styles.headerContainer}>
-          <Image
-            source={require("../assets/icon.png")}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <GradientText text={"GitaVaani"} />
-          <Text style={[styles.version, { color: colors.textColor }]}>
-            Version 1.0.0
-          </Text>
-        </View>
-
-        <View style={styles.sectionContainer}>
-          <Text style={[styles.sectionTitle, { color: colors.textColor }]}>
-            About the App
-          </Text>
-          <Text style={[styles.sectionText, { color: colors.textColor }]}>
-            GitaVaani is a spiritual companion that brings the timeless wisdom
-            of the Bhagavad Gita to your fingertips. With translations in
-            multiple Indian languages, verse explanations, and an intuitive
-            interface, we aim to make the sacred text accessible to everyone.
-          </Text>
-        </View>
-
-        <View style={styles.sectionContainer}>
-          <Text style={[styles.sectionTitle, { color: colors.textColor }]}>
-            Features
-          </Text>
-          <View style={styles.featureList}>
-            {featureList.map((feature, index) => (
-              <View key={index} style={styles.featureItem}>
-                <MaterialIcons
-                  name="check-circle"
-                  size={22}
-                  color={colors.primary}
-                />
-                <Text style={[styles.featureText, { color: colors.textColor }]}>
-                  {feature}
-                </Text>
-              </View>
-            ))}
+      <TopBar
+        title={profileTranslations[currentLanguage].aboutApp}
+        onBack={() => navigation.goBack()}
+        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
+      />
+      <ScrollView showsVerticalScrollIndicator={true}>
+        <BlurView
+          intensity={50}
+          tint="systemThinMaterial"
+          style={styles.blurContainer}
+        >
+          <View
+            style={[styles.headerContainer, { backgroundColor: colors.cardBg }]}
+          >
+            <Image
+              source={require("../assets/icon.png")}
+              style={styles.logo}
+              resizeMode="contain"
+            />
+            <GradientText text={"GitaVaani"} />
+            <Text
+              style={[styles.version, textStyles.text, { color: colors.text }]}
+            >
+              Version 1.0.0
+            </Text>
           </View>
-        </View>
 
-        <View style={styles.sectionContainer}>
-          <Text style={[styles.sectionTitle, { color: colors.textColor }]}>
-            Contact Us
-          </Text>
-          <TouchableOpacity
-            style={styles.contactItem}
-            onPress={() => openLink("mailto:support@geetavaani.com")}
+          <View
+            style={[
+              styles.sectionContainer,
+              { backgroundColor: colors.cardBg },
+            ]}
           >
-            <MaterialIcons name="email" size={22} color={colors.primary} />
-            <Text style={[styles.contactText, { color: colors.textColor }]}>
-              support@geetavaani.com
+            <Text
+              style={[
+                styles.sectionTitle,
+                textStyles.text,
+                { color: colors.text },
+              ]}
+            >
+              About the App
             </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.contactItem}
-            onPress={() => openLink("https://geetavaani.com")}
+            <Text
+              style={[
+                styles.sectionText,
+                textStyles.text,
+                { color: colors.text },
+              ]}
+            >
+              GitaVaani is a spiritual companion that brings the timeless wisdom
+              of the Bhagavad Gita to your fingertips. With translations in
+              multiple Indian languages, verse explanations, and an intuitive
+              interface, we aim to make the sacred text accessible to everyone.
+            </Text>
+          </View>
+
+          <View
+            style={[
+              styles.sectionContainer,
+              { backgroundColor: colors.cardBg },
+            ]}
           >
-            <MaterialIcons name="web" size={22} color={colors.primary} />
-            <Text style={[styles.contactText, { color: colors.textColor }]}>
-              www.geetavaani.com
+            <Text
+              style={[
+                styles.sectionTitle,
+                textStyles.text,
+                { color: colors.text },
+              ]}
+            >
+              Features
             </Text>
-          </TouchableOpacity>
-        </View>
-      </BlurView>
-    </ScrollView>
+            <View style={styles.featureList}>
+              {featureList.map((feature, index) => (
+                <View key={index} style={styles.featureItem}>
+                  <MaterialIcons
+                    name="check-circle"
+                    size={22}
+                    color={colors.primary}
+                  />
+                  <Text
+                    style={[
+                      styles.featureText,
+                      textStyles.text,
+                      { color: colors.text },
+                    ]}
+                  >
+                    {feature}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          <View
+            style={[
+              styles.sectionContainer,
+              { backgroundColor: colors.cardBg },
+            ]}
+          >
+            <Text
+              style={[
+                styles.sectionTitle,
+                textStyles.text,
+                { color: colors.text },
+              ]}
+            >
+              Contact Us
+            </Text>
+            <TouchableOpacity
+              style={styles.contactItem}
+              onPress={() => openLink("mailto:support@geetavaani.com")}
+            >
+              <MaterialIcons name="email" size={22} color={colors.primary} />
+              <Text
+                style={[
+                  styles.contactText,
+                  textStyles.text,
+                  { color: colors.text },
+                ]}
+              >
+                support@geetavaani.com
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.contactItem}
+              onPress={() => openLink("https://geetavaani.com")}
+            >
+              <MaterialIcons name="web" size={22} color={colors.primary} />
+              <Text
+                style={[
+                  styles.contactText,
+                  textStyles.text,
+                  { color: colors.text },
+                ]}
+              >
+                www.geetavaani.com
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </BlurView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -131,12 +204,11 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     padding: 20,
     borderRadius: 16,
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
   },
   logo: {
     width: 80,
     height: 80,
-    marginBottom: 12,
+    marginBottom: 8,
     borderRadius: 20,
   },
   appName: {

@@ -9,12 +9,21 @@ import {
   View,
 } from "react-native";
 
-import ToggleThemeButton from "../components/ToggleThemeButton";
-import { useTheme } from "../contexts";
+import { TopBar } from "../components";
+import { useLanguage, useTheme } from "../contexts";
+import { createTextStyles } from "../utils";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { profileTranslations } from "../configs";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
+  const { currentLanguage } = useLanguage();
+  const textStyles = createTextStyles(currentLanguage);
+  const insets = useSafeAreaInsets();
+
+  const translation = profileTranslations[currentLanguage];
+
   const userEmail = "test@test.com";
 
   const MenuItem = ({ title, onPress, style }) => (
@@ -37,11 +46,18 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingTop: insets.top },
+      ]}
       edges={["top", "bottom"]}
     >
+      <TopBar
+        title={translation.account}
+        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
+        onBack={() => navigation.goBack()}
+      />
       <View style={styles.screen}>
-        <ToggleThemeButton style={{ margin: 20, marginTop: 20 }} />
         <View style={styles.header}>
           <View style={styles.avatarContainer}>
             <Image
@@ -70,12 +86,12 @@ const ProfileScreen = () => {
               { backgroundColor: colors.cardBg || "#fff" },
             ]}
           >
-            <MenuItem title="My Account" onPress={() => {}} />
-            <MenuItem title="Notifications" onPress={() => {}} />
-            <MenuItem title="About App" onPress={handleAboutPress} />
+            <MenuItem title={translation.account} onPress={() => {}} />
+            <MenuItem title={translation.notification} onPress={() => {}} />
+            <MenuItem title={translation.aboutApp} onPress={handleAboutPress} />
             {/* <MenuItem title="Check For Update" onPress={checkForUpdates} /> */}
             <MenuItem
-              title="Sign Out"
+              title={translation.logout}
               onPress={() => {}}
               style={{ borderBottomWidth: 0 }}
             />

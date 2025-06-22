@@ -1,12 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useTheme } from "../contexts";
+import ToggleThemeButton from "./ToggleThemeButton";
 
 const TopBar = ({ title, onBack, textStyle, compStyle }) => {
   const { colors } = useTheme();
-
   return (
-    <View style={[compStyle, styles.topBar]}>
+    <View style={[styles.topBar, compStyle]}>
       {onBack ? (
         <TouchableOpacity onPress={onBack}>
           <Icon name="arrow-left" size={24} color={colors.textPrimary} />
@@ -15,12 +15,15 @@ const TopBar = ({ title, onBack, textStyle, compStyle }) => {
       <Text
         style={[
           styles.headerText,
-          !onBack && { marginLeft: 0, color: colors.textPrimary },
-          ...textStyle,
+          !onBack && { marginLeft: 0 },
+          { color: colors.textPrimary },
+          ...(textStyle || []),
         ]}
       >
         {title}
       </Text>
+      <View style={{ flex: 1 }} />
+      <ToggleThemeButton />
     </View>
   );
 };
