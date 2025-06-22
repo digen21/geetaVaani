@@ -5,11 +5,12 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 
-import { ChapterCard } from "../components";
-import { useTheme } from "../contexts";
+import { ChapterCard, TopBar } from "../components";
+import { useLanguage, useTheme } from "../contexts";
 import chaptersData from "../data/sample-chapters.json";
 import versesData from "../data/verses.json";
-import { calculateVerseCounts } from "../utils";
+import { calculateVerseCounts, createTextStyles } from "../utils";
+import { chapterVersesTranslations } from "../configs";
 
 /**
  * ChaptersScreen component that displays a list of chapters.
@@ -28,16 +29,27 @@ import { calculateVerseCounts } from "../utils";
 const ChaptersScreen = () => {
   const { colors } = useTheme();
   const navigation = useNavigation();
+  const { currentLanguage } = useLanguage();
+  const textStyles = createTextStyles(currentLanguage);
   const insets = useSafeAreaInsets();
   // Calculate verse counts
   const verseCounts = calculateVerseCounts(versesData);
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-      edges={["top"]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingBottom: insets.bottom },
+      ]}
+      edges={["top", "bottom"]}
     >
-      <View style={{ marginTop: 10 }}>
+      <TopBar
+        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
+        compStyle={{ marginLeft: 10 }}
+        title={chapterVersesTranslations.chapter[currentLanguage]}
+      />
+
+      <View>
         <FlatList
           data={chaptersData}
           renderItem={({ item }) => (
@@ -54,7 +66,7 @@ const ChaptersScreen = () => {
             styles.listContent,
             {
               paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
-            }, // <-- add safe area bottom
+            },
           ]}
           ListHeaderComponent={<View style={{ height: 0 }} />}
           stickyHeaderIndices={[0]}
@@ -68,7 +80,6 @@ const ChaptersScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F7",
   },
   listContent: {
     paddingTop: 16,

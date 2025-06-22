@@ -1,7 +1,10 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
+import { useTheme } from "../contexts";
 
 const TabView = ({ tabs, activeTab, onTabChange }) => {
+  const { colors } = useTheme();
+
   return (
     <View style={tw`flex-row justify-around p-4 border-b border-gray-200`}>
       {tabs.map((tab, index) => {
@@ -9,7 +12,10 @@ const TabView = ({ tabs, activeTab, onTabChange }) => {
         return (
           <TouchableOpacity
             key={index}
-            style={tw`flex-1 items-center pb-2`}
+            style={
+              ([tw`flex-1 items-center pb-2`],
+              { backgroundColor: colors.background })
+            }
             onPress={() => onTabChange(index)}
             activeOpacity={0.7}
           >

@@ -398,18 +398,27 @@ export const CharacterDetailTranslations = {
   en: {
     characterRole: "Character Role",
     characterDescription: "Character Description",
+    character: "Characters",
   },
   hi: {
     characterRole: "चरित्र भूमिका",
     characterDescription: "चरित्र विवरण",
+    character: "चरित्र",
   },
   gu: {
     characterRole: "પાત્ર ભૂમિકા",
     characterDescription: "પાત્ર વર્ણન",
+    character: "પાત્ર",
   },
   mr: {
     characterRole: "पात्र भूमिका",
     characterDescription: "पात्र वर्णन",
+    character: "पात्र",
+  },
+  sk: {
+    characterRole: "पात्रभूमिका",
+    characterDescription: "पात्रवर्णनम्",
+    character: "पात्रम्",
   },
 };
 
@@ -419,4 +428,62 @@ export const infoTranslations = {
   gu: "માહિતી",
   mr: "माहिती",
   sk: "सूचना",
+};
+
+export const profileTranslations = {
+  en: {
+    profile: "Profile",
+    settings: "Settings",
+    about: "About",
+    help: "Help",
+    feedback: "Feedback",
+    logout: "Logout",
+    account: "My Account",
+    notification: "Notifications",
+    aboutApp: "About App",
+  },
+  hi: {
+    profile: "प्रोफ़ाइल",
+    settings: "सेटिंग्स",
+    about: "के बारे में",
+    help: "मदद",
+    feedback: "प्रतिक्रिया",
+    logout: "लॉग आउट",
+    account: "मेरा खाता",
+    notification: "सूचनाएँ",
+    aboutApp: "ऐप के बारे में",
+  },
+  gu: {
+    profile: "પ્રોફાઇલ",
+    settings: "સેટિંગ્સ",
+    about: "વિશે",
+    help: "મદદ",
+    feedback: "પ્રતિસાદ",
+    logout: "લોગ આઉટ",
+    account: "મારું ખાતું",
+    notification: "નોટિફિકેશન્સ",
+    aboutApp: "એપ વિશે",
+  },
+  mr: {
+    profile: "प्रोफाइल",
+    settings: "सेटिंग्ज",
+    about: "विषयी",
+    help: "मदत",
+    feedback: "प्रतिक्रिया",
+    logout: "लॉग आउट",
+    account: "माझे खाते",
+    notification: "सूचनाएँ",
+    aboutApp: "अ‍ॅपबद्दल",
+  },
+  sk: {
+    profile: "प्रोफाइलः",
+    settings: "संयोजनानि",
+    about: "विवरणम्",
+    help: "सहाय्यम्",
+    feedback: "प्रतिक्रिया",
+    logout: "निर्गमनम्",
+    account: "मम खाता",
+    notification: "सूचनाः",
+    aboutApp: "ऐप विषये",
+  },
 };

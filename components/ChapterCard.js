@@ -1,10 +1,8 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { verseTranslations } from "../configs";
-import { useFavorites, useLanguage } from "../contexts";
+import { useFavorites, useLanguage, useTheme } from "../contexts";
 import { createTextStyles } from "../utils";
 import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
 

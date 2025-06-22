@@ -14,6 +14,7 @@ export {
   infoTranslations,
   LANGUAGE_FONTS,
   default as languages,
+  profileTranslations,
   tabTranslations,
   translations,
   verseTranslations,
