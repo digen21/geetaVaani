@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LANGUAGE_FONTS } from "../configs/languages";
 import { useFavorites } from "../contexts";
 import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
+import { createTextStyles } from "../utils";
 
 /**
  * VerseCard component displays a verse with its text and a favorite icon.
@@ -15,8 +17,9 @@ import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
  *
  * @returns {JSX.Element} The rendered VerseCard component.
  */
-const VerseCard = ({ verse, onPress, colors }) => {
+const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const textStyles = createTextStyles(currentLanguage);
   const verseId = `verse_${verse.chapter}_${verse.verse}`;
 
   const handleFavoritePress = (e) => {
@@ -49,11 +52,25 @@ const VerseCard = ({ verse, onPress, colors }) => {
     >
       <View style={styles.row}>
         <View style={styles.textContainer}>
+          <View style={styles.numberCircle}>
+            <Text
+              style={[
+                styles.numberText,
+                {
+                  color: colors.primary,
+                  fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+                },
+              ]}
+            >
+              {convertDigits(number, currentLanguage)}
+            </Text>
+          </View>
           <Text
             style={{
               color: colors.text,
               fontFamily: LANGUAGE_FONTS.sk.regular,
               fontSize: 16,
+              marginLeft: 10,
             }}
             lineBreakMode="tail"
             numberOfLines={2}
@@ -90,13 +107,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textContainer: {
-    flex: 2,
+    flex: 3,
+    flexDirection: "row",
+    alignItems: "center",
     paddingRight: 12,
+  },
+  numberCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: "#e5e7eb",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  numberText: {
+    fontWeight: "bold",
+    fontSize: 15,
   },
   iconContainer: {
     flex: 1,
     alignItems: "flex-end",
-    // justifyContent: "center",
   },
 });
 
