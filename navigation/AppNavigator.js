@@ -7,6 +7,7 @@ import {
   CharacterDetailScreen,
   CharacterListScreen,
   FavoritesScreen,
+  MarkedReadVersesScreen,
   ProfileScreen,
   VerseDetailScreen,
 } from "../screens";
@@ -38,6 +39,10 @@ const AppNavigator = () => {
       <Stack.Screen name="Characters" component={CharacterListScreen} />
       <Stack.Screen name="CharacterDetail" component={CharacterDetailScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen
+        name="MarkedReadVerses"
+        component={MarkedReadVersesScreen}
+      />
     </Stack.Navigator>
   );
 };

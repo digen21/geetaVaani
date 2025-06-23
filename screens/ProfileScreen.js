@@ -9,11 +9,14 @@ import {
   View,
 } from "react-native";
 
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TopBar } from "../components";
+import { profileTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import { createTextStyles } from "../utils";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { profileTranslations } from "../configs";
+
+// Add this import
+import MarkedReadVersesScreen from "./MarkedReadVersesScreen";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -42,6 +45,11 @@ const ProfileScreen = () => {
 
   const handleAboutPress = () => {
     navigation.navigate("About");
+  };
+
+  // New handler for Marked as Read Verses
+  const handleMarkedReadVersesPress = () => {
+    navigation.navigate("MarkedReadVerses");
   };
 
   return (
@@ -88,6 +96,10 @@ const ProfileScreen = () => {
           >
             <MenuItem title={translation.account} onPress={() => {}} />
             <MenuItem title={translation.notification} onPress={() => {}} />
+            <MenuItem
+              title="Marked as Read Verses"
+              onPress={handleMarkedReadVersesPress}
+            />
             <MenuItem title={translation.aboutApp} onPress={handleAboutPress} />
             {/* <MenuItem title="Check For Update" onPress={checkForUpdates} /> */}
             <MenuItem
