@@ -149,11 +149,13 @@ const ChapterDetailScreen = ({ route, navigation }) => {
             paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
           }}
         >
-          {chapterVerses.map((verse) => (
+          {chapterVerses.map((verse, idx) => (
             <VerseCard
               key={`${verse.chapter}-${verse.verse}`}
               verse={verse}
               colors={colors}
+              number={idx + 1}
+              currentLanguage={currentLanguage}
               onPress={() =>
                 navigation.navigate("VerseDetail", {
                   verse: { chapter: verse.chapter, number: verse.verse },
