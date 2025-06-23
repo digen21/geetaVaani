@@ -1,6 +1,7 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import tw from "twrnc";
 
 import { TopBar } from "../components";
@@ -12,6 +13,7 @@ import {
 } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
+import { useReadVerses } from "../hooks";
 import { createTextStyles } from "../utils";
 
 /**
@@ -28,6 +30,7 @@ import { createTextStyles } from "../utils";
  */
 const VerseDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
+  const { markAsRead, isRead, markUnread } = useReadVerses();
   const { currentLanguage } = useLanguage();
   const textStyles = createTextStyles(currentLanguage);
   const { verse } = route.params;
@@ -83,6 +86,28 @@ const VerseDetailScreen = ({ route, navigation }) => {
           >
             Sanskrit
           </Text>
+          {/* Mark as Read Button */}
+          {!isRead(verse.chapter, verse.number) ? (
+            <Icon
+              name="sticker-check-outline"
+              style={[
+                tw`absolute right-4 top-4`,
+                { color: colors.textPrimary },
+              ]}
+              size={24}
+              onPress={() => markAsRead(verse.chapter, verse.number)}
+            />
+          ) : (
+            <Icon
+              name="sticker-check"
+              style={[
+                tw`absolute right-4 top-4`,
+                { color: "#22c55e" }, // green-500
+              ]}
+              size={24}
+              onPress={() => markUnread(verse.chapter, verse.number)}
+            />
+          )}
           <Text
             style={[
               tw`text-lg mb-6`,
