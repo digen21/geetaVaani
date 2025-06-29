@@ -1,6 +1,7 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import tw from "twrnc";
 
 import { TopBar } from "../components";
@@ -12,6 +13,7 @@ import {
 } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import versesData from "../data/verses.json";
+import { useReadVerses } from "../hooks";
 import { createTextStyles } from "../utils";
 
 /**
@@ -28,9 +30,42 @@ import { createTextStyles } from "../utils";
  */
 const VerseDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
+  const { markAsRead, isRead, markUnread } = useReadVerses();
   const { currentLanguage } = useLanguage();
   const textStyles = createTextStyles(currentLanguage);
   const { verse } = route.params;
+
+  const currentChapter = Number(verse.chapter);
+  const currentVerse = Number(verse.number);
+
+  // Find the next verse in the data
+  let nextVerseObj = versesData.find(
+    (v) =>
+      (Number(v.chapter) === currentChapter &&
+        Number(v.verse) === currentVerse + 1) ||
+      (Number(v.chapter) === currentChapter + 1 && Number(v.verse) === 1)
+  );
+
+  const hasNext = !!nextVerseObj;
+
+  // Find the previous verse in the data
+  let prevVerseObj = versesData
+    .slice()
+    .reverse()
+    .find(
+      (v) =>
+        (Number(v.chapter) === currentChapter &&
+          Number(v.verse) === currentVerse - 1) ||
+        (Number(v.chapter) === currentChapter - 1 &&
+          Number(v.verse) ===
+            Math.max(
+              ...versesData
+                .filter((vv) => Number(vv.chapter) === currentChapter - 1)
+                .map((vv) => Number(vv.verse))
+            ))
+    );
+
+  const hasPrev = !!prevVerseObj;
 
   // Find the verse object
   const verseObj = versesData.find(
@@ -68,6 +103,66 @@ const VerseDetailScreen = ({ route, navigation }) => {
         onBack={() => navigation.goBack()}
       />
 
+      <View
+        style={{
+          marginTop: 24,
+          paddingHorizontal: 20,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        {hasPrev ? (
+          <Icon
+            name="arrow-left"
+            size={24}
+            onPress={() => {
+              navigation.replace("VerseDetail", {
+                verse: {
+                  chapter: prevVerseObj.chapter,
+                  number: prevVerseObj.verse,
+                },
+              });
+            }}
+            style={{
+              backgroundColor: colors.primary,
+              color: "#fff",
+              paddingVertical: 10,
+              paddingHorizontal: 10,
+              borderRadius: 24,
+              fontWeight: "bold",
+              fontSize: 16,
+              overflow: "hidden",
+            }}
+          />
+        ) : (
+          <View />
+        )}
+
+        {hasNext && (
+          <Icon
+            name="arrow-right"
+            size={24}
+            onPress={() => {
+              navigation.setParams({
+                verse: {
+                  chapter: nextVerseObj.chapter,
+                  number: nextVerseObj.verse,
+                },
+              });
+            }}
+            style={{
+              backgroundColor: colors.primary,
+              color: "#fff",
+              paddingVertical: 10,
+              paddingHorizontal: 10,
+              borderRadius: 24,
+              fontWeight: "bold",
+              fontSize: 16,
+              overflow: "hidden",
+            }}
+          />
+        )}
+      </View>
       <ScrollView contentContainerStyle={{ padding: 20 }}>
         <View
           style={[tw`mb-6 p-4 rounded-xl`, { backgroundColor: colors.cardBg }]}
@@ -83,6 +178,28 @@ const VerseDetailScreen = ({ route, navigation }) => {
           >
             Sanskrit
           </Text>
+          {/* Mark as Read Button */}
+          {!isRead(verse.chapter, verse.number) ? (
+            <Icon
+              name="sticker-check-outline"
+              style={[
+                tw`absolute right-4 top-4`,
+                { color: colors.textPrimary },
+              ]}
+              size={24}
+              onPress={() => markAsRead(verse.chapter, verse.number)}
+            />
+          ) : (
+            <Icon
+              name="sticker-check"
+              style={[
+                tw`absolute right-4 top-4`,
+                { color: "#22c55e" }, // green-500
+              ]}
+              size={24}
+              onPress={() => markUnread(verse.chapter, verse.number)}
+            />
+          )}
           <Text
             style={[
               tw`text-lg mb-6`,
@@ -95,7 +212,6 @@ const VerseDetailScreen = ({ route, navigation }) => {
           >
             {sk}
           </Text>
-
           <Text
             style={[
               tw`text-xl font-bold mb-2`,
@@ -106,7 +222,6 @@ const VerseDetailScreen = ({ route, navigation }) => {
           >
             {String(translations[currentLanguage] || translations.en || "")}
           </Text>
-
           <Text
             style={[
               tw`mb-6`,
@@ -119,7 +234,6 @@ const VerseDetailScreen = ({ route, navigation }) => {
           >
             {translation}
           </Text>
-
           {commentary ? (
             <>
               <Text
