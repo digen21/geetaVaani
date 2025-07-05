@@ -1,13 +1,21 @@
+import AsyncStorage from "@react-native-async-storage/async-storage"; // <-- Add this
 import * as Font from "expo-font";
 import * as Localization from "expo-localization";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+
+
 // Get device language using Expo's localization
 // const systemLanguage = locales.split("-")[0] || "en";
-const systemLanguage =
-  typeof Localization.locale === "string"
-    ? Localization.locale.split?.("-")[0] || Localization.locale || "en"
-    : "en";
+// Get device language using Expo's localization
+const LANGUAGE_KEY = "selectedLanguage";
+
+const getSystemLanguage = () => {
+  if (typeof Localization.locale === "string") {
+    return Localization.locale.split?.("-")[0] || Localization.locale || "en";
+  }
+  return "en";
+};
 
 // Load fonts based on languages
 const loadFonts = async () => {
@@ -44,6 +52,14 @@ const loadFonts = async () => {
 // },
 // });
 
+// Read language from AsyncStorage (returns promise)
+export const getStoredLanguage = async () => {
+  const lang = await AsyncStorage.getItem(LANGUAGE_KEY);
+  return lang || getSystemLanguage();
+};
+
+
+
 i18n.use(initReactI18next).init({
   compatibilityJSON: "v3",
   fallbackLng: "en",
@@ -72,10 +88,17 @@ i18n.use(initReactI18next).init({
 export const updateI18nLanguage = async (lang) => {
   try {
     await loadFonts(); // Load fonts when language changes
+     await AsyncStorage.setItem(LANGUAGE_KEY, lang); 
     i18n.changeLanguage(lang);
   } catch (error) {
     console.error("Error loading fonts:", error);
   }
+};
+
+export const initializeLanguage = async () => {
+  const lang = await getStoredLanguage();
+  await loadFonts();
+  i18n.changeLanguage(lang);
 };
 
 export default i18n;

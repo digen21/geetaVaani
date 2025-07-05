@@ -198,13 +198,18 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
-        style={
-          ([styles.contentCard, textStyles.body],
-          { backgroundColor: colors.cardBg })
-        }
+        style={[
+          styles.contentCard,
+          textStyles.body,
+          { backgroundColor: colors.cardBg },
+        ]}
         renderTabBar={(props) => (
           <TabBar
             {...props}
+            labelStyle={{
+              fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+              fontSize: 16,
+            }}
             style={{
               backgroundColor: colors.cardBg,
               borderTopLeftRadius: 30,
@@ -214,15 +219,11 @@ const ChapterDetailScreen = ({ route, navigation }) => {
               elevation: 0,
               shadowOpacity: 0,
             }}
+            key={currentLanguage}
             indicatorStyle={{
               backgroundColor: colors.primary,
               height: 3,
               borderRadius: 2,
-            }}
-            labelStyle={{
-              fontSize: 16,
-              textTransform: "none",
-              fontFamily: LANGUAGE_FONTS[currentLanguage].bold,
             }}
             activeColor={colors.primary}
             inactiveColor="#999"

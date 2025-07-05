@@ -66,12 +66,14 @@ const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
             </Text>
           </View>
           <Text
-            style={{
-              color: colors.text,
-              fontFamily: LANGUAGE_FONTS.sk.regular,
-              fontSize: 16,
-              marginLeft: 10,
-            }}
+            style={[
+              {
+                color: colors.text,
+                fontFamily: LANGUAGE_FONTS.sk.regular,
+                fontSize: 16,
+                marginLeft: 10,
+              },
+            ]}
             lineBreakMode="tail"
             numberOfLines={2}
           >
