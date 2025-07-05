@@ -15,8 +15,14 @@ import {
 } from "./contexts";
 import { AppNavigator } from "./navigation";
 import { i18n } from "./services";
+import { initializeLanguage } from "./services/i18n";
 
 const App = () => {
+
+    useEffect(() => {
+    initializeLanguage();
+  }, []);
+
   useEffect(() => {
     /**
      * Asynchronously loads the Poppins-Regular font.
