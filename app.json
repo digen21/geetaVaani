@@ -8,9 +8,9 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/gitavaani_icon_512.png",               
-      "resizeMode": "contain",                      
-      "backgroundColor": "#ffffff"              
+      "image": "./assets/gitavaani_icon_512.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true
@@ -31,6 +31,9 @@
         "projectId": "03609a9d-8927-40c4-8833-6c121d623205"
       }
     },
-    "owner": "dmx214"
+    "owner": "dmx214",
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }
