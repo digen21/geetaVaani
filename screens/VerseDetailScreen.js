@@ -106,6 +106,7 @@ const VerseDetailScreen = ({ route, navigation }) => {
       <View
         style={{
           marginTop: 24,
+          marginBottom: 20,
           paddingHorizontal: 20,
           flexDirection: "row",
           justifyContent: "space-between",
@@ -164,9 +165,9 @@ const VerseDetailScreen = ({ route, navigation }) => {
         )}
       </View>
       <ScrollView contentContainerStyle={{ padding: 20 }}>
-        <View
-          style={[tw`mb-6 p-4 rounded-xl`, { backgroundColor: colors.cardBg }]}
-        >
+      <View
+        style={[tw`mb-6 p-4 rounded-xl`, { backgroundColor: colors.cardBg }]}
+      >
           <Text
             style={[
               tw`text-xl font-bold mb-2`,
@@ -264,8 +265,8 @@ const VerseDetailScreen = ({ route, navigation }) => {
               </Text>
             </>
           ) : null}
-        </View>
-      </ScrollView>
+      </View>
+        </ScrollView>
     </SafeAreaView>
   );
 };
