@@ -1,9 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { LANGUAGE_FONTS } from "../configs/languages";
 import { useFavorites } from "../contexts";
+import { useReadVerses } from "../hooks";
 import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { createTextStyles } from "../utils";
+import { useEffect, useState } from "react";
 
 /**
  * VerseCard component displays a verse with its text and a favorite icon.
@@ -19,8 +22,12 @@ import { createTextStyles } from "../utils";
  */
 const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { isRead, markAsRead, markUnread, readVerses } = useReadVerses();
   const textStyles = createTextStyles(currentLanguage);
   const verseId = `verse_${verse.chapter}_${verse.verse}`;
+
+  // Determine if verse is read based on the reactive readVerses state
+  const isVerseRead = isRead(verse.chapter, verse.verse);
 
   const handleFavoritePress = (e) => {
     if (e && typeof e.stopPropagation === "function") {
@@ -38,6 +45,17 @@ const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
         title: verse.sk,
         ...verse,
       });
+    }
+  };
+
+  const handleReadToggle = (e) => {
+    if (e && typeof e.stopPropagation === "function") {
+      e.stopPropagation();
+    }
+    if (isVerseRead) {
+      markUnread(verse.chapter, verse.verse);
+    } else {
+      markAsRead(verse.chapter, verse.verse);
     }
   };
 
@@ -81,6 +99,23 @@ const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
           </Text>
         </View>
         <View style={styles.iconContainer}>
+          <View style={styles.readIconContainer}>
+            {!isVerseRead ? (
+              <Icon
+                name="sticker-check-outline"
+                style={{ color: colors.text }}
+                size={20}
+                onPress={handleReadToggle}
+              />
+            ) : (
+              <Icon
+                name="sticker-check"
+                style={{ color: "#22c55e" }} // green-500
+                size={20}
+                onPress={handleReadToggle}
+              />
+            )}
+          </View>
           <AnimatedFavoriteIcon
             isFav={isFavorite(verseId)}
             onToggle={handleFavoritePress}
@@ -128,8 +163,12 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flex: 1,
-    alignItems: "flex-end",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 8,
   },
+  readIconContainer: {},
 });
 
 export default VerseCard;

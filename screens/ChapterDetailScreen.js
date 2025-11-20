@@ -1,5 +1,5 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Platform,
   SafeAreaView,
@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useIsFocused } from "@react-navigation/native";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import tw from "twrnc";
 
@@ -28,6 +29,7 @@ import { calculateVerseCounts, createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
+  const isFocused = useIsFocused();
 
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
@@ -41,6 +43,15 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     tips: false,
     learnings: false,
   });
+
+  // Force re-render when the screen comes back into focus to update read status
+  const [refreshKey, setRefreshKey] = useState(0);
+  useEffect(() => {
+    if (isFocused) {
+      // Increment the key to force re-render of VerseCard components
+      setRefreshKey((prev) => prev + 1);
+    }
+  }, [isFocused]);
 
   const translations = chapter[currentLanguage] || chapter.en;
   const tabLabels = tabTranslations[currentLanguage] || tabTranslations.en;
@@ -142,6 +153,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
       <SafeAreaView
         style={{ flex: 1, paddingTop: 10, backgroundColor: colors.background }}
         edges={["bottom"]}
+        key={`verses-tab-${refreshKey}`} // Use refreshKey to force re-render
       >
         <ScrollView
           contentContainerStyle={{
@@ -151,7 +163,7 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         >
           {chapterVerses.map((verse, idx) => (
             <VerseCard
-              key={`${verse.chapter}-${verse.verse}`}
+              key={`${verse.chapter}-${verse.verse}-${refreshKey}`} // Use refreshKey to force re-render
               verse={verse}
               colors={colors}
               number={idx + 1}
