@@ -1,12 +1,11 @@
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { LANGUAGE_FONTS } from "../configs/languages";
 import { useFavorites } from "../contexts";
 import { useReadVerses } from "../hooks";
-import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
-import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import { createTextStyles } from "../utils";
-import { useEffect, useState } from "react";
+import AnimatedFavoriteIcon from "./AnimatedFavoriteIcon";
 
 /**
  * VerseCard component displays a verse with its text and a favorite icon.
@@ -103,7 +102,7 @@ const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
             {!isVerseRead ? (
               <Icon
                 name="sticker-check-outline"
-                style={{ color: colors.text }}
+                style={{ color: "#22c55e" }}
                 size={20}
                 onPress={handleReadToggle}
               />

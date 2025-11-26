@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Animated, Easing, Pressable, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const HEART_COLOR = "#FF3B30";
+export const HEART_COLOR = "#FF3B30";
 const SPARKLE_COLORS = ["#FFD700", "#FF69B4", "#00E6FF", "#FFB300", "#B388FF"];
 const sparkleAngles = [
   0,

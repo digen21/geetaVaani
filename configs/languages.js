@@ -7,10 +7,10 @@ export default [
 
 export const LANGUAGE_FONTS = {
   en: {
-    regular: "Poppins-Regular",
-    medium: "Poppins-Medium",
-    bold: "Poppins-Bold",
-    semiBold: "Poppins-SemiBold",
+    regular: "WorkSans-Regular",
+    medium: "WorkSans-Medium",
+    bold: "WorkSans-Bold",
+    semiBold: "WorkSans-SemiBold",
   },
   hi: {
     regular: "Mukta-Regular",
@@ -384,6 +384,14 @@ export const translations = {
   gu: "અનુવાદ",
   mr: "अनुवाद",
   sk: "अनुवादः",
+};
+
+export const SanskritTranslations = {
+  en: "Sanskrit",
+  hi: "संस्कृत",
+  gu: "સંસ્કૃત",
+  mr: "संस्कृत",
+  sk: "संस्कृतम्",
 };
 
 export const commentaryTranslations = {

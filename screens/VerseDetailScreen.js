@@ -1,17 +1,20 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import tw from "twrnc";
-
-import { TopBar } from "../components";
+import { ChapterInfoBottomSheet, TopBar } from "../components";
+import { HEART_COLOR } from "../components/AnimatedFavoriteIcon";
 import {
   chapterVersesTranslations,
   commentaryTranslations,
   LANGUAGE_FONTS,
   translations,
 } from "../configs";
-import { useLanguage, useTheme } from "../contexts";
+import { SanskritTranslations } from "../configs/languages";
+import { useFavorites, useLanguage, useTheme } from "../contexts";
+import chaptersData from "../data/sample-chapters.json";
 import versesData from "../data/verses.json";
 import { useReadVerses } from "../hooks";
 import { createTextStyles } from "../utils";
@@ -31,12 +34,26 @@ import { createTextStyles } from "../utils";
 const VerseDetailScreen = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { markAsRead, isRead, markUnread } = useReadVerses();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+
   const { currentLanguage } = useLanguage();
   const textStyles = createTextStyles(currentLanguage);
   const { verse } = route.params;
 
+  const [showInfoModal, setShowInfoModal] = useState(false);
+
   const currentChapter = Number(verse.chapter);
   const currentVerse = Number(verse.number);
+  const verseId = `verse_${verse.chapter}_${verse.number}`;
+
+  const chapterInfo = chaptersData.find(
+    (chapter) => Number(chapter.chapter) === currentChapter
+  );
+
+  const chapterLanguageData = chapterInfo?.[currentLanguage] || chapterInfo?.en;
+
+  const chapterTitle = chapterLanguageData?.title || "";
+  const chapterSummary = chapterLanguageData?.summary || "";
 
   // Find the next verse in the data
   let nextVerseObj = versesData.find(
@@ -89,185 +106,238 @@ const VerseDetailScreen = ({ route, navigation }) => {
     chapterVersesTranslations.verse?.[currentLanguage]
   } ${convertDigits(verse.number, currentLanguage)}`;
 
+  const handleFavToggle = () => {
+    if (isFavorite(verseId)) {
+      removeFavorite(verseId);
+    } else {
+      addFavorite({
+        id: verseId,
+        type: "verse",
+        chapter: verse.chapter,
+        number: verse.number,
+        sk,
+        title: sk,
+        ...verseObj,
+      });
+    }
+  };
+
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        { backgroundColor: colors.background, paddingBottom: 25 },
-      ]}
-      edges={["top", "bottom"]}
-    >
-      <TopBar
-        title={verseTitle}
-        textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
-        onBack={() => navigation.goBack()}
-      />
-
-      <View
-        style={{
-          marginTop: 24,
-          marginBottom: 20,
-          paddingHorizontal: 20,
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
+    <>
+      <SafeAreaView
+        style={[
+          styles.container,
+          { backgroundColor: colors.background, paddingBottom: 25 },
+        ]}
+        edges={["top", "bottom"]}
       >
-        {hasPrev ? (
-          <Icon
-            name="arrow-left"
-            size={24}
-            onPress={() => {
-              navigation.replace("VerseDetail", {
-                verse: {
-                  chapter: prevVerseObj.chapter,
-                  number: prevVerseObj.verse,
-                },
-              });
-            }}
-            style={{
-              backgroundColor: colors.primary,
-              color: "#fff",
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              borderRadius: 24,
-              fontWeight: "bold",
-              fontSize: 16,
-              overflow: "hidden",
-            }}
-          />
-        ) : (
-          <View />
-        )}
+        <TopBar
+          title={verseTitle}
+          textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
+          onBack={() => navigation.goBack()}
+        />
 
-        {hasNext && (
-          <Icon
-            name="arrow-right"
-            size={24}
-            onPress={() => {
-              navigation.setParams({
-                verse: {
-                  chapter: nextVerseObj.chapter,
-                  number: nextVerseObj.verse,
-                },
-              });
-            }}
-            style={{
-              backgroundColor: colors.primary,
-              color: "#fff",
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              borderRadius: 24,
-              fontWeight: "bold",
-              fontSize: 16,
-              overflow: "hidden",
-            }}
-          />
-        )}
-      </View>
-      <ScrollView contentContainerStyle={{ padding: 20 }}>
-      <View
-        style={[tw`mb-6 p-4 rounded-xl`, { backgroundColor: colors.cardBg }]}
-      >
-          <Text
-            style={[
-              tw`text-xl font-bold mb-2`,
-              {
-                color: colors.primary,
-                fontFamily: LANGUAGE_FONTS.sk.regular,
-              },
-            ]}
-          >
-            Sanskrit
-          </Text>
-          {/* Mark as Read Button */}
-          {!isRead(verse.chapter, verse.number) ? (
+        <View
+          style={{
+            marginTop: 24,
+            marginBottom: 20,
+            paddingHorizontal: 20,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          {hasPrev ? (
             <Icon
-              name="sticker-check-outline"
-              style={[
-                tw`absolute right-4 top-4`,
-                { color: colors.textPrimary },
-              ]}
+              name="arrow-left"
               size={24}
-              onPress={() => markAsRead(verse.chapter, verse.number)}
+              onPress={() => {
+                navigation.replace("VerseDetail", {
+                  verse: {
+                    chapter: prevVerseObj.chapter,
+                    number: prevVerseObj.verse,
+                  },
+                });
+              }}
+              style={{
+                backgroundColor: colors.primary,
+                color: "#fff",
+                paddingVertical: 10,
+                paddingHorizontal: 10,
+                borderRadius: 24,
+                fontWeight: "bold",
+                fontSize: 16,
+                overflow: "hidden",
+              }}
             />
           ) : (
+            <View />
+          )}
+
+          {hasNext && (
             <Icon
-              name="sticker-check"
-              style={[
-                tw`absolute right-4 top-4`,
-                { color: "#22c55e" }, // green-500
-              ]}
+              name="arrow-right"
               size={24}
-              onPress={() => markUnread(verse.chapter, verse.number)}
+              onPress={() => {
+                navigation.setParams({
+                  verse: {
+                    chapter: nextVerseObj.chapter,
+                    number: nextVerseObj.verse,
+                  },
+                });
+              }}
+              style={{
+                backgroundColor: colors.primary,
+                color: "#fff",
+                paddingVertical: 10,
+                paddingHorizontal: 10,
+                borderRadius: 24,
+                fontWeight: "bold",
+                fontSize: 16,
+                overflow: "hidden",
+              }}
             />
           )}
-          <Text
+        </View>
+        <ScrollView contentContainerStyle={{ padding: 20 }}>
+          <View
             style={[
-              tw`text-lg mb-6`,
-              {
-                color: colors.text,
-                fontFamily: LANGUAGE_FONTS.sk.regular,
-                lineHeight: 26,
-              },
+              tw`mb-6 p-4 rounded-xl`,
+              { backgroundColor: colors.cardBg },
             ]}
           >
-            {sk}
-          </Text>
-          <Text
-            style={[
-              tw`text-xl font-bold mb-2`,
-              {
-                color: colors.primary,
-              },
-            ]}
-          >
-            {String(translations[currentLanguage] || translations.en || "")}
-          </Text>
-          <Text
-            style={[
-              tw`mb-6`,
-              {
-                color: colors.text,
-                lineHeight: 26,
-              },
-              textStyles.body,
-            ]}
-          >
-            {translation}
-          </Text>
-          {commentary ? (
-            <>
-              <Text
+            <Text
+              style={[
+                tw`text-xl font-bold mb-2`,
+                {
+                  color: colors.primary,
+                  fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+                },
+              ]}
+            >
+              {String(
+                SanskritTranslations[currentLanguage] ||
+                  SanskritTranslations.en ||
+                  ""
+              )}
+            </Text>
+
+            {/* Mark as Read Button */}
+            {!isRead(verse.chapter, verse.number) ? (
+              <Icon
+                name="sticker-check-outline"
+                style={[tw`absolute right-4 top-4`, { color: "#22c55e" }]}
+                size={24}
+                onPress={() => markAsRead(verse.chapter, verse.number)}
+              />
+            ) : (
+              <Icon
+                name="sticker-check"
                 style={[
-                  tw`text-xl font-bold mb-2`,
-                  {
-                    color: colors.primary,
-                  },
+                  tw`absolute right-4 top-4`,
+                  { color: "#22c55e" }, // green-500
                 ]}
-              >
-                {String(
-                  commentaryTranslations[currentLanguage] ||
-                    commentaryTranslations.en ||
-                    ""
-                )}
-              </Text>
-              <Text
-                style={[
-                  tw`mb-4`,
-                  {
-                    color: colors.text,
-                    lineHeight: 26,
-                  },
-                  textStyles.body,
-                ]}
-              >
-                {commentary}
-              </Text>
-            </>
-          ) : null}
-      </View>
+                size={24}
+                onPress={() => markUnread(verse.chapter, verse.number)}
+              />
+            )}
+
+            <Icon
+              name="information-outline"
+              size={24}
+              onPress={() => setShowInfoModal(true)}
+              style={[
+                tw`absolute right-12 top-4`,
+                { color: "#2274c5ff" }, // green-500
+              ]}
+            />
+
+            {/* Favorite Button */}
+            <Icon
+              name={isFavorite(verseId) ? "heart" : "heart-outline"}
+              style={[tw`absolute right-20 top-4`, { color: HEART_COLOR }]}
+              size={24}
+              onPress={handleFavToggle}
+            />
+
+            <Text
+              style={[
+                tw`text-lg mb-6 mt-4`,
+                {
+                  color: colors.text,
+                  fontFamily: LANGUAGE_FONTS.sk.regular,
+                  lineHeight: 26,
+                },
+              ]}
+            >
+              {sk}
+            </Text>
+            <Text
+              style={[
+                tw`text-xl font-bold mb-2`,
+                {
+                  color: colors.primary,
+                },
+              ]}
+            >
+              {String(translations[currentLanguage] || translations.en || "")}
+            </Text>
+            <Text
+              style={[
+                tw`mb-6`,
+                {
+                  color: colors.text,
+                  lineHeight: 26,
+                  fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+                },
+                textStyles.body,
+              ]}
+            >
+              {translation}
+            </Text>
+            {commentary ? (
+              <>
+                <Text
+                  style={[
+                    tw`text-xl font-bold mb-2`,
+                    {
+                      color: colors.primary,
+                      fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+                    },
+                  ]}
+                >
+                  {String(
+                    commentaryTranslations[currentLanguage] ||
+                      commentaryTranslations.en ||
+                      ""
+                  )}
+                </Text>
+                <Text
+                  style={[
+                    tw`mb-4`,
+                    {
+                      color: colors.text,
+                      lineHeight: 26,
+                    },
+                    textStyles.body,
+                  ]}
+                >
+                  {commentary}
+                </Text>
+              </>
+            ) : null}
+          </View>
         </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+      {/* CHAPTER INFO MODAL */}
+      <ChapterInfoBottomSheet
+        showInfoModal={showInfoModal}
+        setShowInfoModal={setShowInfoModal}
+        chapterTitle={chapterTitle}
+        chapterSummary={chapterSummary}
+        colors={colors}
+        textStyles={textStyles}
+      />
+    </>
   );
 };
 
