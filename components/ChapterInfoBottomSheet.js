@@ -29,6 +29,7 @@ const ChapterInfoBottomSheet = ({
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           maxHeight: "90%",
+          height: "90%",
         }}
       >
         {/* Drag handle line */}
@@ -66,7 +67,7 @@ const ChapterInfoBottomSheet = ({
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             style={[
-              tw`text-xl font-bold mb-4 text-center`,
+              tw`text-xl font-bold mt-8 mb-4 text-center`,
               { color: colors.primary },
             ]}
           >

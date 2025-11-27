@@ -75,7 +75,9 @@ const VerseCard = ({ verse, onPress, colors, number, currentLanguage }) => {
                 styles.numberText,
                 {
                   color: colors.primary,
-                  fontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+                  fontFamily:
+                    LANGUAGE_FONTS[currentLanguage]?.regular ||
+                    LANGUAGE_FONTS.sk.regular,
                 },
               ]}
             >
