@@ -32,10 +32,11 @@ const TabNavigator = () => {
             position: "absolute",
             bottom: 0,
             left: 0,
+            right: 0,
             borderTopLeftRadius: 25,
             borderTopRightRadius: 25,
             overflow: "hidden",
-            height: 60 + insets.bottom,
+            height: 70 + insets.bottom, // Increased height to accommodate text better
             backgroundColor: colors.cardBg,
             elevation: 8,
             shadowColor: "#000",
@@ -44,9 +45,14 @@ const TabNavigator = () => {
               height: -4,
             },
             shadowOpacity: 0.1,
-            paddingTop: 5,
             shadowRadius: 8,
-            paddingBottom: insets.bottom,
+            paddingBottom: insets.bottom, // Adjust content to not overlap with safe area
+            paddingHorizontal: 4, // Reduced horizontal padding to give more space for text
+            borderTopWidth: 0, // Remove any default border
+            marginBottom: 0, // Ensure no additional margin at the bottom
+            borderEndWidth: 0, // Ensure no right border
+            borderBottomWidth: 0, // Ensure no bottom border that could create gap
+            paddingTop: 8, // Add some top padding for better visual balance
           },
         }}
       >
