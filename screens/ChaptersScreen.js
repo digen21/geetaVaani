@@ -45,7 +45,7 @@ const ChaptersScreen = () => {
     >
       <TopBar
         textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
-        compStyle={{ marginLeft: 10 }}
+        compStyle={{ paddingHorizontal: 20, paddingVertical: 16 }}
         title={chapterVersesTranslations.chapter[currentLanguage]}
       />
 
@@ -65,7 +65,7 @@ const ChaptersScreen = () => {
           contentContainerStyle={[
             styles.listContent,
             {
-              paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
+              paddingBottom: (Platform.OS === "ios" ? 88 : 90) + insets.bottom,
             },
           ]}
           ListHeaderComponent={<View style={{ height: 0 }} />}

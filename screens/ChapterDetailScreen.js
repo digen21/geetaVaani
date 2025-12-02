@@ -1,15 +1,19 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import { useState } from "react";
+import { useIsFocused } from "@react-navigation/native";
+import { useCallback, useEffect, useState } from "react";
 import {
+  FlatList,
   Platform,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   useWindowDimensions,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import tw from "twrnc";
 
@@ -28,6 +32,7 @@ import { calculateVerseCounts, createTextStyles } from "../utils";
 
 const ChapterDetailScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
+  const isFocused = useIsFocused();
 
   const { colors } = useTheme();
   const { currentLanguage } = useLanguage();
@@ -42,16 +47,31 @@ const ChapterDetailScreen = ({ route, navigation }) => {
     learnings: false,
   });
 
+  // Force re-render when the screen comes back into focus to update read status
+  const [refreshKey, setRefreshKey] = useState(0);
+  useEffect(() => {
+    if (isFocused) {
+      // Increment the key to force re-render of VerseCard components
+      setRefreshKey((prev) => prev + 1);
+    }
+  }, [isFocused]);
+
   const translations = chapter[currentLanguage] || chapter.en;
   const tabLabels = tabTranslations[currentLanguage] || tabTranslations.en;
   const imageUrls = chapterImagesUrls[chapter.chapter];
 
-  const toggleSection = (section) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
+  const toggleSection = useCallback((section, newSectionsState = null) => {
+    if (newSectionsState) {
+      // If newSectionsState is provided, update all sections at once
+      setOpenSections(newSectionsState);
+    } else {
+      // Otherwise, toggle just the specified section
+      setOpenSections((prev) => ({
+        ...prev,
+        [section]: !prev[section],
+      }));
+    }
+  }, []);
 
   const [index, setIndex] = useState(0);
   const routes = [
@@ -68,6 +88,8 @@ const ChapterDetailScreen = ({ route, navigation }) => {
         paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
       }}
       style={{ backgroundColor: colors.background }}
+      scrollEventThrottle={16}
+      persistentScrollbar={true}
     >
       <View
         style={[
@@ -142,28 +164,36 @@ const ChapterDetailScreen = ({ route, navigation }) => {
       <SafeAreaView
         style={{ flex: 1, paddingTop: 10, backgroundColor: colors.background }}
         edges={["bottom"]}
+        key={`verses-tab-${refreshKey}`} // Use refreshKey to force re-render
       >
-        <ScrollView
+        <FlatList
+          data={chapterVerses}
+          keyExtractor={(verse, idx) =>
+            `${verse.chapter}-${verse.verse}-${idx}`
+          }
           contentContainerStyle={{
             paddingHorizontal: 16,
             paddingBottom: (Platform.OS === "ios" ? 88 : 76) + insets.bottom,
           }}
-        >
-          {chapterVerses.map((verse, idx) => (
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item, index }) => (
             <VerseCard
-              key={`${verse.chapter}-${verse.verse}`}
-              verse={verse}
+              verse={item}
               colors={colors}
-              number={idx + 1}
+              number={index + 1}
               currentLanguage={currentLanguage}
               onPress={() =>
                 navigation.navigate("VerseDetail", {
-                  verse: { chapter: verse.chapter, number: verse.verse },
+                  verse: { chapter: item.chapter, number: item.verse },
                 })
               }
             />
-          ))}
-        </ScrollView>
+          )}
+          removeClippedSubviews={true}
+          initialNumToRender={10}
+          maxToRenderPerBatch={10}
+          windowSize={15}
+        />
       </SafeAreaView>
     );
   };

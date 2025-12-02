@@ -1,1 +1,1 @@
-export { default as i18n, updateI18nLanguage } from "./i18n";
+export { default as i18n, updateI18nLanguage, getStoredLanguage } from "./i18n";

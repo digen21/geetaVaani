@@ -1,24 +1,21 @@
+import { convertDigits } from "@dmxdev/digit-converter-multilang";
 import React, { useEffect, useState } from "react";
 import {
+  Animated,
   Dimensions,
   FlatList,
   StyleSheet,
   Text,
   View,
-  Animated,
 } from "react-native";
 import { PieChart } from "react-native-chart-kit";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { TopBar } from "../components";
-import { useLanguage, useTheme } from "../contexts";
-import { useReadVerses } from "../hooks";
-
-import chaptersData from "../data/sample-chapters.json";
-import versesData from "../data/verses.json";
-import { createTextStyles } from "../utils";
 import { chapterVersesTranslations, LANGUAGE_FONTS } from "../configs";
-import { convertDigits } from "@dmxdev/digit-converter-multilang";
+import { useLanguage, useTheme } from "../contexts";
+import versesData from "../data/verses.json";
+import { useReadVerses } from "../hooks";
+import { createTextStyles } from "../utils";
 
 const chartColors = [
   "#4F8EF7",
@@ -167,7 +164,7 @@ const MarkedReadVersesScreen = ({ navigation }) => {
       </View>
 
       {/* List of marked as read verses */}
-      <FlatList
+      {/* <FlatList
         data={Object.keys(readVerses).map((key) => {
           const [chapter, verse] = key.split("_");
           return { chapter, verse };
@@ -193,7 +190,7 @@ const MarkedReadVersesScreen = ({ navigation }) => {
         }
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={true}
-      />
+      /> */}
     </SafeAreaView>
   );
 };

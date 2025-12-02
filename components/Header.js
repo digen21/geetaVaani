@@ -1,12 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import { Text, View } from "react-native";
 import tw from "twrnc";
 
 import { useTheme } from "../contexts";
-import BurgerMenu from "./BurgerMenu";
 import BackButton from "./BackButton";
+import BurgerMenu from "./BurgerMenu";
 
 const Header = ({
   title = "GitaVaani",

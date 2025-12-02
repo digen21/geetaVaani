@@ -21,7 +21,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.dmx214.gitavaani"
+      "package": "com.dmx214.gitavaani",
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,8 +33,12 @@
       }
     },
     "owner": "dmx214",
-    "plugins": [
-      "expo-localization"
-    ]
+    "plugins": ["expo-localization", "expo-font"],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/03609a9d-8927-40c4-8833-6c121d623205"
+    }
   }
 }

@@ -4,7 +4,6 @@ import * as Localization from "expo-localization";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-
 // Get device language using Expo's localization
 // const systemLanguage = locales.split("-")[0] || "en";
 // Get device language using Expo's localization
@@ -25,6 +24,11 @@ const loadFonts = async () => {
     "Poppins-Medium": require("../assets/fonts/en/Poppins-Medium.ttf"),
     "Poppins-Bold": require("../assets/fonts/en/Poppins-Bold.ttf"),
     "Poppins-SemiBold": require("../assets/fonts/en/Poppins-Bold.ttf"),
+
+    "WorkSans-Regular": require("../assets/fonts/en/WorkSans-Regular.ttf"),
+    "WorkSans-Medium": require("../assets/fonts/en/WorkSans-Medium.ttf"),
+    "WorkSans-Bold": require("../assets/fonts/en/WorkSans-Bold.ttf"),
+    "WorkSans-SemiBold": require("../assets/fonts/en/WorkSans-Bold.ttf"),
 
     // Hindi fonts
     "Mukta-Regular": require("../assets/fonts/hi/Mukta-Regular.ttf"),
@@ -58,8 +62,6 @@ export const getStoredLanguage = async () => {
   return lang || getSystemLanguage();
 };
 
-
-
 i18n.use(initReactI18next).init({
   compatibilityJSON: "v3",
   fallbackLng: "en",
@@ -88,7 +90,7 @@ i18n.use(initReactI18next).init({
 export const updateI18nLanguage = async (lang) => {
   try {
     await loadFonts(); // Load fonts when language changes
-     await AsyncStorage.setItem(LANGUAGE_KEY, lang); 
+    await AsyncStorage.setItem(LANGUAGE_KEY, lang);
     i18n.changeLanguage(lang);
   } catch (error) {
     console.error("Error loading fonts:", error);

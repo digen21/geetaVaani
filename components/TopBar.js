@@ -6,7 +6,9 @@ import ToggleThemeButton from "./ToggleThemeButton";
 const TopBar = ({ title, onBack, textStyle, compStyle }) => {
   const { colors } = useTheme();
   return (
-    <View style={[styles.topBar, compStyle]}>
+    <View
+      style={[styles.topBar, { backgroundColor: colors.cardBg }, compStyle]}
+    >
       {onBack ? (
         <TouchableOpacity onPress={onBack}>
           <Icon name="arrow-left" size={24} color={colors.textPrimary} />
@@ -19,10 +21,11 @@ const TopBar = ({ title, onBack, textStyle, compStyle }) => {
           { color: colors.textPrimary },
           ...(textStyle || []),
         ]}
+        numberOfLines={1}
+        ellipsizeMode="tail"
       >
         {title}
       </Text>
-      <View style={{ flex: 1 }} />
       <ToggleThemeButton />
     </View>
   );
@@ -35,13 +38,15 @@ const styles = StyleSheet.create({
     display: "flex",
     paddingHorizontal: 16,
     paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e5e7eb",
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    borderBottomWidth: 0, // Remove border to match tab bar style
   },
   headerText: {
     fontSize: 20,
     fontWeight: "600",
     marginLeft: 16,
+    flex: 1, // Allow the text to take available space
   },
 });
 
