@@ -33,9 +33,12 @@
       }
     },
     "owner": "dmx214",
-    "plugins": [
-      "expo-localization",
-      "expo-font"
-    ]
+    "plugins": ["expo-localization", "expo-font"],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/03609a9d-8927-40c4-8833-6c121d623205"
+    }
   }
 }
