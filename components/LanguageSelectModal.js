@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import tw from "twrnc";
 
@@ -35,39 +35,44 @@ const LanguageSelectModal = ({ visible, onClose }) => {
             Select Language
           </Text>
 
-          {languages.map((lang) => (
-            <TouchableOpacity
-              key={lang.code}
-              style={[
-                styles.languageItem,
-                {
-                  backgroundColor:
-                    lang.code === currentLanguage
-                      ? colors.primary + "20"
-                      : "transparent",
-                },
-              ]}
-              onPress={() => {
-                changeLanguage(lang.code);
-                onClose();
-              }}
-            >
-              <Text style={[styles.languageText, { color: colors.text }, textStyles.body]}>
-                {lang.native}
-              </Text>
-              <Text style={[styles.languageSubtext, { color: colors.primary }, textStyles.body]}>
-                {lang.name}
-              </Text>
-              {lang.code === currentLanguage && (
-                <Icon
-                  name="check"
-                  size={20}
-                  color={colors.primary}
-                  style={tw`ml-auto`}
-                />
-              )}
-            </TouchableOpacity>
-          ))}
+          <FlatList
+            data={languages}
+            keyExtractor={(lang) => lang.code}
+            renderItem={({ item: lang }) => (
+              <TouchableOpacity
+                style={[
+                  styles.languageItem,
+                  {
+                    backgroundColor:
+                      lang.code === currentLanguage
+                        ? colors.primary + "20"
+                        : "transparent",
+                  },
+                ]}
+                onPress={() => {
+                  changeLanguage(lang.code);
+                  onClose();
+                }}
+              >
+                <Text style={[styles.languageText, { color: colors.text }, textStyles.body]}>
+                  {lang.native}
+                </Text>
+                <Text style={[styles.languageSubtext, { color: colors.primary }, textStyles.body]}>
+                  {lang.name}
+                </Text>
+                {lang.code === currentLanguage && (
+                  <Icon
+                    name="check"
+                    size={20}
+                    color={colors.primary}
+                    style={tw`ml-auto`}
+                  />
+                )}
+              </TouchableOpacity>
+            )}
+            scrollEnabled={false}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
       </TouchableOpacity>
     </Modal>

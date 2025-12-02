@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
+  FlatList,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -55,13 +55,11 @@ const CharacterListScreen = () => {
       />
 
       {/* User List */}
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {filteredCharacters.map((character) => (
+      <FlatList
+        data={filteredCharacters}
+        keyExtractor={(character) => character.id.toString()}
+        renderItem={({ item: character }) => (
           <TouchableOpacity
-            key={character.id}
             style={[
               { color: colors.text, backgroundColor: colors.cardBg },
               styles.card,
@@ -101,8 +99,14 @@ const CharacterListScreen = () => {
               {character?.name?.[currentLanguage] || character?.name?.en}
             </Text>
           </TouchableOpacity>
-        ))}
-      </ScrollView>
+        )}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        removeClippedSubviews={true}
+        initialNumToRender={10}
+        maxToRenderPerBatch={10}
+        windowSize={15}
+      />
     </SafeAreaView>
   );
 };

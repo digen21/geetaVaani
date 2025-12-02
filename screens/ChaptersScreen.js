@@ -45,7 +45,7 @@ const ChaptersScreen = () => {
     >
       <TopBar
         textStyle={[{ color: colors.textPrimary }, textStyles.heading3]}
-        compStyle={{ marginLeft: 10 }}
+        compStyle={{ paddingHorizontal: 20, paddingVertical: 16 }}
         title={chapterVersesTranslations.chapter[currentLanguage]}
       />
 

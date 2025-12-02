@@ -2,6 +2,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import React from "react";
 import {
+  FlatList,
   Image,
   Linking,
   ScrollView,
@@ -116,9 +117,11 @@ const AboutScreen = () => {
             >
               Features
             </Text>
-            <View style={styles.featureList}>
-              {featureList.map((feature, index) => (
-                <View key={index} style={styles.featureItem}>
+            <FlatList
+              data={featureList}
+              keyExtractor={(item, index) => `feature-${index}`}
+              renderItem={({ item, index }) => (
+                <View style={styles.featureItem}>
                   <MaterialIcons
                     name="check-circle"
                     size={22}
@@ -131,11 +134,14 @@ const AboutScreen = () => {
                       { color: colors.text },
                     ]}
                   >
-                    {feature}
+                    {item}
                   </Text>
                 </View>
-              ))}
-            </View>
+              )}
+              scrollEnabled={false}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.featureList}
+            />
           </View>
 
           <View
