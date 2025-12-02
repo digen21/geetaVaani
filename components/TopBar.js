@@ -19,10 +19,11 @@ const TopBar = ({ title, onBack, textStyle, compStyle }) => {
           { color: colors.textPrimary },
           ...(textStyle || []),
         ]}
+        numberOfLines={1}
+        ellipsizeMode="tail"
       >
         {title}
       </Text>
-      <View style={{ flex: 1 }} />
       <ToggleThemeButton />
     </View>
   );
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     marginLeft: 16,
+    flex: 1, // Allow the text to take available space
   },
 });
 

@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
-import { updateI18nLanguage } from "../services";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { getStoredLanguage, updateI18nLanguage } from "../services/i18n";
 const LanguageContext = createContext();
 
 /**
@@ -15,14 +15,24 @@ const LanguageContext = createContext();
 export const LanguageProvider = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState("en");
 
+  useEffect(() => {
+    // Initialize the language state with the stored language
+    const initializeStoredLanguage = async () => {
+      const storedLanguage = await getStoredLanguage();
+      setCurrentLanguage(storedLanguage);
+    };
+
+    initializeStoredLanguage();
+  }, []);
+
   /**
    * Changes the app language and updates the i18n instance.
    *
    * @param {string} lang - The new language code (e.g., 'en', 'hi', 'mr', 'gu').
    */
-  const changeLanguage = (lang) => {
+  const changeLanguage = async (lang) => {
     setCurrentLanguage(lang);
-    updateI18nLanguage(lang);
+    await updateI18nLanguage(lang); // Make sure to await the update
     // Add API call here to fetch translations if needed
   };
 
