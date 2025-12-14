@@ -13,7 +13,10 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +36,17 @@
       }
     },
     "owner": "dmx214",
-    "plugins": ["expo-localization", "expo-font"],
+    "plugins": [
+      "expo-localization",
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/gitavaani_icon_512.png",
+          "color": "#4682B4"
+        }
+      ]
+    ],
     "runtimeVersion": {
       "policy": "appVersion"
     },

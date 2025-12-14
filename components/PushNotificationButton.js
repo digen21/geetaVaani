@@ -1,7 +1,7 @@
 /**
  * PushNotificationButton Component
  *
- * This component provides a simple button that sends a local push notification
+ * This component provides a dynamic button that sends local push notifications
  * when pressed. It handles notification permissions, creates Android notification
  * channels, and displays the received notification information.
  *
@@ -12,10 +12,24 @@
  * - Displays received notifications in the UI
  * - Shows Expo push token for debugging purposes
  * - Provides user feedback through alerts
+ * - Accepts dynamic notification title, body, and button text
+ * - Supports custom button press callbacks
+ *
+ * Props:
+ * - buttonText (string): Text displayed on the button (default: "Send Notification")
+ * - notificationTitle (string): Title of the push notification (default: "GitaVaani Notification")
+ * - notificationBody (string): Body text of the push notification (default: "This is a local push notification from your app!")
+ * - onClick (function): Callback function triggered on button press (optional)
+ * - showToken (boolean): Whether to display the Expo push token (default: true)
+ * - showFeedback (boolean): Whether to show success/error alerts (default: true)
  *
  * Usage:
- * - Import and include in any screen where you want to test notifications
- * - The button will trigger a local notification with title and body
+ * <PushNotificationButton
+ *   buttonText="Send Alert"
+ *   notificationTitle="Custom Title"
+ *   notificationBody="Custom message here"
+ *   onClick={() => console.log('Button pressed')}
+ * />
  *
  * @component
  */
@@ -40,7 +54,14 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export default function PushNotificationButton() {
+export default function PushNotificationButton({
+  onClick,
+  buttonText = "Send Notification",
+  notificationTitle = "GitaVaani Notification",
+  notificationBody = "This is a local push notification from your app!",
+  showToken = true,
+  showFeedback = true,
+}) {
   const [expoPushToken, setExpoPushToken] = useState(null);
   const [notification, setNotification] = useState(null);
   const notificationListener = useRef();
@@ -128,6 +149,7 @@ export default function PushNotificationButton() {
    * Shows a local notification immediately when called
    * - Requests permissions if not already granted
    * - Schedules and displays an immediate notification
+   * - Calls the onClick callback if provided
    * - Provides user feedback through alerts
    */
   const showNotification = async () => {
@@ -142,11 +164,11 @@ export default function PushNotificationButton() {
         return;
       }
 
-      // Show a local notification immediately
+      // Show a local notification immediately with dynamic content
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: "GitaVaani Notification",
-          body: "This is a local push notification from your app!",
+          title: notificationTitle,
+          body: notificationBody,
           sound: "default",
           priority: "high",
           vibrate: [200, 100, 200],
@@ -154,20 +176,33 @@ export default function PushNotificationButton() {
         trigger: null, // Trigger immediately
       });
 
-      Alert.alert("Success", "Notification sent successfully!");
+      // Call the onClick callback if provided
+      if (onClick && typeof onClick === "function") {
+        onClick();
+      }
+
+      // Show feedback if enabled
+      if (showFeedback) {
+        Alert.alert("Success", "Notification sent successfully!");
+      }
     } catch (error) {
       console.error("Error showing notification:", error);
-      Alert.alert("Error", "Failed to send notification");
+      if (showFeedback) {
+        Alert.alert("Error", "Failed to send notification");
+      }
     }
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={showNotification}>
-        <Text style={styles.buttonText}>Send Local Notification</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => showNotification()}
+      >
+        <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
 
-      {expoPushToken && (
+      {showToken && expoPushToken && (
         <Text style={styles.tokenText}>
           Token: {expoPushToken.substring(0, 20)}...
         </Text>

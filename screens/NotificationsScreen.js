@@ -4,9 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TopBar, PushNotificationButton } from "../components";
+import { PushNotificationButton, TopBar } from "../components";
 import { profileTranslations, verseReminderTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
+import chaptersData from "../data/sample-chapters.json";
+import versesData from "../data/verses.json";
+import { useReadVerses } from "../hooks";
 import { createTextStyles } from "../utils";
 
 const NotificationsScreen = () => {
@@ -14,6 +17,7 @@ const NotificationsScreen = () => {
   const textStyles = createTextStyles(currentLanguage);
   const { colors } = useTheme();
   const navigation = useNavigation();
+  const { getMostRecentRead } = useReadVerses();
 
   // State for morning reminder
   const [morningReminderTime, setMorningReminderTime] = useState(
@@ -34,6 +38,8 @@ const NotificationsScreen = () => {
   const [isMorningReminderEnabled, setIsMorningReminderEnabled] =
     useState(false);
   const [showMorningPicker, setShowMorningPicker] = useState(false);
+
+  const [recentChapterAndVerse, setRecentChapterAndVerse] = useState(null);
 
   // State for evening reminder
   const [eveningReminderTime, setEveningReminderTime] = useState(
@@ -229,6 +235,25 @@ const NotificationsScreen = () => {
     color: colors.textPrimary,
     textAlign: "center",
   };
+  const recentVerse = getMostRecentRead();
+
+  const handlePushNotificationTest = () => {
+    const chapter = chaptersData.find(
+      (chapter) => chapter.chapter === recentVerse.ch
+    );
+
+    const verse = versesData.find(
+      (verse) =>
+        verse.chapter === recentVerse.ch && verse.verse === recentVerse.verse
+    );
+
+    setRecentChapterAndVerse({
+      chapter: chapter[currentLanguage].title,
+      verse: verse.languages[currentLanguage].translation,
+    });
+
+    // You can customize this function to include verse details if needed
+  };
 
   return (
     <SafeAreaView
@@ -255,7 +280,13 @@ const NotificationsScreen = () => {
         {/* Local Push Notification Test Section */}
         <View style={sectionStyle}>
           <Text style={sectionTitleStyle}>Test Notifications</Text>
-          <PushNotificationButton />
+          {/* On button click fetch the most recent verse using the useReadVerses hook */}
+          <PushNotificationButton
+            buttonText="Test it"
+            onClick={handlePushNotificationTest}
+            notificationBody={recentChapterAndVerse.verse}
+            notificationTitle={recentChapterAndVerse.chapter}
+          />
         </View>
 
         {/* Combined Reminder Section */}
