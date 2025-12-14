@@ -6,5 +6,6 @@ export { default as CharacterListScreen } from "./CharacterListScreen";
 export { default as FavoritesScreen } from "./FavoritesScreen";
 export { default as HomeScreen } from "./HomeScreen";
 export { default as MarkedReadVersesScreen } from "./MarkedReadVersesScreen";
+export { default as NotificationsScreen } from "./NotificationsScreen";
 export { default as ProfileScreen } from "./ProfileScreen";
 export { default as VerseDetailScreen } from "./VerseDetailScreen";

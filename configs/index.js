@@ -17,5 +17,6 @@ export {
   profileTranslations,
   tabTranslations,
   translations,
+  verseReminderTranslations,
   verseTranslations,
 } from "./languages";

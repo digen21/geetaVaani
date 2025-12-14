@@ -495,3 +495,41 @@ export const profileTranslations = {
     aboutApp: "ऐप विषये",
   },
 };
+
+export const verseReminderTranslations = {
+  en: {
+    verseReminder: "Verse Reminders",
+    morningReminder: "Morning Reminder",
+    eveningReminder: "Evening Reminder",
+    instruction:
+      "Set up reminders to receive notifications for reading Bhagavad Gita verses at your preferred times.",
+  },
+  hi: {
+    verseReminder: "श्लोक अनुस्मारक",
+    morningReminder: "सुबह का अनुस्मारक",
+    eveningReminder: "शाम का अनुस्मारक",
+    instruction:
+      "भगवद गीता के श्लोक पढ़ने के लिए अपने पसंदीदा समय पर सूचनाएं प्राप्त करने के लिए अनुस्मारक सेट करें।",
+  },
+  gu: {
+    verseReminder: "શ્લોક સ્મરણ",
+    morningReminder: "સવારનું સ્મરણ",
+    eveningReminder: "સાંજનું સ્મરણ",
+    instruction:
+      "તમારા પસંદના સમયે ભગવદ ગીતાના શ્લોકો વાંચવા માટે નોટિફિકેશન મેળવવા રીમાઇન્ડર સેટ કરો.",
+  },
+  mr: {
+    verseReminder: "श्लोक स्मरणसूचना",
+    morningReminder: "सकाळचे स्मरणसूचना",
+    eveningReminder: "संध्याकाळचे स्मरणसूचना",
+    instruction:
+      "तुमच्या आवडत्या वेळी भगवद गीता श्लोक वाचण्यासाठी सूचना मिळविण्यासाठी रिमाइंडर सेट करा.",
+  },
+  sk: {
+    verseReminder: "श्लोक-स्मरणसूचना",
+    morningReminder: "प्रातः-स्मरणम्",
+    eveningReminder: "सायं-स्मरणम्",
+    instruction:
+      "भगवद्गीतायाः श्लोकान् पठितुं निर्दिष्टसमये सूचनाः प्राप्तुं लेखकाः सेट् कुर्वन्तु।",
+  },
+};
