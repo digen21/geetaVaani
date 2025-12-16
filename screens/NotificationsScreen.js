@@ -39,7 +39,10 @@ const NotificationsScreen = () => {
     useState(false);
   const [showMorningPicker, setShowMorningPicker] = useState(false);
 
-  const [recentChapterAndVerse, setRecentChapterAndVerse] = useState(null);
+  const [recentChapterAndVerse, setRecentChapterAndVerse] = useState({
+    chapter: "No verses read yet",
+    verse: "Please read a verse first to enable this feature",
+  });
 
   // State for evening reminder
   const [eveningReminderTime, setEveningReminderTime] = useState(
@@ -238,6 +241,16 @@ const NotificationsScreen = () => {
   const recentVerse = getMostRecentRead();
 
   const handlePushNotificationTest = () => {
+    if (!recentVerse) {
+      console.log("No recent verse found");
+      // Optionally set a default message or return early
+      setRecentChapterAndVerse({
+        chapter: "No verses read yet",
+        verse: "Please read a verse first to enable this feature",
+      });
+      return;
+    }
+
     const chapter = chaptersData.find(
       (chapter) => chapter.chapter === recentVerse.ch
     );
@@ -246,6 +259,11 @@ const NotificationsScreen = () => {
       (verse) =>
         verse.chapter === recentVerse.ch && verse.verse === recentVerse.verse
     );
+
+    if (!chapter || !verse) {
+      console.log("Chapter or verse data not found");
+      return;
+    }
 
     setRecentChapterAndVerse({
       chapter: chapter[currentLanguage].title,
@@ -284,8 +302,12 @@ const NotificationsScreen = () => {
           <PushNotificationButton
             buttonText="Test it"
             onClick={handlePushNotificationTest}
-            notificationBody={recentChapterAndVerse.verse}
-            notificationTitle={recentChapterAndVerse.chapter}
+            notificationBody={
+              recentChapterAndVerse?.verse || "Click to load verse"
+            }
+            notificationTitle={
+              recentChapterAndVerse?.chapter || "No verse available"
+            }
           />
         </View>
 
