@@ -1,22 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import {
-  Image,
-  Pressable,
   SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { TopBar } from "../components";
 import { profileTranslations } from "../configs";
 import { useLanguage, useTheme } from "../contexts";
 import { createTextStyles } from "../utils";
-
-// Add this import
-import MarkedReadVersesScreen from "./MarkedReadVersesScreen";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -52,12 +44,14 @@ const ProfileScreen = () => {
     navigation.navigate("MarkedReadVerses");
   };
 
+  // Handler for Notifications
+  const handleNotificationsPress = () => {
+    navigation.navigate("Notifications");
+  };
+
   return (
     <SafeAreaView
-      style={[
-        styles.container,
-        { backgroundColor: colors.background, paddingTop: insets.top },
-      ]}
+      style={[styles.container, { backgroundColor: colors.background }]}
       edges={["top", "bottom"]}
     >
       <TopBar
@@ -95,7 +89,10 @@ const ProfileScreen = () => {
             ]}
           >
             <MenuItem title={translation.account} onPress={() => {}} />
-            <MenuItem title={translation.notification} onPress={() => {}} />
+            <MenuItem
+              title={translation.notification}
+              onPress={handleNotificationsPress}
+            />
             <MenuItem
               title="Marked as Read Verses"
               onPress={handleMarkedReadVersesPress}

@@ -18,8 +18,7 @@ import { i18n } from "./services";
 import { initializeLanguage } from "./services/i18n";
 
 const App = () => {
-
-    useEffect(() => {
+  useEffect(() => {
     initializeLanguage();
   }, []);
 

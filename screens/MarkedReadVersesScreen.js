@@ -1,5 +1,5 @@
 import { convertDigits } from "@dmxdev/digit-converter-multilang";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   Animated,
   Dimensions,
@@ -50,36 +50,41 @@ const MarkedReadVersesScreen = ({ navigation }) => {
   const animatedValue = React.useRef(new Animated.Value(0)).current;
 
   // Get total verses per chapter from versesData
-  const totalVersesPerChapter = [];
-  for (let i = 1; i <= 18; i++) {
-    totalVersesPerChapter[i - 1] = versesData.filter(
-      (v) => Number(v.chapter) === i
-    ).length;
-  }
+  const totalVersesPerChapter = useMemo(() => {
+    const totals = [];
+    for (let i = 1; i <= 18; i++) {
+      totals[i - 1] = versesData.filter((v) => Number(v.chapter) === i).length;
+    }
+    return totals;
+  }, [versesData]);
 
   // Calculate read verses per chapter
-  const chapterReadCounts = Array(18).fill(0);
-  Object.keys(readVerses).forEach((key) => {
-    const [chapter] = key.split("_");
-    const idx = Number(chapter) - 1;
-    if (idx >= 0 && idx < 18) chapterReadCounts[idx]++;
-  });
+  const chapterReadCounts = useMemo(() => {
+    const counts = Array(18).fill(0);
+    readVerses.forEach((verse) => {
+      const idx = Number(verse.ch) - 1;
+      if (idx >= 0 && idx < 18) counts[idx]++;
+    });
+    return counts;
+  }, [readVerses]);
 
   // Prepare data for PieChart
-  const pieData = chapterReadCounts
-    .map((read, idx) => {
-      const total = totalVersesPerChapter[idx] || 1;
-      const percent = Math.round((read / total) * 100);
-      return {
-        name: `Ch ${idx + 1} (${percent}%)`,
-        population: percent,
-        color: chartColors[idx % chartColors.length],
-        legendFontColor: colors.text,
-        legendFontSize: 12,
-        legendFontFamily: LANGUAGE_FONTS[currentLanguage].regular,
-      };
-    })
-    .filter((d) => d.population > 0);
+  const pieData = useMemo(() => {
+    return chapterReadCounts
+      .map((read, idx) => {
+        const total = totalVersesPerChapter[idx] || 1;
+        const percent = Math.round((read / total) * 100);
+        return {
+          name: `Ch ${idx + 1} (${percent}%)`,
+          population: percent,
+          color: chartColors[idx % chartColors.length],
+          legendFontColor: colors.text,
+          legendFontSize: 12,
+          legendFontFamily: LANGUAGE_FONTS[currentLanguage].regular,
+        };
+      })
+      .filter((d) => d.population > 0);
+  }, [chapterReadCounts, totalVersesPerChapter, colors.text, currentLanguage]);
 
   // Animate loading percentage
   useEffect(() => {
@@ -101,7 +106,7 @@ const MarkedReadVersesScreen = ({ navigation }) => {
       animatedValue.removeListener(listener);
     };
     // eslint-disable-next-line
-  }, [Object.keys(readVerses).length, currentLanguage]);
+  }, [readVerses.length, currentLanguage]);
 
   return (
     <SafeAreaView
@@ -164,18 +169,15 @@ const MarkedReadVersesScreen = ({ navigation }) => {
       </View>
 
       {/* List of marked as read verses */}
-      {/* <FlatList
-        data={Object.keys(readVerses).map((key) => {
-          const [chapter, verse] = key.split("_");
-          return { chapter, verse };
-        })}
-        keyExtractor={(item) => `${item.chapter}_${item.verse}`}
+      <FlatList
+        data={readVerses}
+        keyExtractor={(item) => `${item.ch}_${item.verse}`}
         renderItem={({ item }) => (
           <View style={styles.item}>
             <Text style={[{ color: colors.text }, textStyles.text]}>
               {chapterVersesTranslations.chapter[currentLanguage]}
               {"  "}
-              {convertDigits(item.chapter, currentLanguage)},{" "}
+              {convertDigits(item.ch, currentLanguage)},{" "}
               {chapterVersesTranslations.verse[currentLanguage]}{" "}
               {convertDigits(item.verse, currentLanguage)}
             </Text>
@@ -190,7 +192,7 @@ const MarkedReadVersesScreen = ({ navigation }) => {
         }
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={true}
-      /> */}
+      />
     </SafeAreaView>
   );
 };

@@ -13,6 +13,7 @@ export { default as GradientText } from "./GradientText";
 export { default as Header } from "./Header";
 export { default as LanguageSelectModal } from "./LanguageSelectModal";
 export { default as CustomTabBar } from "./Navigation";
+export { default as PushNotificationButton } from "./PushNotificationButton";
 export { default as Rating } from "./Rating";
 export { default as SearchBar } from "./SearchBar";
 export { default as SectionAccordion } from "./SectionAccordion";
